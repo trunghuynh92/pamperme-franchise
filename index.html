@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PamperMe Franchise Opportunity</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E68;
+            --primary-dark: #9B1854;
+            --primary-light: #E91E8C;
+            --secondary: #2D2D2D;
+            --accent: #4CAF50;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white) !important;
+            padding: 10px 25px;
+            border-radius: 25px;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            color: var(--white) !important;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
+        .lang-btn {
+            padding: 5px 12px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lang-btn:first-child {
+            border-radius: 20px 0 0 20px;
+        }
+
+        .lang-btn:last-child {
+            border-radius: 0 20px 20px 0;
+            border-left: none;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(196, 30, 104, 0.1);
+        }
+
+        /* Logo Image */
+        .logo-img {
+            height: 80px;
+            width: auto;
+        }
+
+        /* Founders Section */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .founder-card {
+            text-align: center;
+        }
+
+        .founder-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 5px solid var(--primary);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(196, 30, 104, 0.2);
+        }
+
+        .founder-card h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .founder-card .role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .founder-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(196, 30, 104, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Featured gallery item (larger) */
+        .gallery-item.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item.featured {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 5%;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light-gray);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .about-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Charts Section */
+        .charts-section {
+            background: var(--light-gray);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .chart-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .chart-card h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .chart-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .chart-card.full-width .chart-container {
+            height: 350px;
+        }
+
+        /* Market Opportunity */
+        .opportunity {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .opportunity .section-header h2 {
+            color: var(--white);
+        }
+
+        .opportunity .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .opportunity-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+        }
+
+        .opp-stat {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+
+        .opp-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .opp-stat-label {
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Franchise Package */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .package-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .package-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .package-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .package-body {
+            padding: 30px;
+        }
+
+        .package-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .package-item::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Support Section */
+        .support-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .support-timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .timeline-content h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 4px var(--primary);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-light);
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Print Styles for A4 */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+
+            body {
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+
+            /* Hide navigation and language switcher */
+            nav {
+                display: none !important;
+            }
+
+            /* Reset section padding for print */
+            section {
+                padding: 30px 0 !important;
+                page-break-inside: avoid;
+            }
+
+            /* Hero section - compact for print */
+            .hero {
+                min-height: auto !important;
+                padding: 40px 20px !important;
+                page-break-after: always;
+            }
+
+            .hero h1 {
+                font-size: 24pt !important;
+            }
+
+            .hero p {
+                font-size: 11pt !important;
+            }
+
+            .hero-stats {
+                gap: 20px !important;
+            }
+
+            .stat-number {
+                font-size: 18pt !important;
+            }
+
+            /* Section headers */
+            .section-header h2 {
+                font-size: 18pt !important;
+            }
+
+            .section-header p {
+                font-size: 10pt !important;
+            }
+
+            /* Grid layouts - single column for print */
+            .about-grid,
+            .services-grid,
+            .package-grid,
+            .founders-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            /* Cards */
+            .about-card,
+            .service-card,
+            .package-card {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                page-break-inside: avoid;
+            }
+
+            /* Founders */
+            .founders-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .founder-img {
+                width: 120px !important;
+                height: 120px !important;
+            }
+
+            /* Charts section */
+            .charts-section {
+                background: white !important;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+
+            .chart-card {
+                page-break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+                margin-bottom: 15px;
+            }
+
+            .chart-card.full-width {
+                page-break-before: always;
+            }
+
+            .chart-container {
+                height: 250px !important;
+            }
+
+            .chart-card.full-width .chart-container {
+                height: 280px !important;
+            }
+
+            /* Opportunity section */
+            .opportunity {
+                background: #2D2D2D !important;
+                color: white !important;
+                page-break-before: always;
+            }
+
+            .opportunity-stats {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            /* Timeline */
+            .support-timeline::before {
+                display: none !important;
+            }
+
+            .timeline-dot {
+                display: none !important;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column !important;
+                padding-left: 0 !important;
+            }
+
+            .timeline-content {
+                width: 100% !important;
+                margin-bottom: 15px;
+            }
+
+            /* Gallery sections */
+            .gallery-section {
+                page-break-before: always;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 10px !important;
+            }
+
+            .gallery-item {
+                aspect-ratio: 4/3 !important;
+            }
+
+            .gallery-item.featured {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+
+            /* CTA section */
+            .cta {
+                page-break-before: always;
+            }
+
+            /* Footer */
+            footer {
+                background: #2D2D2D !important;
+                page-break-inside: avoid;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            /* Hide buttons in print */
+            .btn {
+                display: none !important;
+            }
+
+            /* Links */
+            a {
+                text-decoration: none !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-card {
+                min-width: auto;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .support-timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item, .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#opportunity" data-i18n="nav.opportunity">Opportunity</a></li>
+            <li><a href="#performance" data-i18n="nav.performance">Performance</a></li>
+            <li><a href="#package" data-i18n="nav.package">Package</a></li>
+            <li><a href="#contact" class="nav-cta" data-i18n="nav.cta">Become a Partner</a></li>
+        </ul>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="vi">VI</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">Join Vietnam's Leading Baby Gym & Spa Franchise</h1>
+            <p data-i18n="hero.subtitle">Pioneering comprehensive solutions for children's holistic development. Be part of a proven business model with strong market traction.</p>
+            <a href="#contact" class="btn btn-white" data-i18n="hero.cta">Start Your Journey</a>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label" data-i18n="hero.stat1">Locations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">20,000+</div>
+                    <div class="stat-label" data-i18n="hero.stat2">Customers Served</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label" data-i18n="hero.stat3">Conversion Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">33%</div>
+                    <div class="stat-label" data-i18n="hero.stat4">Retention Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <h2 data-i18n="about.title">About PamperMe</h2>
+            <p data-i18n="about.subtitle">Founded in 2019 by two passionate parents with a vision to revolutionize early childhood development in Vietnam</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3 data-i18n="about.vision.title">Our Vision</h3>
+                <p data-i18n="about.vision.desc">To become a trusted choice for parents seeking comprehensive solutions for their children's holistic development from the very early stage.</p>
+            </div>
+            <div class="about-card">
+                <h3 data-i18n="about.mission.title">Our Mission</h3>
+                <p data-i18n="about.mission.desc">To create a one-stop destination that empowers infants and toddlers through specialized baby wellness services, enhancing their physical health and overall well-being while fostering cognitive development.</p>
+            </div>
+            <div class="about-card">
+                <h3 data-i18n="about.difference.title">Our Difference</h3>
+                <p data-i18n="about.difference.desc">We are the <strong>only baby-centric</strong> baby gym & spa provider in Vietnam. Our proprietary pool design and water filtration technology provide unmatched quality and efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section class="founders" id="founders">
+        <div class="section-header">
+            <h2 data-i18n="founders.title">Meet Our Founders</h2>
+            <p data-i18n="founders.subtitle">Two passionate parents with a shared vision for children's wellness</p>
+        </div>
+        <div class="founders-grid">
+            <div class="founder-card">
+                <img src="images/founder-vi.jpg" alt="Vi Tran - Co-Founder" class="founder-img">
+                <h3>Vi Tran</h3>
+                <div class="role" data-i18n="founders.vi.role">Co-Founder & CEO</div>
+                <p data-i18n="founders.vi.bio">With expertise in operations and business development, Vi drives PamperMe's expansion and ensures excellence across all locations.</p>
+            </div>
+            <div class="founder-card">
+                <img src="images/founder-trung.jpg" alt="Trung Huynh - Co-Founder" class="founder-img">
+                <h3>Trung Huynh</h3>
+                <div class="role" data-i18n="founders.trung.role">Co-Founder & CFO</div>
+                <p data-i18n="founders.trung.bio">With expertise in finance and system development, Trung oversees PamperMe's financial strategy and builds scalable technology infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2 data-i18n="services.title">Our Services</h2>
+            <p data-i18n="services.subtitle">Comprehensive solutions designed for children's holistic development</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3 data-i18n="services.hydro.title">Baby Gym & Spa</h3>
+                <p data-i18n="services.hydro.desc">Water-based activities scientifically proven to enhance physical and psychological development for children 2 months to 5 years old.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎮</div>
+                <h3 data-i18n="services.play.title">Play & Learn</h3>
+                <p data-i18n="services.play.desc">Over 300 games covering 15 key developmental topics including Music, Color Recognition, Logical Thinking, and World Exploration.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛒</div>
+                <h3 data-i18n="services.retail.title">Retail</h3>
+                <p data-i18n="services.retail.desc">Curated selection of 151+ educational toys and products, aligned with our commitment to child development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Happy Babies Gallery -->
+    <section class="gallery-section" id="gallery" style="background: var(--light-gray);">
+        <div class="section-header">
+            <h2 data-i18n="gallery.babies.title">Happy Babies, Happy Parents</h2>
+            <p data-i18n="gallery.babies.subtitle">Watch our little swimmers thrive in a safe, nurturing environment</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item featured">
+                <img src="images/gallery/baby_focus_00001.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00002.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00003.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00004.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00005.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00006.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00007.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00008.jpg" alt="Baby swimming" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted by Thousands Gallery -->
+    <section class="gallery-section" id="social-proof">
+        <div class="section-header">
+            <h2 data-i18n="gallery.crowded.title">Trusted by Thousands of Families</h2>
+            <p data-i18n="gallery.crowded.subtitle">Join the growing community of parents who choose PamperMe</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00001.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+            <div class="gallery-item featured">
+                <img src="images/gallery/crowded_00004.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00002.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00003.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00005.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00006.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00007.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00008.jpg" alt="Busy PamperMe location" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity Section -->
+    <section class="opportunity" id="opportunity">
+        <div class="section-header">
+            <h2 data-i18n="opportunity.title">The Market Opportunity</h2>
+            <p data-i18n="opportunity.subtitle">Vietnam's childcare market is experiencing unprecedented growth</p>
+        </div>
+        <div class="opportunity-stats">
+            <div class="opp-stat">
+                <div class="opp-stat-number">65%</div>
+                <div class="opp-stat-label" data-i18n="opportunity.stat1">of children under 3 lack quality care</div>
+            </div>
+            <div class="opp-stat">
+                <div class="opp-stat-number">6.6%</div>
+                <div class="opp-stat-label" data-i18n="opportunity.stat2">CAGR in disposable income</div>
+            </div>
+            <div class="opp-stat">
+                <div class="opp-stat-number">11.6%</div>
+                <div class="opp-stat-label" data-i18n="opportunity.stat3">annual growth in preschool spending</div>
+            </div>
+            <div class="opp-stat">
+                <div class="opp-stat-number">36M</div>
+                <div class="opp-stat-label" data-i18n="opportunity.stat4">people joining middle class by 2030</div>
+            </div>
+        </div>
+        <div class="chart-card" style="max-width: 900px; margin: 0 auto;">
+            <h3 data-i18n="charts.marketGrowth">Vietnam Economic Growth Forecast (2019-2029)</h3>
+            <div class="chart-container">
+                <canvas id="marketGrowthChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Charts Section -->
+    <section class="charts-section" id="performance">
+        <div class="section-header">
+            <h2 data-i18n="performance.title">Proven Performance</h2>
+            <p data-i18n="performance.subtitle">Strong metrics demonstrating sustainable growth and market demand</p>
+        </div>
+        <div class="charts-grid">
+            <!-- Chart 2: Location Network Expansion -->
+            <div class="chart-card">
+                <h3 data-i18n="charts.location">Location Network Expansion (2023-2030F)</h3>
+                <div class="chart-container">
+                    <canvas id="locationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 3: Baby Gym Sessions Served -->
+            <div class="chart-card">
+                <h3 data-i18n="charts.sessions">Baby Gym Sessions Served (30.5% CAGR)</h3>
+                <div class="chart-container">
+                    <canvas id="sessionsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 4: Monthly Transactions -->
+            <div class="chart-card full-width">
+                <h3 data-i18n="charts.transactions">Monthly Transactions by Service Type (Jan 2023 - Jun 2025)</h3>
+                <div class="chart-container">
+                    <canvas id="transactionsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 5: Monthly Revenue -->
+            <div class="chart-card full-width">
+                <h3 data-i18n="charts.revenue">Monthly Revenue by Service Type (Jan 2023 - Jun 2025)</h3>
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 6: Package Utilization -->
+            <div class="chart-card">
+                <h3 data-i18n="charts.utilization">Package Issued vs Used & Utilization Rate</h3>
+                <div class="chart-container">
+                    <canvas id="utilizationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 7: Conversion Rate -->
+            <div class="chart-card">
+                <h3 data-i18n="charts.conversion">Trial to Package Conversion Rate</h3>
+                <div class="chart-container">
+                    <canvas id="conversionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 8: Package Composition -->
+            <div class="chart-card">
+                <h3 data-i18n="charts.composition">Baby Gym Package Composition</h3>
+                <div class="chart-container">
+                    <canvas id="packageCompositionChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Franchise Package Section -->
+    <section class="package" id="package">
+        <div class="section-header">
+            <h2 data-i18n="package.title">Franchise Package</h2>
+            <p data-i18n="package.subtitle">Everything you need to launch and operate a successful PamperMe location</p>
+        </div>
+        <div class="package-grid">
+            <div class="package-card">
+                <div class="package-header">
+                    <h3 data-i18n="package.included.title">What's Included</h3>
+                    <p data-i18n="package.included.subtitle">Comprehensive startup support</p>
+                </div>
+                <div class="package-body">
+                    <div class="package-item" data-i18n="package.included.item1">Proprietary pool design and installation</div>
+                    <div class="package-item" data-i18n="package.included.item2">Hydro Aeration water filtration system</div>
+                    <div class="package-item" data-i18n="package.included.item3">Complete training program (6+ weeks)</div>
+                    <div class="package-item" data-i18n="package.included.item4">Operations manual and SOPs</div>
+                    <div class="package-item" data-i18n="package.included.item5">Marketing launch package</div>
+                    <div class="package-item" data-i18n="package.included.item6">POS and management software</div>
+                    <div class="package-item" data-i18n="package.included.item7">Initial inventory of retail products</div>
+                    <div class="package-item" data-i18n="package.included.item8">Brand assets and signage</div>
+                </div>
+            </div>
+            <div class="package-card">
+                <div class="package-header">
+                    <h3 data-i18n="package.support.title">Ongoing Support</h3>
+                    <p data-i18n="package.support.subtitle">We're with you every step</p>
+                </div>
+                <div class="package-body">
+                    <div class="package-item" data-i18n="package.support.item1">Continuous training and upskilling</div>
+                    <div class="package-item" data-i18n="package.support.item2">Monthly performance reviews</div>
+                    <div class="package-item" data-i18n="package.support.item3">Quality control inspections</div>
+                    <div class="package-item" data-i18n="package.support.item4">Marketing campaign support</div>
+                    <div class="package-item" data-i18n="package.support.item5">Quarterly water testing (QUATEST3)</div>
+                    <div class="package-item" data-i18n="package.support.item6">Equipment maintenance support</div>
+                    <div class="package-item" data-i18n="package.support.item7">New service rollouts</div>
+                    <div class="package-item" data-i18n="package.support.item8">Community and network access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support & Training Timeline -->
+    <section class="support" id="support" style="background: var(--light-gray);">
+        <div class="section-header">
+            <h2 data-i18n="training.title">Training & Onboarding</h2>
+            <p data-i18n="training.subtitle">Systematic process to ensure consistent service quality</p>
+        </div>
+        <div class="support-timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4 data-i18n="training.phase1.title">Days 1-3: Foundation</h4>
+                    <p data-i18n="training.phase1.desc">Develop understanding of in-store duties and knowledge of techniques for babies' swimming neck float.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4 data-i18n="training.phase2.title">Weeks 2-3: Technical Skills</h4>
+                    <p data-i18n="training.phase2.desc">Develop technical competencies and water safety skills with hands-on practice.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4 data-i18n="training.phase3.title">Weeks 4-6: Business Development</h4>
+                    <p data-i18n="training.phase3.desc">Improve technical competencies, develop and practice business development and sales skills.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h4 data-i18n="training.phase4.title">Ongoing: Continuous Improvement</h4>
+                    <p data-i18n="training.phase4.desc">Incorporate customer feedback, periodic training on first-aid and sales techniques.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <h2 data-i18n="cta.title">Ready to Join PamperMe?</h2>
+        <p data-i18n="cta.subtitle">Take the first step towards owning a rewarding business in children's wellness</p>
+        <a href="mailto:franchise@pamperme.com.vn" class="btn btn-white" data-i18n="cta.button">Contact Us Today</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>PamperMe</h4>
+                <p data-i18n="footer.desc">Pioneering comprehensive solutions for children's holistic development since 2019.</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="footer.contact">Contact</h4>
+                <p>Ho Chi Minh City, Vietnam</p>
+                <p><a href="https://www.pamperme.com.vn" target="_blank" style="color: rgba(255,255,255,0.8);">www.pamperme.com.vn</a></p>
+                <p><a href="mailto:franchise@pamperme.com.vn" style="color: rgba(255,255,255,0.8);">franchise@pamperme.com.vn</a></p>
+                <p><a href="tel:0901422188" style="color: rgba(255,255,255,0.8);">0901 422 188</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer.copyright">&copy; 2024 PamperMe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chart.js Scripts -->
+    <script>
+        // Color palette
+        const colors = {
+            primary: '#C41E68',
+            primaryLight: '#E91E8C',
+            secondary: '#2D2D2D',
+            accent: '#4CAF50',
+            gray: '#9E9E9E',
+            lightPink: 'rgba(196, 30, 104, 0.2)',
+            green: '#4CAF50',
+            yellow: '#FFC107'
+        };
+
+        // Chart 9: Market Growth
+        const marketGrowthCtx = document.getElementById('marketGrowthChart').getContext('2d');
+        new Chart(marketGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023', '2024F', '2025F', '2026F', '2027F', '2028F', '2029F'],
+                datasets: [
+                    {
+                        label: 'GDP per capita (USD)',
+                        data: [2715, 2786, 3694, 4110, 4284, 4600, 4950, 5350, 5800, 6300, 6850],
+                        borderColor: colors.primary,
+                        backgroundColor: colors.lightPink,
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Disposable income per capita (USD)',
+                        data: [2200, 2250, 2950, 3300, 3450, 3700, 4000, 4350, 4750, 5200, 5700],
+                        borderColor: colors.accent,
+                        backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Spending per capita (USD)',
+                        data: [1500, 1520, 1950, 2200, 2350, 2550, 2800, 3100, 3450, 3850, 4300],
+                        borderColor: colors.yellow,
+                        backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'USD'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 2: Location Network Expansion
+        const locationCtx = document.getElementById('locationChart').getContext('2d');
+        new Chart(locationCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2023A', '2024F', '2025F', '2026F', '2027F', '2028F', '2029F', '2030F'],
+                datasets: [
+                    {
+                        label: 'Owned Stores',
+                        data: [5, 7, 8, 12, 18, 21, 24, 25],
+                        backgroundColor: colors.primary
+                    },
+                    {
+                        label: 'Franchised Stores',
+                        data: [0, 0, 0, 4, 9, 14, 19, 25],
+                        backgroundColor: colors.gray
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Stores'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 3: Baby Gym Sessions Served
+        const sessionsCtx = document.getElementById('sessionsChart').getContext('2d');
+        new Chart(sessionsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2023A', '2024F', '2025F', '2026F', '2027F', '2028F', '2029F', '2030F'],
+                datasets: [
+                    {
+                        label: 'Owned Store Sessions',
+                        data: [59601, 66414, 84864, 102000, 153000, 178500, 204000, 212500],
+                        backgroundColor: colors.primary
+                    },
+                    {
+                        label: 'Franchise Sessions',
+                        data: [0, 0, 0, 27200, 61200, 95200, 129200, 170000],
+                        backgroundColor: colors.accent
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Sessions'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 4: Monthly Transactions
+        const transactionsCtx = document.getElementById('transactionsChart').getContext('2d');
+        new Chart(transactionsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23', 'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25'],
+                datasets: [
+                    {
+                        label: 'Baby Gym',
+                        data: [3100, 7250, 7950, 8300, 8750, 7800, 7400, 6700, 5850, 6950, 7750, 10500, 7400, 5500, 12400, 8800, 8100, 9300, 7800, 7100, 6100, 7400, 8600, 11500, 7900, 6000, 13500, 9600, 8500, 10100],
+                        backgroundColor: colors.primary
+                    },
+                    {
+                        label: 'Shower',
+                        data: [900, 1700, 1900, 2400, 2600, 2550, 2500, 2100, 2050, 2250, 2700, 3600, 2650, 2050, 4300, 3100, 2950, 3400, 2650, 2250, 2150, 2400, 2900, 3900, 2850, 2200, 4600, 3350, 3150, 3700],
+                        backgroundColor: colors.accent
+                    },
+                    {
+                        label: 'Retail',
+                        data: [15, 14, 72, 45, 43, 33, 27, 22, 30, 170, 195, 105, 85, 120, 205, 295, 250, 280, 30, 25, 35, 185, 400, 450, 495, 570, 640, 700, 800, 900],
+                        backgroundColor: colors.yellow
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Transactions'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 5: Monthly Revenue
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan 23', 'Feb 23', 'Mar 23', 'Apr 23', 'May 23', 'Jun 23', 'Jul 23', 'Aug 23', 'Sep 23', 'Oct 23', 'Nov 23', 'Dec 23', 'Jan 24', 'Feb 24', 'Mar 24', 'Apr 24', 'May 24', 'Jun 24', 'Jul 24', 'Aug 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dec 24', 'Jan 25', 'Feb 25', 'Mar 25', 'Apr 25', 'May 25', 'Jun 25'],
+                datasets: [
+                    {
+                        label: 'Baby Gym',
+                        data: [14500, 64000, 71000, 69500, 76000, 70000, 67000, 61000, 52500, 63000, 71500, 76500, 56000, 43500, 78000, 75500, 73000, 81000, 72500, 64500, 55000, 70500, 82000, 87000, 60000, 46000, 88000, 84000, 82000, 93000],
+                        backgroundColor: colors.primary
+                    },
+                    {
+                        label: 'Shower',
+                        data: [1800, 3600, 4800, 5100, 5900, 5800, 5700, 4700, 4600, 5100, 6200, 8200, 6000, 4700, 9800, 7000, 6700, 7700, 6150, 5000, 4850, 5700, 7100, 9350, 6400, 4950, 11000, 7800, 7500, 8850],
+                        backgroundColor: colors.accent
+                    },
+                    {
+                        label: 'Retail',
+                        data: [120, 95, 480, 290, 285, 220, 175, 155, 195, 680, 790, 410, 330, 480, 820, 1180, 990, 1150, 190, 170, 215, 750, 1600, 1800, 2000, 2300, 2550, 2800, 3200, 3600],
+                        backgroundColor: colors.yellow
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue (USD)'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 6: Package Utilization
+        const utilizationCtx = document.getElementById('utilizationChart').getContext('2d');
+        new Chart(utilizationCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan 23', 'Mar 23', 'May 23', 'Jul 23', 'Sep 23', 'Nov 23', 'Jan 24', 'Mar 24', 'May 24', 'Jul 24', 'Sep 24', 'Nov 24', 'Jan 25', 'Mar 25', 'May 25'],
+                datasets: [
+                    {
+                        label: 'Package Used',
+                        data: [1800, 4500, 5200, 4800, 3800, 5000, 4200, 7500, 5800, 5200, 4000, 5700, 4500, 8400, 6400],
+                        backgroundColor: colors.primary,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Package Issued',
+                        data: [3500, 6000, 5800, 5200, 4500, 4800, 3800, 5500, 4200, 5600, 4700, 5400, 4000, 6000, 4500],
+                        backgroundColor: colors.accent,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Utilization Rate (%)',
+                        data: [51, 75, 90, 92, 84, 104, 110, 136, 138, 93, 85, 106, 112, 140, 142],
+                        type: 'line',
+                        borderColor: colors.yellow,
+                        backgroundColor: 'transparent',
+                        yAxisID: 'y1',
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Sessions'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        max: 150,
+                        title: {
+                            display: true,
+                            text: 'Utilization %'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 7: Conversion Rate
+        const conversionCtx = document.getElementById('conversionChart').getContext('2d');
+        new Chart(conversionCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan 23', 'Mar 23', 'May 23', 'Jul 23', 'Sep 23', 'Nov 23', 'Jan 24', 'Mar 24', 'May 24', 'Jul 24', 'Sep 24', 'Nov 24', 'Jan 25', 'Mar 25', 'May 25'],
+                datasets: [
+                    {
+                        label: 'Packages Sold',
+                        data: [120, 280, 320, 350, 280, 310, 250, 380, 300, 380, 295, 355, 265, 425, 330],
+                        backgroundColor: colors.primary,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Trial Sessions',
+                        data: [400, 600, 700, 750, 650, 700, 600, 800, 680, 810, 690, 785, 640, 880, 735],
+                        backgroundColor: colors.gray,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Conversion Rate (%)',
+                        data: [30, 47, 46, 47, 43, 44, 42, 48, 44, 47, 43, 45, 41, 48, 45],
+                        type: 'line',
+                        borderColor: colors.accent,
+                        backgroundColor: 'transparent',
+                        yAxisID: 'y1',
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Count'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        max: 60,
+                        title: {
+                            display: true,
+                            text: 'Conversion %'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart 8: Package Composition (Donut)
+        const packageCompositionCtx = document.getElementById('packageCompositionChart').getContext('2d');
+        new Chart(packageCompositionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['25 sessions (27.86%)', '12 sessions (19.64%)', '40 sessions (15.61%)', '50 sessions (11.03%)', '15 sessions (10.62%)', '10 sessions (4.18%)', 'Others (11.05%)'],
+                datasets: [{
+                    data: [27.86, 19.64, 15.61, 11.03, 10.62, 4.18, 11.05],
+                    backgroundColor: [
+                        colors.primary,
+                        colors.primaryLight,
+                        colors.accent,
+                        colors.yellow,
+                        '#9C27B0',
+                        '#00BCD4',
+                        colors.gray
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            font: {
+                                size: 11
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Translations
+        const translations = {
+            en: {
+                nav: {
+                    about: 'About',
+                    services: 'Services',
+                    opportunity: 'Opportunity',
+                    performance: 'Performance',
+                    package: 'Package',
+                    cta: 'Become a Partner'
+                },
+                hero: {
+                    title: "Join Vietnam's Leading Baby Gym & Spa Franchise",
+                    subtitle: "Pioneering comprehensive solutions for children's holistic development. Be part of a proven business model with strong market traction.",
+                    cta: 'Start Your Journey',
+                    stat1: 'Locations',
+                    stat2: 'Customers Served',
+                    stat3: 'Conversion Rate',
+                    stat4: 'Retention Rate'
+                },
+                about: {
+                    title: 'About PamperMe',
+                    subtitle: 'Founded in 2019 by two passionate parents with a vision to revolutionize early childhood development in Vietnam',
+                    vision: {
+                        title: 'Our Vision',
+                        desc: "To become a trusted choice for parents seeking comprehensive solutions for their children's holistic development from the very early stage."
+                    },
+                    mission: {
+                        title: 'Our Mission',
+                        desc: 'To create a one-stop destination that empowers infants and toddlers through specialized baby wellness services, enhancing their physical health and overall well-being while fostering cognitive development.'
+                    },
+                    difference: {
+                        title: 'Our Difference',
+                        desc: 'We are the <strong>only baby-centric</strong> baby gym & spa provider in Vietnam. Our proprietary pool design and water filtration technology provide unmatched quality and efficiency.'
+                    }
+                },
+                services: {
+                    title: 'Our Services',
+                    subtitle: "Comprehensive solutions designed for children's holistic development",
+                    hydro: {
+                        title: 'Baby Gym & Spa',
+                        desc: 'Water-based activities scientifically proven to enhance physical and psychological development for children 2 months to 5 years old.'
+                    },
+                    play: {
+                        title: 'Play & Learn',
+                        desc: 'Over 300 games covering 15 key developmental topics including Music, Color Recognition, Logical Thinking, and World Exploration.'
+                    },
+                    retail: {
+                        title: 'Retail',
+                        desc: 'Curated selection of 151+ educational toys and products, aligned with our commitment to child development.'
+                    }
+                },
+                gallery: {
+                    babies: {
+                        title: 'Happy Babies, Happy Parents',
+                        subtitle: 'Watch our little swimmers thrive in a safe, nurturing environment'
+                    },
+                    crowded: {
+                        title: 'Trusted by Thousands of Families',
+                        subtitle: 'Join the growing community of parents who choose PamperMe'
+                    }
+                },
+                opportunity: {
+                    title: 'The Market Opportunity',
+                    subtitle: "Vietnam's childcare market is experiencing unprecedented growth",
+                    stat1: 'of children under 3 lack quality care',
+                    stat2: 'CAGR in disposable income',
+                    stat3: 'annual growth in preschool spending',
+                    stat4: 'people joining middle class by 2030'
+                },
+                performance: {
+                    title: 'Proven Performance',
+                    subtitle: 'Strong metrics demonstrating sustainable growth and market demand'
+                },
+                charts: {
+                    marketGrowth: 'Vietnam Economic Growth Forecast (2019-2029)',
+                    location: 'Location Network Expansion (2023-2030F)',
+                    sessions: 'Baby Gym Sessions Served (30.5% CAGR)',
+                    transactions: 'Monthly Transactions by Service Type (Jan 2023 - Jun 2025)',
+                    revenue: 'Monthly Revenue by Service Type (Jan 2023 - Jun 2025)',
+                    utilization: 'Package Issued vs Used & Utilization Rate',
+                    conversion: 'Trial to Package Conversion Rate',
+                    composition: 'Baby Gym Package Composition'
+                },
+                package: {
+                    title: 'Franchise Package',
+                    subtitle: 'Everything you need to launch and operate a successful PamperMe location',
+                    included: {
+                        title: "What's Included",
+                        subtitle: 'Comprehensive startup support',
+                        item1: 'Proprietary pool design and installation',
+                        item2: 'Hydro Aeration water filtration system',
+                        item3: 'Complete training program (6+ weeks)',
+                        item4: 'Operations manual and SOPs',
+                        item5: 'Marketing launch package',
+                        item6: 'POS and management software',
+                        item7: 'Initial inventory of retail products',
+                        item8: 'Brand assets and signage'
+                    },
+                    support: {
+                        title: 'Ongoing Support',
+                        subtitle: "We're with you every step",
+                        item1: 'Continuous training and upskilling',
+                        item2: 'Monthly performance reviews',
+                        item3: 'Quality control inspections',
+                        item4: 'Marketing campaign support',
+                        item5: 'Quarterly water testing (QUATEST3)',
+                        item6: 'Equipment maintenance support',
+                        item7: 'New service rollouts',
+                        item8: 'Community and network access'
+                    }
+                },
+                training: {
+                    title: 'Training & Onboarding',
+                    subtitle: 'Systematic process to ensure consistent service quality',
+                    phase1: {
+                        title: 'Days 1-3: Foundation',
+                        desc: "Develop understanding of in-store duties and knowledge of techniques for babies' swimming neck float."
+                    },
+                    phase2: {
+                        title: 'Weeks 2-3: Technical Skills',
+                        desc: 'Develop technical competencies and water safety skills with hands-on practice.'
+                    },
+                    phase3: {
+                        title: 'Weeks 4-6: Business Development',
+                        desc: 'Improve technical competencies, develop and practice business development and sales skills.'
+                    },
+                    phase4: {
+                        title: 'Ongoing: Continuous Improvement',
+                        desc: 'Incorporate customer feedback, periodic training on first-aid and sales techniques.'
+                    }
+                },
+                cta: {
+                    title: 'Ready to Join PamperMe?',
+                    subtitle: "Take the first step towards owning a rewarding business in children's wellness",
+                    button: 'Contact Us Today'
+                },
+                founders: {
+                    title: 'Meet Our Founders',
+                    subtitle: "Two passionate parents with a shared vision for children's wellness",
+                    vi: {
+                        role: 'Co-Founder & CEO',
+                        bio: "With expertise in operations and business development, Vi drives PamperMe's expansion and ensures excellence across all locations."
+                    },
+                    trung: {
+                        role: 'Co-Founder & CFO',
+                        bio: "With expertise in finance and system development, Trung oversees PamperMe's financial strategy and builds scalable technology infrastructure."
+                    }
+                },
+                footer: {
+                    desc: "Pioneering comprehensive solutions for children's holistic development since 2019.",
+                    contact: 'Contact',
+                    copyright: '© 2024 PamperMe. All rights reserved.'
+                }
+            },
+            vi: {
+                nav: {
+                    about: 'Giới Thiệu',
+                    services: 'Dịch Vụ',
+                    opportunity: 'Cơ Hội',
+                    performance: 'Hiệu Suất',
+                    package: 'Gói Nhượng Quyền',
+                    cta: 'Trở Thành Đối Tác'
+                },
+                hero: {
+                    title: 'Tham Gia Thương Hiệu Bơi Thủy Liệu Cho Bé Hàng Đầu Việt Nam',
+                    subtitle: 'Tiên phong trong giải pháp toàn diện cho sự phát triển toàn diện của trẻ. Hãy trở thành một phần của mô hình kinh doanh đã được chứng minh.',
+                    cta: 'Bắt Đầu Hành Trình',
+                    stat1: 'Chi Nhánh',
+                    stat2: 'Khách Hàng Phục Vụ',
+                    stat3: 'Tỷ Lệ Chuyển Đổi',
+                    stat4: 'Tỷ Lệ Giữ Chân'
+                },
+                about: {
+                    title: 'Về PamperMe',
+                    subtitle: 'Được thành lập năm 2019 bởi hai phụ huynh với tầm nhìn cách mạng hóa sự phát triển của trẻ nhỏ tại Việt Nam',
+                    vision: {
+                        title: 'Tầm Nhìn',
+                        desc: 'Trở thành lựa chọn đáng tin cậy cho các bậc phụ huynh tìm kiếm giải pháp toàn diện cho sự phát triển của con từ giai đoạn sớm nhất.'
+                    },
+                    mission: {
+                        title: 'Sứ Mệnh',
+                        desc: 'Tạo ra điểm đến trọn gói giúp trẻ sơ sinh và trẻ nhỏ phát triển thông qua dịch vụ bơi thủy liệu chuyên biệt, nâng cao sức khỏe thể chất và tinh thần đồng thời thúc đẩy phát triển nhận thức.'
+                    },
+                    difference: {
+                        title: 'Điểm Khác Biệt',
+                        desc: 'Chúng tôi là nhà cung cấp bơi thủy liệu <strong>duy nhất chuyên biệt cho bé</strong> tại Việt Nam. Thiết kế hồ bơi độc quyền và công nghệ lọc nước mang lại chất lượng và hiệu quả vượt trội.'
+                    }
+                },
+                services: {
+                    title: 'Dịch Vụ Của Chúng Tôi',
+                    subtitle: 'Giải pháp toàn diện được thiết kế cho sự phát triển toàn diện của trẻ',
+                    hydro: {
+                        title: 'Bơi Thủy Liệu',
+                        desc: 'Các hoạt động dưới nước đã được khoa học chứng minh giúp tăng cường phát triển thể chất và tâm lý cho trẻ từ 2 tháng đến 5 tuổi.'
+                    },
+                    play: {
+                        title: 'Vui Chơi & Học Tập',
+                        desc: 'Hơn 300 trò chơi bao gồm 15 chủ đề phát triển chính bao gồm Âm nhạc, Nhận biết màu sắc, Tư duy logic và Khám phá thế giới.'
+                    },
+                    retail: {
+                        title: 'Bán Lẻ',
+                        desc: 'Bộ sưu tập được tuyển chọn hơn 151 đồ chơi và sản phẩm giáo dục, phù hợp với cam kết phát triển trẻ em của chúng tôi.'
+                    }
+                },
+                gallery: {
+                    babies: {
+                        title: 'Bé Vui, Bố Mẹ Hạnh Phúc',
+                        subtitle: 'Xem các bé bơi lội phát triển trong môi trường an toàn và yêu thương'
+                    },
+                    crowded: {
+                        title: 'Được Hàng Ngàn Gia Đình Tin Tưởng',
+                        subtitle: 'Tham gia cộng đồng phụ huynh ngày càng đông đảo chọn PamperMe'
+                    }
+                },
+                opportunity: {
+                    title: 'Cơ Hội Thị Trường',
+                    subtitle: 'Thị trường chăm sóc trẻ em Việt Nam đang tăng trưởng chưa từng có',
+                    stat1: 'trẻ dưới 3 tuổi thiếu chăm sóc chất lượng',
+                    stat2: 'CAGR thu nhập khả dụng',
+                    stat3: 'tăng trưởng hàng năm chi tiêu mầm non',
+                    stat4: 'người gia nhập tầng lớp trung lưu vào 2030'
+                },
+                performance: {
+                    title: 'Hiệu Suất Đã Chứng Minh',
+                    subtitle: 'Các chỉ số mạnh mẽ chứng minh tăng trưởng bền vững và nhu cầu thị trường'
+                },
+                charts: {
+                    marketGrowth: 'Dự Báo Tăng Trưởng Kinh Tế Việt Nam (2019-2029)',
+                    location: 'Mở Rộng Mạng Lưới Chi Nhánh (2023-2030F)',
+                    sessions: 'Số Buổi Bơi Thủy Liệu (CAGR 30.5%)',
+                    transactions: 'Giao Dịch Hàng Tháng Theo Loại Dịch Vụ (T1/2023 - T6/2025)',
+                    revenue: 'Doanh Thu Hàng Tháng Theo Loại Dịch Vụ (T1/2023 - T6/2025)',
+                    utilization: 'Gói Phát Hành vs Sử Dụng & Tỷ Lệ Sử Dụng',
+                    conversion: 'Tỷ Lệ Chuyển Đổi Từ Dùng Thử Sang Mua Gói',
+                    composition: 'Cơ Cấu Gói Bơi Thủy Liệu'
+                },
+                package: {
+                    title: 'Gói Nhượng Quyền',
+                    subtitle: 'Mọi thứ bạn cần để khởi động và vận hành thành công một chi nhánh PamperMe',
+                    included: {
+                        title: 'Bao Gồm',
+                        subtitle: 'Hỗ trợ khởi nghiệp toàn diện',
+                        item1: 'Thiết kế và lắp đặt hồ bơi độc quyền',
+                        item2: 'Hệ thống lọc nước Hydro Aeration',
+                        item3: 'Chương trình đào tạo hoàn chỉnh (6+ tuần)',
+                        item4: 'Sổ tay vận hành và quy trình chuẩn',
+                        item5: 'Gói marketing ra mắt',
+                        item6: 'Phần mềm POS và quản lý',
+                        item7: 'Hàng hóa bán lẻ ban đầu',
+                        item8: 'Tài sản thương hiệu và biển hiệu'
+                    },
+                    support: {
+                        title: 'Hỗ Trợ Liên Tục',
+                        subtitle: 'Chúng tôi đồng hành cùng bạn mọi bước',
+                        item1: 'Đào tạo và nâng cao kỹ năng liên tục',
+                        item2: 'Đánh giá hiệu suất hàng tháng',
+                        item3: 'Kiểm tra chất lượng định kỳ',
+                        item4: 'Hỗ trợ chiến dịch marketing',
+                        item5: 'Kiểm tra nước hàng quý (QUATEST3)',
+                        item6: 'Hỗ trợ bảo trì thiết bị',
+                        item7: 'Ra mắt dịch vụ mới',
+                        item8: 'Tiếp cận cộng đồng và mạng lưới'
+                    }
+                },
+                training: {
+                    title: 'Đào Tạo & Hội Nhập',
+                    subtitle: 'Quy trình có hệ thống đảm bảo chất lượng dịch vụ nhất quán',
+                    phase1: {
+                        title: 'Ngày 1-3: Nền Tảng',
+                        desc: 'Phát triển hiểu biết về nhiệm vụ tại cửa hàng và kiến thức về kỹ thuật phao cổ bơi cho bé.'
+                    },
+                    phase2: {
+                        title: 'Tuần 2-3: Kỹ Năng Chuyên Môn',
+                        desc: 'Phát triển năng lực chuyên môn và kỹ năng an toàn dưới nước với thực hành trực tiếp.'
+                    },
+                    phase3: {
+                        title: 'Tuần 4-6: Phát Triển Kinh Doanh',
+                        desc: 'Nâng cao năng lực chuyên môn, phát triển và thực hành kỹ năng phát triển kinh doanh và bán hàng.'
+                    },
+                    phase4: {
+                        title: 'Liên Tục: Cải Tiến Không Ngừng',
+                        desc: 'Tích hợp phản hồi khách hàng, đào tạo định kỳ về sơ cứu và kỹ thuật bán hàng.'
+                    }
+                },
+                cta: {
+                    title: 'Sẵn Sàng Tham Gia PamperMe?',
+                    subtitle: 'Thực hiện bước đầu tiên để sở hữu doanh nghiệp đáng giá trong lĩnh vực sức khỏe trẻ em',
+                    button: 'Liên Hệ Ngay'
+                },
+                founders: {
+                    title: 'Gặp Gỡ Nhà Sáng Lập',
+                    subtitle: 'Hai phụ huynh đam mê với tầm nhìn chung về sức khỏe trẻ em',
+                    vi: {
+                        role: 'Đồng Sáng Lập & CEO',
+                        bio: 'Với chuyên môn về vận hành và phát triển kinh doanh, Vi thúc đẩy sự mở rộng của PamperMe và đảm bảo chất lượng xuất sắc tại tất cả chi nhánh.'
+                    },
+                    trung: {
+                        role: 'Đồng Sáng Lập & CFO',
+                        bio: 'Với chuyên môn về tài chính và phát triển hệ thống, Trung giám sát chiến lược tài chính và xây dựng cơ sở hạ tầng công nghệ có khả năng mở rộng cho PamperMe.'
+                    }
+                },
+                footer: {
+                    desc: 'Tiên phong trong giải pháp toàn diện cho sự phát triển toàn diện của trẻ từ năm 2019.',
+                    contact: 'Liên Hệ',
+                    copyright: '© 2024 PamperMe. Bảo lưu mọi quyền.'
+                }
+            }
+        };
+
+        // Language switching functionality
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let value = translations[lang];
+
+                for (const k of keys) {
+                    if (value && value[k]) {
+                        value = value[k];
+                    } else {
+                        value = null;
+                        break;
+                    }
+                }
+
+                if (value) {
+                    element.innerHTML = value;
+                }
+            });
+
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Save preference
+            localStorage.setItem('pamperme-lang', lang);
+        }
+
+        // Initialize language switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('pamperme-lang');
+        if (savedLang) {
+            setLanguage(savedLang);
+        }
+    </script>
+</body>
+</html>
