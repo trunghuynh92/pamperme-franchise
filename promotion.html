@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ưu Đãi Đặc Biệt - PamperMe Baby Gym</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E68;
+            --primary-dark: #9B1854;
+            --primary-light: #E91E8C;
+            --secondary: #2D2D2D;
+            --accent: #FFD700;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            min-height: 100vh;
+            color: var(--white);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Pattern - Bubbles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,0.08) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 30%),
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 15%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 18%),
+                radial-gradient(circle at 30% 40%, rgba(255,255,255,0.04) 0%, transparent 12%),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 0%, transparent 14%),
+                radial-gradient(circle at 15% 60%, rgba(255,255,255,0.05) 0%, transparent 10%),
+                radial-gradient(circle at 85% 40%, rgba(255,255,255,0.05) 0%, transparent 12%),
+                radial-gradient(circle at 40% 90%, rgba(255,255,255,0.07) 0%, transparent 20%),
+                radial-gradient(circle at 60% 10%, rgba(255,255,255,0.07) 0%, transparent 18%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating bubbles animation */
+        .bubble {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bubble:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-delay: 0s; animation-duration: 20s; }
+        .bubble:nth-child(2) { width: 120px; height: 120px; left: 15%; animation-delay: 2s; animation-duration: 25s; }
+        .bubble:nth-child(3) { width: 60px; height: 60px; left: 35%; animation-delay: 4s; animation-duration: 18s; }
+        .bubble:nth-child(4) { width: 100px; height: 100px; left: 55%; animation-delay: 1s; animation-duration: 22s; }
+        .bubble:nth-child(5) { width: 70px; height: 70px; left: 75%; animation-delay: 3s; animation-duration: 19s; }
+        .bubble:nth-child(6) { width: 90px; height: 90px; left: 90%; animation-delay: 5s; animation-duration: 24s; }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-10vh) scale(1);
+            }
+            100% {
+                transform: translateY(-20vh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo */
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            height: 120px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Main Title */
+        .main-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .main-title h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .main-title .subtitle {
+            font-size: 2rem;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+
+        /* Pricing Cards Container */
+        .pricing-container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: stretch;
+            margin-bottom: 50px;
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 40px 50px;
+            text-align: center;
+            color: var(--secondary);
+            min-width: 320px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Original price card - muted */
+        .pricing-card.original {
+            opacity: 0.85;
+            transform: scale(0.95);
+        }
+
+        .pricing-card.original:hover {
+            transform: scale(0.95) translateY(-10px);
+        }
+
+        /* Featured card */
+        .pricing-card.featured {
+            transform: scale(1.08);
+            border: 5px solid var(--accent);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+
+        /* HOT Badge */
+        .badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--accent);
+            color: var(--secondary);
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Card Header */
+        .card-sessions {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Main Price */
+        .card-price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .pricing-card.original .card-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .card-price sup {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        /* Per Session Price */
+        .per-session {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Savings */
+        .savings {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 12px 30px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        /* Hero Footer */
+        .hero-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .hero-footer p {
+            font-size: 1.8rem;
+            font-weight: 600;
+            opacity: 0.9;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--white);
+            padding: 80px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-card {
+            background: var(--light-gray);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(196, 30, 104, 0.15);
+        }
+
+        .about-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .about-card h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .about-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--light-gray);
+            padding: 80px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(196, 30, 104, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .footer .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                min-width: 400px;
+            }
+
+            .pricing-card.original,
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item.featured {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding: 20px;
+            }
+
+            .main-title h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-title .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .pricing-card {
+                min-width: 100%;
+                padding: 30px;
+            }
+
+            .card-price {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .about-section,
+            .gallery-section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <!-- Hero Section with Pricing -->
+    <section class="hero">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="images/logo.png" alt="PamperMe Logo">
+        </div>
+
+        <!-- Main Title -->
+        <div class="main-title">
+            <h1>Ưu Đãi Đặc Biệt</h1>
+            <p class="subtitle">Baby Gym - Bơi Thủy Liệu</p>
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-container">
+            <!-- Original Price -->
+            <div class="pricing-card original">
+                <div class="card-sessions">1 Buổi</div>
+                <div class="card-price">590.000<sup>đ</sup></div>
+                <div class="per-session">Giá gốc</div>
+            </div>
+
+            <!-- 4 Sessions Package -->
+            <div class="pricing-card">
+                <div class="card-sessions">4 Buổi</div>
+                <div class="card-price">1.000.000<sup>đ</sup></div>
+                <div class="per-session">250.000đ / buổi</div>
+                <div class="savings">Tiết kiệm 58%</div>
+            </div>
+
+            <!-- 10 Sessions Package - Featured -->
+            <div class="pricing-card featured">
+                <span class="badge">HOT</span>
+                <div class="card-sessions">10 Buổi</div>
+                <div class="card-price">2.000.000<sup>đ</sup></div>
+                <div class="per-session">200.000đ / buổi</div>
+                <div class="savings">Tiết kiệm 66%</div>
+            </div>
+        </div>
+
+        <!-- Hero Footer -->
+        <div class="hero-footer">
+            <p>PamperMe Baby Gym & Spa</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="section-header">
+            <h2>Về PamperMe</h2>
+            <p>Được thành lập năm 2019, PamperMe tiên phong trong lĩnh vực phát triển toàn diện cho trẻ nhỏ tại Việt Nam</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">💧</div>
+                <h3>Baby Gym & Spa</h3>
+                <p>Các hoạt động dưới nước được khoa học chứng minh giúp phát triển thể chất và tâm lý cho trẻ từ 2 tháng đến 5 tuổi.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🏆</div>
+                <h3>Duy Nhất Tại Việt Nam</h3>
+                <p>PamperMe là đơn vị duy nhất chuyên biệt về Baby Gym & Spa với công nghệ lọc nước và thiết kế hồ bơi độc quyền.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">👶</div>
+                <h3>20,000+ Khách Hàng</h3>
+                <p>Được hàng ngàn gia đình tin tưởng với 9 chi nhánh trên toàn quốc và tỷ lệ hài lòng cao.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="section-header">
+            <h2>Bé Vui Khỏe, Ba Mẹ An Tâm</h2>
+            <p>Xem các bé yêu phát triển trong môi trường an toàn và chuyên nghiệp</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item featured">
+                <img src="images/gallery/baby_focus_00001.jpg" alt="Bé bơi thủy liệu" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00002.jpg" alt="Bé bơi thủy liệu" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00003.jpg" alt="Bé bơi thủy liệu" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00004.jpg" alt="Bé bơi thủy liệu" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00005.jpg" alt="Bé bơi thủy liệu" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/baby_focus_00006.jpg" alt="Bé bơi thủy liệu" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00001.jpg" alt="Chi nhánh PamperMe" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/crowded_00002.jpg" alt="Chi nhánh PamperMe" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="brand">PamperMe Baby Gym & Spa</p>
+        <p>Tiên phong phát triển toàn diện cho trẻ nhỏ từ năm 2019</p>
+    </footer>
+</body>
+</html>

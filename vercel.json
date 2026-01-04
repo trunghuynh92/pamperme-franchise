@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "promotion.pamperme.com.vn" }],
+      "destination": "/promotion.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "franchise.pamperme.com.vn" }],
+      "destination": "/index.html"
+    }
+  ]
+}
