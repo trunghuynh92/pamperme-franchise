@@ -1,14 +1,19 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
-      "has": [{ "type": "host", "value": "promotion.pamperme.com.vn" }],
-      "destination": "/promotion.html"
+      "src": "/(.*)",
+      "headers": { "x-matched-host": "$host" },
+      "continue": true
     },
     {
-      "source": "/",
+      "src": "/",
+      "has": [{ "type": "host", "value": "promotion.pamperme.com.vn" }],
+      "dest": "/promotion.html"
+    },
+    {
+      "src": "/",
       "has": [{ "type": "host", "value": "franchise.pamperme.com.vn" }],
-      "destination": "/index.html"
+      "dest": "/index.html"
     }
   ]
 }
