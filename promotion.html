@@ -555,6 +555,86 @@
             box-shadow: 0 10px 30px rgba(196, 30, 104, 0.3);
         }
 
+        /* Floating Contact Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .float-btn.phone {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+
+        .float-btn.messenger {
+            background: linear-gradient(135deg, #0084FF 0%, #00C6FF 100%);
+        }
+
+        .float-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        /* Tooltip */
+        .float-btn::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 75px;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .float-btn:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 500px) {
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .float-btn {
+                width: 55px;
+                height: 55px;
+            }
+
+            .float-btn::before {
+                display: none;
+            }
+        }
+
         /* Footer */
         .footer {
             background: var(--secondary);
@@ -775,6 +855,20 @@
             <div class="form-message" id="formMessage"></div>
         </form>
     </section>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-buttons">
+        <a href="https://m.me/Pampermevietnam" target="_blank" class="float-btn messenger" data-tooltip="Chat Messenger">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.13.26.35.27.57l.05 1.78c.04.57.61.94 1.13.71l1.98-.87c.17-.08.36-.1.55-.06.91.25 1.87.38 2.88.38 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm5.89 7.58l-2.89 4.58c-.46.73-1.44.91-2.13.39l-2.3-1.72a.6.6 0 00-.72 0l-3.1 2.35c-.41.31-.95-.17-.68-.61l2.89-4.58c.46-.73 1.44-.91 2.13-.39l2.3 1.72a.6.6 0 00.72 0l3.1-2.35c.41-.31.95.17.68.61z"/>
+            </svg>
+        </a>
+        <a href="tel:0902422188" class="float-btn phone" data-tooltip="Gọi 0902 422 188">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+            </svg>
+        </a>
+    </div>
 
     <!-- Success Popup -->
     <div class="popup-overlay" id="successPopup">
