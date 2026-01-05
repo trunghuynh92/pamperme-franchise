@@ -380,6 +380,100 @@
             grid-row: span 2;
         }
 
+        /* Contact Form Section */
+        .contact-section {
+            background: var(--white);
+            padding: 80px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(196, 30, 104, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(196, 30, 104, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
         /* Footer */
         .footer {
             background: var(--secondary);
@@ -577,10 +671,85 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section class="contact-section">
+        <div class="section-header">
+            <h2>Đăng Ký Nhận Ưu Đãi</h2>
+            <p>Để lại thông tin để được tư vấn và nhận ưu đãi đặc biệt</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Họ và tên *</label>
+                <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại *</label>
+                <input type="tel" id="phone" name="phone" placeholder="0901 234 567" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="email@example.com">
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Đăng Ký Ngay</button>
+            <div class="form-message" id="formMessage"></div>
+        </form>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <p class="brand">PamperMe Baby Gym & Spa</p>
         <p>Tiên phong phát triển toàn diện cho trẻ nhỏ từ năm 2019</p>
     </footer>
+
+    <script>
+        // Replace this URL with your Google Apps Script Web App URL
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                timestamp: new Date().toLocaleString('vi-VN'),
+                source: 'promotion.pamperme.com.vn'
+            };
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang gửi...';
+            formMessage.className = 'form-message';
+            formMessage.style.display = 'none';
+
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Show success message
+                formMessage.textContent = 'Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm nhất.';
+                formMessage.className = 'form-message success';
+
+                // Reset form
+                document.getElementById('contactForm').reset();
+            } catch (error) {
+                formMessage.textContent = 'Có lỗi xảy ra. Vui lòng thử lại!';
+                formMessage.className = 'form-message error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Đăng Ký Ngay';
+            }
+        });
+    </script>
 </body>
 </html>
