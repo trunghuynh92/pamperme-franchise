@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PamperMe Joint Venture Proposal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E68;
+            --primary-dark: #9B1854;
+            --primary-light: #E91E8C;
+            --secondary: #2D2D2D;
+            --accent: #4CAF50;
+            --accent-blue: #2196F3;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin: 0 auto;
+            background: var(--white);
+            position: relative;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: var(--light-gray);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-link.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-link.external {
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+        }
+
+        .nav-link.external:hover {
+            border-color: var(--primary);
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            margin-left: 15px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lang-btn:first-child {
+            border-radius: 20px 0 0 20px;
+        }
+
+        .lang-btn:last-child {
+            border-radius: 0 20px 20px 0;
+            border-left: none;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(196, 30, 104, 0.1);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .header-text p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        /* Section titles */
+        h2 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        h4.section-title {
+            color: var(--primary);
+            font-size: 1rem;
+            margin: 15px 0 10px 0;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        tr:hover {
+            background: rgba(196, 30, 104, 0.05);
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Highlight rows */
+        .highlight {
+            background: rgba(196, 30, 104, 0.1) !important;
+            font-weight: 600;
+        }
+
+        .highlight td {
+            color: var(--primary);
+        }
+
+        .highlight-blue {
+            background: rgba(33, 150, 243, 0.1) !important;
+            font-weight: 600;
+        }
+
+        .highlight-blue td {
+            color: var(--accent-blue);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .card {
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card.blue {
+            border-left-color: var(--accent-blue);
+        }
+
+        .card.green {
+            border-left-color: var(--accent);
+        }
+
+        .card h4 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .card.blue h4 {
+            color: var(--accent-blue);
+        }
+
+        .card.green h4 {
+            color: var(--accent);
+        }
+
+        .card .value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .card .note {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 3px;
+        }
+
+        /* Chart container */
+        .chart-container {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .chart-container h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .chart-wrapper {
+            height: 220px;
+            position: relative;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-item.active::before {
+            background: var(--primary);
+        }
+
+        .timeline-item h4 {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .timeline-item p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .timeline-item .amount {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        /* Lists */
+        .checklist {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Two columns */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Notes */
+        .note-box {
+            background: #FFF9E6;
+            border: 1px solid #FFE082;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .note-box.blue {
+            background: #E3F2FD;
+            border-color: #90CAF9;
+        }
+
+        .note-box strong {
+            color: var(--secondary);
+        }
+
+        /* Section spacing */
+        section {
+            margin-bottom: 25px;
+        }
+
+        /* Comparison table */
+        .comparison-table th:first-child {
+            background: var(--secondary);
+        }
+
+        .comparison-table .winner {
+            background: rgba(76, 175, 80, 0.15) !important;
+        }
+
+        .comparison-table .winner td {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Equity visualization */
+        .equity-bar {
+            display: flex;
+            height: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .equity-bar .ppm {
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .equity-bar .investor {
+            background: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Print styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                padding: 15mm 20mm;
+                page-break-after: always;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+
+            .no-print, .navbar {
+                display: none !important;
+            }
+        }
+
+        /* Screen only - page shadow */
+        @media screen {
+            body {
+                background: #e0e0e0;
+                padding: 20px;
+                padding-top: 80px;
+            }
+
+            .page {
+                box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Responsive nav */
+        @media screen and (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                order: 2;
+            }
+            .lang-switcher {
+                margin-left: 0;
+                margin-bottom: 10px;
+                order: 1;
+            }
+            body {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar no-print">
+        <div class="nav-links">
+            <a href="#page1" class="nav-link active" data-i18n="nav.deal">JV Structure</a>
+            <a href="#page2" class="nav-link" data-i18n="nav.projections">3-Store Projections</a>
+            <a href="#page3" class="nav-link" data-i18n="nav.comparison">ROI Comparison</a>
+            <a href="franchise-checklist.html#page6" class="nav-link" data-i18n="nav.training">Training & Certs</a>
+            <a href="franchise-proposal.html" class="nav-link external" data-i18n="nav.standalone">Standalone Model</a>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="vi">VI</button>
+        </div>
+    </nav>
+
+    <!-- Page 1: JV Deal Structure -->
+    <div id="page1" class="page page-break">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="header.title">Joint Venture Proposal <span class="badge">JV</span></h1>
+                <p data-i18n="header.subtitle">Strategic Partnership Model - 3 Stores in 2 Years</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="equity.title">Equity Structure</h2>
+            <div class="equity-bar">
+                <div class="ppm" style="width: 33%;">PPM 33%</div>
+                <div class="investor" style="width: 67%;">Investor 67%</div>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <h4 data-i18n="equity.ppmContrib">PPM Contribution</h4>
+                    <div class="value">500M VND</div>
+                    <div class="note" data-i18n="equity.ppmNote">Franchise fee waived, converted to equity</div>
+                </div>
+                <div class="card blue">
+                    <h4 data-i18n="equity.investorContrib">Investor Contribution</h4>
+                    <div class="value">2.5B VND</div>
+                    <div class="note" data-i18n="equity.investorNote">1.5B + 500M + 500M over 2 years</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="invest.title">Investment Schedule</h2>
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <h4 data-i18n="invest.store1Title">Month 0: Store 1 Opens <span class="amount">1.5B VND</span></h4>
+                    <p data-i18n="invest.store1Desc">Initial investment covers build cost + working capital</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="invest.store2Title">Month 12: Store 2 Opens <span class="amount">500M VND</span></h4>
+                    <p data-i18n="invest.store2Desc">Additional capital + reinvested profits from Store 1</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="invest.store3Title">Month 24: Store 3 Opens <span class="amount">500M VND</span></h4>
+                    <p data-i18n="invest.store3Desc">Additional capital + reinvested profits from Stores 1 & 2</p>
+                </div>
+            </div>
+            <div class="note-box blue">
+                <strong data-i18n="invest.commitment">Commitment:</strong> <span data-i18n="invest.commitmentDesc">Investor commits to opening 3 stores within 24 months. All profits reinvested until Store 3 is operational.</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="fees.title">Ongoing Fees</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="fees.type">Fee Type</th>
+                        <th data-i18n="fees.rate">Rate</th>
+                        <th data-i18n="fees.at3Stores">At Maturity (3 Stores)</th>
+                        <th data-i18n="fees.desc">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="fees.royalty">Royalty Fee</td>
+                        <td class="text-center">8%</td>
+                        <td class="text-right">720M VND/year</td>
+                        <td data-i18n="fees.royaltyDesc">Brand & ongoing support</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="fees.marketing">Marketing Fee</td>
+                        <td class="text-center">2%</td>
+                        <td class="text-right">180M VND/year</td>
+                        <td data-i18n="fees.marketingDesc">National marketing fund</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong data-i18n="fees.total">Total Fees</strong></td>
+                        <td class="text-center"><strong>10%</strong></td>
+                        <td class="text-right"><strong>900M VND/year</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="governance.title">Governance & Control</h2>
+            <div class="two-col">
+                <div>
+                    <h3 data-i18n="governance.ppmRights">PPM Rights (33%)</h3>
+                    <ul class="checklist">
+                        <li data-i18n="governance.ppm1">Veto on new store locations</li>
+                        <li data-i18n="governance.ppm2">Full control of SOPs & operations standards</li>
+                        <li data-i18n="governance.ppm3">Quarterly quality inspections</li>
+                        <li data-i18n="governance.ppm4">Brand & marketing approval</li>
+                        <li data-i18n="governance.ppm5">Training curriculum control</li>
+                        <li data-i18n="governance.ppm6">Supplier standards enforcement</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-i18n="governance.investorRights">Investor Rights (67%)</h3>
+                    <ul class="checklist">
+                        <li data-i18n="governance.inv1">Day-to-day operational decisions</li>
+                        <li data-i18n="governance.inv2">Hiring & staffing control</li>
+                        <li data-i18n="governance.inv3">Local marketing execution</li>
+                        <li data-i18n="governance.inv4">Financial management & reporting</li>
+                        <li data-i18n="governance.inv5">Profit distribution (after reinvestment period)</li>
+                        <li data-i18n="governance.inv6">Expansion beyond 3 stores (with PPM approval)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Joint Venture Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <!-- Page 2: 3-Store Financial Projections -->
+    <div id="page2" class="page page-break">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="financial.title">Financial Projections <span class="badge">JV</span></h1>
+                <p data-i18n="financial.subtitle">3-Store Rollout Over 24 Months</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="rollout.title">Store Rollout & Revenue</h2>
+            <div class="chart-container">
+                <h3 data-i18n="rollout.chartTitle">Combined Revenue & Profit (4 Years)</h3>
+                <div class="chart-wrapper">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="yearly.title">Yearly Projections by Store</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="table.year">Year</th>
+                        <th class="text-right" data-i18n="table.store1">Store 1</th>
+                        <th class="text-right" data-i18n="table.store2">Store 2</th>
+                        <th class="text-right" data-i18n="table.store3">Store 3</th>
+                        <th class="text-right" data-i18n="table.totalProfit">Total Net Profit</th>
+                        <th class="text-right" data-i18n="table.investor">Investor (67%)</th>
+                        <th class="text-right" data-i18n="table.ppm">PPM (33%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="table.year1">Year 1</td>
+                        <td class="text-right">629M</td>
+                        <td class="text-right">-</td>
+                        <td class="text-right">-</td>
+                        <td class="text-right"><strong>629M</strong></td>
+                        <td class="text-right">421M</td>
+                        <td class="text-right">208M</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="table.year2">Year 2</td>
+                        <td class="text-right">915M</td>
+                        <td class="text-right">629M</td>
+                        <td class="text-right">-</td>
+                        <td class="text-right"><strong>1,544M</strong></td>
+                        <td class="text-right">1,034M</td>
+                        <td class="text-right">510M</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="table.year3">Year 3</td>
+                        <td class="text-right">943M</td>
+                        <td class="text-right">915M</td>
+                        <td class="text-right">629M</td>
+                        <td class="text-right"><strong>2,487M</strong></td>
+                        <td class="text-right">1,666M</td>
+                        <td class="text-right">821M</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="table.year4">Year 4</td>
+                        <td class="text-right">971M</td>
+                        <td class="text-right">943M</td>
+                        <td class="text-right">915M</td>
+                        <td class="text-right"><strong>2,829M</strong></td>
+                        <td class="text-right">1,895M</td>
+                        <td class="text-right">934M</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong data-i18n="table.total4Year">4-Year Total</strong></td>
+                        <td class="text-right"><strong>3,458M</strong></td>
+                        <td class="text-right"><strong>2,487M</strong></td>
+                        <td class="text-right"><strong>1,544M</strong></td>
+                        <td class="text-right"><strong>7,489M</strong></td>
+                        <td class="text-right"><strong>5,016M</strong></td>
+                        <td class="text-right"><strong>2,473M</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="cashflow.title">Investor Cash Flow</h2>
+            <div class="chart-container">
+                <h3 data-i18n="cashflow.chartTitle">Cumulative Investor Returns vs Investment</h3>
+                <div class="chart-wrapper">
+                    <canvas id="cashflowChart"></canvas>
+                </div>
+            </div>
+            <div class="card-grid card-grid-3">
+                <div class="card blue">
+                    <h4 data-i18n="cashflow.invested">Total Invested</h4>
+                    <div class="value">2.5B VND</div>
+                    <div class="note" data-i18n="cashflow.investedNote">Over 24 months</div>
+                </div>
+                <div class="card green">
+                    <h4 data-i18n="cashflow.payback">Payback Period</h4>
+                    <div class="value" data-i18n="cashflow.paybackValue">~18-20 Months</div>
+                    <div class="note" data-i18n="cashflow.paybackNote">After Store 2 opens</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="cashflow.year4Return">Year 4 Return</h4>
+                    <div class="value">5.0B VND</div>
+                    <div class="note" data-i18n="cashflow.year4Note">Cumulative profit to investor</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Joint Venture Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <!-- Page 3: ROI Comparison -->
+    <div id="page3" class="page">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="compare.title">JV vs Standalone <span class="badge">Comparison</span></h1>
+                <p data-i18n="compare.subtitle">Which Model is Right for You?</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="compare.metricsTitle">Investment Metrics Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="compare.metric">Metric</th>
+                        <th class="text-center" data-i18n="compare.jvModel">JV Model (3 Stores)</th>
+                        <th class="text-center" data-i18n="compare.standaloneModel">Standalone (3 Stores)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="winner">
+                        <td data-i18n="compare.totalCapital">Total Capital Required</td>
+                        <td class="text-center">2.5B VND</td>
+                        <td class="text-center">5.55B VND</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="compare.franchiseFees">Franchise Fees</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">1.5B VND</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="compare.equityShare">Investor Equity</td>
+                        <td class="text-center">67%</td>
+                        <td class="text-center">100%</td>
+                    </tr>
+                    <tr class="winner">
+                        <td data-i18n="compare.payback">Payback Period</td>
+                        <td class="text-center">~18-20 months</td>
+                        <td class="text-center">~24-28 months</td>
+                    </tr>
+                    <tr class="winner">
+                        <td data-i18n="compare.roi">4-Year ROI</td>
+                        <td class="text-center">101%</td>
+                        <td class="text-center">35%</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="compare.year4Profit">Year 4 Annual Profit</td>
+                        <td class="text-center">1,895M VND</td>
+                        <td class="text-center">2,829M VND</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="compare.cumulativeProfit">4-Year Cumulative Profit</td>
+                        <td class="text-center">5,016M VND</td>
+                        <td class="text-center">7,489M VND</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="compare.whichTitle">Which Model Suits You?</h2>
+            <div class="two-col">
+                <div class="note-box blue">
+                    <strong data-i18n="compare.chooseJV">Choose JV If:</strong><br>
+                    <span data-i18n="compare.jv1">• You have 2.5B VND capital (not 5.5B)</span><br>
+                    <span data-i18n="compare.jv2">• You prioritize ROI % over absolute returns</span><br>
+                    <span data-i18n="compare.jv3">• You want faster payback (~18 months)</span><br>
+                    <span data-i18n="compare.jv4">• You value PPM's ongoing strategic partnership</span><br>
+                    <span data-i18n="compare.jv5">• You're comfortable with 67% ownership</span>
+                </div>
+                <div class="note-box">
+                    <strong data-i18n="compare.chooseStandalone">Choose Standalone If:</strong><br>
+                    <span data-i18n="compare.sa1">• You have 5.5B+ VND capital available</span><br>
+                    <span data-i18n="compare.sa2">• You want 100% ownership and control</span><br>
+                    <span data-i18n="compare.sa3">• You prioritize absolute profit over ROI %</span><br>
+                    <span data-i18n="compare.sa4">• You prefer no long-term equity partner</span><br>
+                    <span data-i18n="compare.sa5">• You want flexibility in expansion timeline</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="ppm.title">PPM Returns Comparison</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="ppm.metric">PPM Revenue Stream</th>
+                        <th class="text-right" data-i18n="ppm.jvModel">JV Model</th>
+                        <th class="text-right" data-i18n="ppm.standaloneModel">Standalone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="ppm.upfrontFees">Upfront Fees (Year 0)</td>
+                        <td class="text-right">0</td>
+                        <td class="text-right">1,500M</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="ppm.royalties">Royalties (Year 4)</td>
+                        <td class="text-right">720M/year</td>
+                        <td class="text-right">720M/year</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="ppm.equityIncome">Equity Income (Year 4)</td>
+                        <td class="text-right">934M/year</td>
+                        <td class="text-right">0</td>
+                    </tr>
+                    <tr class="highlight-blue">
+                        <td><strong data-i18n="ppm.totalYear4">Total Year 4 Income</strong></td>
+                        <td class="text-right"><strong>1,654M/year</strong></td>
+                        <td class="text-right"><strong>720M/year</strong></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong data-i18n="ppm.longTermValue">Long-term Value</strong></td>
+                        <td class="text-right"><strong data-i18n="ppm.jvValue">Higher (equity appreciation)</strong></td>
+                        <td class="text-right"><strong data-i18n="ppm.saValue">Lower (fixed royalty)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="next.title">Next Steps</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Email</h4>
+                    <div class="value" style="font-size: 1rem;">franchise@pamperme.com.vn</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="next.phone">Phone</h4>
+                    <div class="value" style="font-size: 1rem;">0901 422 188</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Joint Venture Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                nav: {
+                    deal: 'JV Structure',
+                    projections: '3-Store Projections',
+                    comparison: 'ROI Comparison',
+                    training: 'Training & Certs',
+                    standalone: 'Standalone Model'
+                },
+                header: { title: 'Joint Venture Proposal', subtitle: 'Strategic Partnership Model - 3 Stores in 2 Years' },
+                equity: {
+                    title: 'Equity Structure',
+                    ppmContrib: 'PPM Contribution', ppmNote: 'Franchise fee waived, converted to equity',
+                    investorContrib: 'Investor Contribution', investorNote: '1.5B + 500M + 500M over 2 years'
+                },
+                invest: {
+                    title: 'Investment Schedule',
+                    store1Title: 'Month 0: Store 1 Opens', store1Desc: 'Initial investment covers build cost + working capital',
+                    store2Title: 'Month 12: Store 2 Opens', store2Desc: 'Additional capital + reinvested profits from Store 1',
+                    store3Title: 'Month 24: Store 3 Opens', store3Desc: 'Additional capital + reinvested profits from Stores 1 & 2',
+                    commitment: 'Commitment:', commitmentDesc: 'Investor commits to opening 3 stores within 24 months. All profits reinvested until Store 3 is operational.'
+                },
+                fees: {
+                    title: 'Ongoing Fees', type: 'Fee Type', rate: 'Rate', at3Stores: 'At Maturity (3 Stores)', desc: 'Description',
+                    royalty: 'Royalty Fee', royaltyDesc: 'Brand & ongoing support',
+                    marketing: 'Marketing Fee', marketingDesc: 'National marketing fund', total: 'Total Fees'
+                },
+                governance: {
+                    title: 'Governance & Control',
+                    ppmRights: 'PPM Rights (33%)',
+                    ppm1: 'Veto on new store locations', ppm2: 'Full control of SOPs & operations standards',
+                    ppm3: 'Quarterly quality inspections', ppm4: 'Brand & marketing approval',
+                    ppm5: 'Training curriculum control', ppm6: 'Supplier standards enforcement',
+                    investorRights: 'Investor Rights (67%)',
+                    inv1: 'Day-to-day operational decisions', inv2: 'Hiring & staffing control',
+                    inv3: 'Local marketing execution', inv4: 'Financial management & reporting',
+                    inv5: 'Profit distribution (after reinvestment period)', inv6: 'Expansion beyond 3 stores (with PPM approval)'
+                },
+                financial: { title: 'Financial Projections', subtitle: '3-Store Rollout Over 24 Months' },
+                rollout: { title: 'Store Rollout & Revenue', chartTitle: 'Combined Revenue & Profit (4 Years)' },
+                yearly: { title: 'Yearly Projections by Store' },
+                table: {
+                    year: 'Year', store1: 'Store 1', store2: 'Store 2', store3: 'Store 3',
+                    totalProfit: 'Total Net Profit', investor: 'Investor (67%)', ppm: 'PPM (33%)',
+                    year1: 'Year 1', year2: 'Year 2', year3: 'Year 3', year4: 'Year 4', total4Year: '4-Year Total'
+                },
+                cashflow: {
+                    title: 'Investor Cash Flow', chartTitle: 'Cumulative Investor Returns vs Investment',
+                    invested: 'Total Invested', investedNote: 'Over 24 months',
+                    payback: 'Payback Period', paybackValue: '~18-20 Months', paybackNote: 'After Store 2 opens',
+                    year4Return: 'Year 4 Return', year4Note: 'Cumulative profit to investor'
+                },
+                compare: {
+                    title: 'JV vs Standalone', subtitle: 'Which Model is Right for You?',
+                    metricsTitle: 'Investment Metrics Comparison',
+                    metric: 'Metric', jvModel: 'JV Model (3 Stores)', standaloneModel: 'Standalone (3 Stores)',
+                    totalCapital: 'Total Capital Required', franchiseFees: 'Franchise Fees',
+                    equityShare: 'Investor Equity', payback: 'Payback Period', roi: '4-Year ROI',
+                    year4Profit: 'Year 4 Annual Profit', cumulativeProfit: '4-Year Cumulative Profit',
+                    whichTitle: 'Which Model Suits You?',
+                    chooseJV: 'Choose JV If:',
+                    jv1: '• You have 2.5B VND capital (not 5.5B)', jv2: '• You prioritize ROI % over absolute returns',
+                    jv3: '• You want faster payback (~18 months)', jv4: '• You value PPM\'s ongoing strategic partnership',
+                    jv5: '• You\'re comfortable with 67% ownership',
+                    chooseStandalone: 'Choose Standalone If:',
+                    sa1: '• You have 5.5B+ VND capital available', sa2: '• You want 100% ownership and control',
+                    sa3: '• You prioritize absolute profit over ROI %', sa4: '• You prefer no long-term equity partner',
+                    sa5: '• You want flexibility in expansion timeline'
+                },
+                ppm: {
+                    title: 'PPM Returns Comparison',
+                    metric: 'PPM Revenue Stream', jvModel: 'JV Model', standaloneModel: 'Standalone',
+                    upfrontFees: 'Upfront Fees (Year 0)', royalties: 'Royalties (Year 4)',
+                    equityIncome: 'Equity Income (Year 4)', totalYear4: 'Total Year 4 Income',
+                    longTermValue: 'Long-term Value', jvValue: 'Higher (equity appreciation)', saValue: 'Lower (fixed royalty)'
+                },
+                next: { title: 'Next Steps', phone: 'Phone' }
+            },
+            vi: {
+                nav: {
+                    deal: 'Cơ Cấu JV',
+                    projections: 'Dự Phóng 3 Cửa Hàng',
+                    comparison: 'So Sánh ROI',
+                    training: 'Đào Tạo & Chứng Chỉ',
+                    standalone: 'Mô Hình Độc Lập'
+                },
+                header: { title: 'Đề Xuất Liên Doanh', subtitle: 'Mô Hình Đối Tác Chiến Lược - 3 Cửa Hàng Trong 2 Năm' },
+                equity: {
+                    title: 'Cơ Cấu Vốn Góp',
+                    ppmContrib: 'Góp Vốn của PPM', ppmNote: 'Phí nhượng quyền được miễn, chuyển thành cổ phần',
+                    investorContrib: 'Góp Vốn của Nhà Đầu Tư', investorNote: '1.5 tỷ + 500 triệu + 500 triệu trong 2 năm'
+                },
+                invest: {
+                    title: 'Lịch Đầu Tư',
+                    store1Title: 'Tháng 0: Mở Cửa Hàng 1', store1Desc: 'Vốn đầu tư ban đầu bao gồm chi phí xây dựng + vốn lưu động',
+                    store2Title: 'Tháng 12: Mở Cửa Hàng 2', store2Desc: 'Vốn bổ sung + lợi nhuận tái đầu tư từ Cửa hàng 1',
+                    store3Title: 'Tháng 24: Mở Cửa Hàng 3', store3Desc: 'Vốn bổ sung + lợi nhuận tái đầu tư từ Cửa hàng 1 & 2',
+                    commitment: 'Cam Kết:', commitmentDesc: 'Nhà đầu tư cam kết mở 3 cửa hàng trong 24 tháng. Toàn bộ lợi nhuận được tái đầu tư cho đến khi Cửa hàng 3 hoạt động.'
+                },
+                fees: {
+                    title: 'Phí Định Kỳ', type: 'Loại Phí', rate: 'Tỷ Lệ', at3Stores: 'Khi Ổn Định (3 Cửa Hàng)', desc: 'Mô Tả',
+                    royalty: 'Phí Bản Quyền', royaltyDesc: 'Thương hiệu & hỗ trợ liên tục',
+                    marketing: 'Phí Marketing', marketingDesc: 'Quỹ marketing toàn quốc', total: 'Tổng Phí'
+                },
+                governance: {
+                    title: 'Quản Trị & Kiểm Soát',
+                    ppmRights: 'Quyền của PPM (33%)',
+                    ppm1: 'Quyền phủ quyết vị trí cửa hàng mới', ppm2: 'Toàn quyền kiểm soát SOP & tiêu chuẩn vận hành',
+                    ppm3: 'Kiểm tra chất lượng hàng quý', ppm4: 'Phê duyệt thương hiệu & marketing',
+                    ppm5: 'Kiểm soát chương trình đào tạo', ppm6: 'Thực thi tiêu chuẩn nhà cung cấp',
+                    investorRights: 'Quyền của Nhà Đầu Tư (67%)',
+                    inv1: 'Quyết định vận hành hàng ngày', inv2: 'Kiểm soát tuyển dụng & nhân sự',
+                    inv3: 'Thực hiện marketing địa phương', inv4: 'Quản lý tài chính & báo cáo',
+                    inv5: 'Phân phối lợi nhuận (sau giai đoạn tái đầu tư)', inv6: 'Mở rộng quá 3 cửa hàng (với sự đồng ý của PPM)'
+                },
+                financial: { title: 'Dự Phóng Tài Chính', subtitle: 'Triển Khai 3 Cửa Hàng Trong 24 Tháng' },
+                rollout: { title: 'Triển Khai & Doanh Thu', chartTitle: 'Doanh Thu & Lợi Nhuận Tổng Hợp (4 Năm)' },
+                yearly: { title: 'Dự Phóng Hàng Năm Theo Cửa Hàng' },
+                table: {
+                    year: 'Năm', store1: 'CH 1', store2: 'CH 2', store3: 'CH 3',
+                    totalProfit: 'Tổng Lợi Nhuận', investor: 'Nhà ĐT (67%)', ppm: 'PPM (33%)',
+                    year1: 'Năm 1', year2: 'Năm 2', year3: 'Năm 3', year4: 'Năm 4', total4Year: 'Tổng 4 Năm'
+                },
+                cashflow: {
+                    title: 'Dòng Tiền Nhà Đầu Tư', chartTitle: 'Lợi Nhuận Tích Lũy vs Vốn Đầu Tư',
+                    invested: 'Tổng Đầu Tư', investedNote: 'Trong 24 tháng',
+                    payback: 'Thời Gian Hoàn Vốn', paybackValue: '~18-20 Tháng', paybackNote: 'Sau khi mở CH 2',
+                    year4Return: 'Lợi Nhuận Năm 4', year4Note: 'Lợi nhuận tích lũy cho nhà đầu tư'
+                },
+                compare: {
+                    title: 'JV vs Độc Lập', subtitle: 'Mô Hình Nào Phù Hợp Với Bạn?',
+                    metricsTitle: 'So Sánh Chỉ Số Đầu Tư',
+                    metric: 'Chỉ Số', jvModel: 'Mô Hình JV (3 CH)', standaloneModel: 'Độc Lập (3 CH)',
+                    totalCapital: 'Tổng Vốn Cần Thiết', franchiseFees: 'Phí Nhượng Quyền',
+                    equityShare: 'Cổ Phần Nhà ĐT', payback: 'Thời Gian Hoàn Vốn', roi: 'ROI 4 Năm',
+                    year4Profit: 'Lợi Nhuận Năm 4', cumulativeProfit: 'Lợi Nhuận Tích Lũy 4 Năm',
+                    whichTitle: 'Mô Hình Nào Phù Hợp?',
+                    chooseJV: 'Chọn JV Nếu:',
+                    jv1: '• Bạn có vốn 2.5 tỷ (không phải 5.5 tỷ)', jv2: '• Bạn ưu tiên ROI % hơn lợi nhuận tuyệt đối',
+                    jv3: '• Bạn muốn hoàn vốn nhanh (~18 tháng)', jv4: '• Bạn đánh giá cao sự hợp tác chiến lược với PPM',
+                    jv5: '• Bạn chấp nhận sở hữu 67%',
+                    chooseStandalone: 'Chọn Độc Lập Nếu:',
+                    sa1: '• Bạn có vốn 5.5 tỷ+ sẵn sàng', sa2: '• Bạn muốn 100% sở hữu và kiểm soát',
+                    sa3: '• Bạn ưu tiên lợi nhuận tuyệt đối hơn ROI %', sa4: '• Bạn không muốn đối tác cổ phần dài hạn',
+                    sa5: '• Bạn muốn linh hoạt trong lộ trình mở rộng'
+                },
+                ppm: {
+                    title: 'So Sánh Lợi Nhuận PPM',
+                    metric: 'Nguồn Thu PPM', jvModel: 'Mô Hình JV', standaloneModel: 'Độc Lập',
+                    upfrontFees: 'Phí Trước (Năm 0)', royalties: 'Phí Bản Quyền (Năm 4)',
+                    equityIncome: 'Thu Nhập Cổ Phần (Năm 4)', totalYear4: 'Tổng Thu Nhập Năm 4',
+                    longTermValue: 'Giá Trị Dài Hạn', jvValue: 'Cao hơn (tăng giá cổ phần)', saValue: 'Thấp hơn (phí cố định)'
+                },
+                next: { title: 'Các Bước Tiếp Theo', phone: 'Điện Thoại' }
+            }
+        };
+
+        // Language switching
+        let currentLang = 'en';
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let value = translations[lang];
+                for (const k of keys) { if (value && value[k]) value = value[k]; else { value = null; break; } }
+                if (value) el.innerHTML = value;
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            });
+            localStorage.setItem('pamperme-proposal-lang', lang);
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))));
+        const savedLang = localStorage.getItem('pamperme-proposal-lang');
+        if (savedLang) setLanguage(savedLang);
+
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        const pages = document.querySelectorAll('.page');
+
+        function updateActiveNav() {
+            let current = '';
+            pages.forEach(page => {
+                const rect = page.getBoundingClientRect();
+                if (rect.top <= 150) current = page.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.classList.contains('external')) return;
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Smooth scroll
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Charts
+        const colors = {
+            primary: '#C41E68',
+            primaryLight: 'rgba(196, 30, 104, 0.2)',
+            accent: '#4CAF50',
+            accentLight: 'rgba(76, 175, 80, 0.2)',
+            blue: '#2196F3',
+            blueLight: 'rgba(33, 150, 243, 0.2)',
+            gray: '#9E9E9E',
+            yellow: '#FFC107'
+        };
+
+        // Revenue Chart - 4 Years
+        const years = ['Year 1', 'Year 2', 'Year 3', 'Year 4'];
+        const totalProfit = [629, 1544, 2487, 2829];
+        const investorShare = [421, 1034, 1666, 1895];
+        const ppmShare = [208, 510, 821, 934];
+
+        new Chart(document.getElementById('revenueChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [
+                    { label: 'Investor Share (67%)', data: investorShare, backgroundColor: colors.blue, borderRadius: 4, stack: 'Stack 0' },
+                    { label: 'PPM Share (33%)', data: ppmShare, backgroundColor: colors.primary, borderRadius: 4, stack: 'Stack 0' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { font: { size: 10 } } }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stacked: true,
+                        title: { display: true, text: 'Million VND', font: { size: 10 } },
+                        ticks: { font: { size: 9 } }
+                    },
+                    x: {
+                        stacked: true,
+                        ticks: { font: { size: 9 } }
+                    }
+                }
+            }
+        });
+
+        // Cash Flow Chart
+        const months = ['M0', 'M6', 'M12', 'M18', 'M24', 'M30', 'M36', 'M42', 'M48'];
+        const investment = [-1500, -1500, -2000, -2000, -2500, -2500, -2500, -2500, -2500];
+        const cumulativeProfit = [0, 210, 421, 938, 1455, 2288, 3121, 4068, 5016];
+        const netPosition = cumulativeProfit.map((p, i) => p + investment[i]);
+
+        new Chart(document.getElementById('cashflowChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Cumulative Profit',
+                        data: cumulativeProfit,
+                        borderColor: colors.accent,
+                        backgroundColor: colors.accentLight,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 3
+                    },
+                    {
+                        label: 'Net Cash Position',
+                        data: netPosition,
+                        borderColor: colors.blue,
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        pointRadius: 3
+                    },
+                    {
+                        label: 'Break-even Line',
+                        data: Array(9).fill(0),
+                        borderColor: colors.gray,
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { font: { size: 10 } } }
+                },
+                scales: {
+                    y: {
+                        title: { display: true, text: 'Million VND', font: { size: 10 } },
+                        ticks: { font: { size: 9 } }
+                    },
+                    x: { ticks: { font: { size: 9 } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

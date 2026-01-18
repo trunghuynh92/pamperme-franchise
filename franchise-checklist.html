@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PamperMe Franchise Checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E68;
+            --primary-dark: #9B1854;
+            --primary-light: #E91E8C;
+            --secondary: #2D2D2D;
+            --accent: #4CAF50;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin: 0 auto;
+            background: var(--white);
+            position: relative;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: var(--light-gray);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-link.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            margin-left: 15px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lang-btn:first-child {
+            border-radius: 20px 0 0 20px;
+        }
+
+        .lang-btn:last-child {
+            border-radius: 0 20px 20px 0;
+            border-left: none;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(196, 30, 104, 0.1);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .header-text p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Section titles */
+        h2 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        h4.section-title {
+            color: var(--primary);
+            font-size: 1rem;
+            margin: 15px 0 10px 0;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        tr:hover {
+            background: rgba(196, 30, 104, 0.05);
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card h4 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .card .value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .card .note {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 3px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-item.active::before {
+            background: var(--primary);
+        }
+
+        .timeline-item h4 {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .timeline-item p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Lists */
+        .checklist {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Compact checklist for franchise works */
+        .checklist-compact {
+            list-style: none;
+            margin-bottom: 10px;
+            columns: 2;
+            column-gap: 20px;
+        }
+
+        .checklist-compact li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.8rem;
+            break-inside: avoid;
+        }
+
+        .checklist-compact li::before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .checklist-single {
+            columns: 1;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Two columns */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Section spacing */
+        section {
+            margin-bottom: 25px;
+        }
+
+        /* Category box */
+        .category-box {
+            background: var(--light-gray);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .category-box h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        /* Small table */
+        .table-compact {
+            font-size: 0.8rem;
+        }
+
+        .table-compact th, .table-compact td {
+            padding: 6px 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                padding: 15mm 20mm;
+                page-break-after: always;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+
+            .no-print, .navbar {
+                display: none !important;
+            }
+        }
+
+        /* Screen only - page shadow */
+        @media screen {
+            body {
+                background: #e0e0e0;
+                padding: 20px;
+                padding-top: 80px;
+            }
+
+            .page {
+                box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Responsive nav */
+        @media screen and (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                order: 2;
+            }
+            .lang-switcher {
+                margin-left: 0;
+                margin-bottom: 10px;
+                order: 1;
+            }
+            body {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar no-print">
+        <div class="nav-links">
+            <a href="franchise-proposal.html#page1" class="nav-link" data-i18n="nav.deal">Deal Structure</a>
+            <a href="franchise-proposal.html#page2" class="nav-link" data-i18n="nav.year1">Year 1 Projections</a>
+            <a href="franchise-proposal.html#page3" class="nav-link" data-i18n="nav.year2">Year 2 & Returns</a>
+            <a href="#page4" class="nav-link active" data-i18n="nav.docs">Documentation</a>
+            <a href="#page5" class="nav-link" data-i18n="nav.checklist">Franchise Checklist</a>
+            <a href="#page6" class="nav-link" data-i18n="nav.training">Training & Certs</a>
+            <a href="jv-proposal.html" class="nav-link" style="background: #2196F3; color: white;" data-i18n="nav.jv">JV Model</a>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="vi">VI</button>
+        </div>
+    </nav>
+
+    <!-- Page 4: Paperwork & Next Steps -->
+    <div id="page4" class="page page-break">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="docs.title">Documentation & Process</h1>
+                <p data-i18n="docs.subtitle">Required Paperwork & Next Steps</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="docs.required">Required Documentation</h2>
+            <div class="two-col">
+                <div>
+                    <h3 data-i18n="docs.fromPPM">From PamperMe</h3>
+                    <ul class="checklist">
+                        <li data-i18n="docs.ppm1">Franchise Disclosure Document (FDD)</li>
+                        <li data-i18n="docs.ppm2">Franchise Agreement</li>
+                        <li data-i18n="docs.ppm3">Territory Agreement</li>
+                        <li data-i18n="docs.ppm4">Operations Manual</li>
+                        <li data-i18n="docs.ppm5">Brand Guidelines</li>
+                        <li data-i18n="docs.ppm6">Training Curriculum</li>
+                        <li data-i18n="docs.ppm7">Store Design Specifications</li>
+                        <li data-i18n="docs.ppm8">Equipment & Supplier List</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-i18n="docs.fromFranchisee">From Franchisee</h3>
+                    <ul class="checklist">
+                        <li data-i18n="docs.fr1">Business Registration Certificate</li>
+                        <li data-i18n="docs.fr2">Personal/Company Financial Statements</li>
+                        <li data-i18n="docs.fr3">Proof of Funds / Bank Statements</li>
+                        <li data-i18n="docs.fr4">Location Lease Agreement</li>
+                        <li data-i18n="docs.fr5">Insurance Certificates</li>
+                        <li data-i18n="docs.fr6">Tax Registration</li>
+                        <li data-i18n="docs.fr7">Local Business Permits</li>
+                        <li data-i18n="docs.fr8">Health & Safety Certifications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="terms.title">Franchise Agreement Key Terms</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="terms.term">Term</th>
+                        <th data-i18n="terms.details">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-i18n="terms.duration">Agreement Duration</td><td data-i18n="terms.durationVal">5 years (renewable)</td></tr>
+                    <tr><td data-i18n="terms.renewal">Renewal Fee</td><td data-i18n="terms.renewalVal">25% of then-current franchise fee</td></tr>
+                    <tr><td data-i18n="terms.territory">Territory Protection</td><td data-i18n="terms.territoryVal">Exclusive radius TBD based on location</td></tr>
+                    <tr><td data-i18n="terms.training">Training Requirement</td><td data-i18n="terms.trainingVal">Minimum 6 weeks, mandatory completion</td></tr>
+                    <tr><td data-i18n="terms.quality">Quality Standards</td><td data-i18n="terms.qualityVal">Quarterly inspections by PPM</td></tr>
+                    <tr><td data-i18n="terms.reporting">Reporting</td><td data-i18n="terms.reportingVal">Monthly financial reports to PPM</td></tr>
+                    <tr><td data-i18n="terms.insurance">Insurance</td><td data-i18n="terms.insuranceVal">Liability insurance required</td></tr>
+                    <tr><td data-i18n="terms.termination">Termination</td><td data-i18n="terms.terminationVal">90-day notice, subject to cure period</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="next.title">Next Steps</h2>
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <h4 data-i18n="next.step1Title">Step 1: Initial Meeting</h4>
+                    <p data-i18n="next.step1Desc">Discuss opportunity, answer questions, assess fit</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="next.step2Title">Step 2: Application & Due Diligence</h4>
+                    <p data-i18n="next.step2Desc">Submit franchise application, financial verification</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="next.step3Title">Step 3: Discovery Day</h4>
+                    <p data-i18n="next.step3Desc">Visit existing PamperMe location, meet the team</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="next.step4Title">Step 4: Agreement & Payment</h4>
+                    <p data-i18n="next.step4Desc">Sign franchise agreement, pay franchise fee</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="next.step5Title">Step 5: Launch Process Begins</h4>
+                    <p data-i18n="next.step5Desc">Location approval, buildout, training, grand opening</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="contact.title">Contact Us</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Email</h4>
+                    <div class="value" style="font-size: 1rem;">franchise@pamperme.com.vn</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="contact.phone">Phone</h4>
+                    <div class="value" style="font-size: 1rem;">0901 422 188</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Franchise Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <!-- Page 5: Franchise Works Checklist -->
+    <div id="page5" class="page page-break">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="checklist.title">Franchise Package Checklist</h1>
+                <p data-i18n="checklist.subtitle">Complete List of Deliverables</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="checklist.docsTitle">A. Documents Provided by PamperMe</h2>
+
+            <div class="two-col">
+                <div class="category-box">
+                    <h3 data-i18n="checklist.legal">I. Legal Documents</h3>
+                    <h4 class="section-title" data-i18n="checklist.licenses">Licenses</h4>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.lic1">Business License template</li>
+                        <li data-i18n="checklist.lic2">Fire Safety Certificate guide</li>
+                    </ul>
+                    <h4 class="section-title" data-i18n="checklist.contracts">Contracts</h4>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.con1">PamperMe Franchise Contract</li>
+                        <li data-i18n="checklist.con2">Employee Labor Contract template</li>
+                        <li data-i18n="checklist.con3">Customer Service Contract</li>
+                        <li data-i18n="checklist.con4">Supplier Purchase Contract</li>
+                    </ul>
+                </div>
+
+                <div class="category-box">
+                    <h3 data-i18n="checklist.design">II. Design Documents</h3>
+                    <ul class="checklist-compact">
+                        <li data-i18n="checklist.des1">Floor layout diagram</li>
+                        <li data-i18n="checklist.des2">3D design rendering</li>
+                        <li data-i18n="checklist.des3">Pool layout (hydraulic)</li>
+                        <li data-i18n="checklist.des4">Baby health check area</li>
+                        <li data-i18n="checklist.des5">Mother area layout</li>
+                        <li data-i18n="checklist.des6">Reception area layout</li>
+                        <li data-i18n="checklist.des7">Cashier area layout</li>
+                        <li data-i18n="checklist.des8">WC & Warehouse layout</li>
+                        <li data-i18n="checklist.des9">Facade & Signboard</li>
+                        <li data-i18n="checklist.des10">Electrical & Water lines</li>
+                        <li data-i18n="checklist.des11">Fire safety system</li>
+                        <li data-i18n="checklist.des12">Camera & Sound system</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="category-box">
+                    <h3 data-i18n="checklist.ops">III. Operational Documents</h3>
+                    <h4 class="section-title" data-i18n="checklist.orgMgmt">Organization & Management</h4>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.org1">Organization chart</li>
+                        <li data-i18n="checklist.org2">Management regulations</li>
+                        <li data-i18n="checklist.org3">Personnel & salary scale</li>
+                        <li data-i18n="checklist.org4">Job descriptions</li>
+                        <li data-i18n="checklist.org5">Working regulations</li>
+                    </ul>
+                    <h4 class="section-title" data-i18n="checklist.salesCare">Sales & Customer Care</h4>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.sal1">Services & price list</li>
+                        <li data-i18n="checklist.sal2">Sales & consulting scripts</li>
+                        <li data-i18n="checklist.sal3">Situation handling scenarios</li>
+                        <li data-i18n="checklist.sal4">Service usage regulations</li>
+                    </ul>
+                </div>
+
+                <div class="category-box">
+                    <h3 data-i18n="checklist.procedures">IV. Procedures & Forms</h3>
+                    <ul class="checklist-compact">
+                        <li data-i18n="checklist.pro1">Customer service procedures</li>
+                        <li data-i18n="checklist.pro2">Department working procedures</li>
+                        <li data-i18n="checklist.pro3">Reward & discipline procedures</li>
+                        <li data-i18n="checklist.pro4">Ordering & storage procedures</li>
+                        <li data-i18n="checklist.pro5">Epidemic handling procedures</li>
+                        <li data-i18n="checklist.pro6">Technical operations manual</li>
+                        <li data-i18n="checklist.pro7">Facility cleaning procedures</li>
+                        <li data-i18n="checklist.pro8">Revenue/expenditure forms</li>
+                        <li data-i18n="checklist.pro9">Warehouse management forms</li>
+                        <li data-i18n="checklist.pro10">Employee suggestion forms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h3 data-i18n="checklist.brand">V. Brand Identity</h3>
+                <ul class="checklist-compact">
+                    <li data-i18n="checklist.br1">Brand, Logo & Slogan guidelines</li>
+                    <li data-i18n="checklist.br2">Business card template</li>
+                    <li data-i18n="checklist.br3">Letterhead template</li>
+                    <li data-i18n="checklist.br4">Envelope template</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="checklist.equipTitle">B. Equipment List</h2>
+            <table class="table-compact">
+                <thead>
+                    <tr>
+                        <th data-i18n="checklist.area">Area</th>
+                        <th data-i18n="checklist.equipment">Equipment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-i18n="checklist.reception">Reception</td><td data-i18n="checklist.recEquip">Reception Desk, POS Machine, Bill Printer, Speakers, Essential Oil Machine, Thermometer, Wet Towel Steamer, Baby Scale</td></tr>
+                    <tr><td data-i18n="checklist.smallPool">Small Pools</td><td data-i18n="checklist.smallEquip">Water Heater, Water Purifier, Small Pool (0.8x1), Medium Pool (1.3x1), Large Pool (2x2)</td></tr>
+                    <tr><td data-i18n="checklist.infinityPool">Infinity Pool</td><td data-i18n="checklist.infEquip">Pool (2.5x5), 24/7 Water Filtration System, Circulating Heating System, Hydraulic Jet System</td></tr>
+                    <tr><td data-i18n="checklist.massage">Massage Area</td><td data-i18n="checklist.massEquip">Single & Row Massage Tables, Baby Crib Toys, Towel Sterilizer</td></tr>
+                    <tr><td data-i18n="checklist.motherBaby">Mother & Baby</td><td data-i18n="checklist.mbEquip">Sofa, Milk Mixing Table, Milk Warmer</td></tr>
+                    <tr><td data-i18n="checklist.brain">Brain Exercise</td><td data-i18n="checklist.brainEquip">Play Mat, Sensory Toy Set</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="checklist.toolsTitle">C. Tools & Consumables (CCDC)</h2>
+            <div class="three-col">
+                <div class="category-box">
+                    <h3 data-i18n="checklist.floats">Floats</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.fl1">Neck Float</li>
+                        <li data-i18n="checklist.fl2">Lying Float</li>
+                        <li data-i18n="checklist.fl3">Belly Float</li>
+                        <li data-i18n="checklist.fl4">Arm Float</li>
+                        <li data-i18n="checklist.fl5">Logo Float</li>
+                    </ul>
+                </div>
+                <div class="category-box">
+                    <h3 data-i18n="checklist.towelsBaby">Towels & Baby Items</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.tb1">Large Baby Towel</li>
+                        <li data-i18n="checklist.tb2">Small Baby Towel</li>
+                        <li data-i18n="checklist.tb3">Swim Diapers</li>
+                        <li data-i18n="checklist.tb4">Swim Shorts</li>
+                    </ul>
+                </div>
+                <div class="category-box">
+                    <h3 data-i18n="checklist.supplies">Supplies</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.su1">Massage Cream</li>
+                        <li data-i18n="checklist.su2">Gum Soothing Cream</li>
+                        <li data-i18n="checklist.su3">Essential Oils</li>
+                        <li data-i18n="checklist.su4">Disinfectant Spray</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="checklist.trainingTitle">D. Training Program</h2>
+            <div class="three-col">
+                <div class="category-box">
+                    <h3 data-i18n="checklist.facilityOps">1. Facility Operations</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.fo1">Guest Welcome/See-off</li>
+                        <li data-i18n="checklist.fo2">Shift Handover</li>
+                        <li data-i18n="checklist.fo3">Facility Cleaning</li>
+                        <li data-i18n="checklist.fo4">Technical Operations</li>
+                        <li data-i18n="checklist.fo5">Inventory Control</li>
+                        <li data-i18n="checklist.fo6">Payment & Accounting</li>
+                    </ul>
+                </div>
+                <div class="category-box">
+                    <h3 data-i18n="checklist.babyCare">2. Baby Care Process</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.bc1">Baby Pick-up/Return</li>
+                        <li data-i18n="checklist.bc2">Health Check Process</li>
+                        <li data-i18n="checklist.bc3">Physical Gym Process</li>
+                        <li data-i18n="checklist.bc4">Mental Gym Process</li>
+                        <li data-i18n="checklist.bc5">Massage Process</li>
+                        <li data-i18n="checklist.bc6">Situation Handling</li>
+                    </ul>
+                </div>
+                <div class="category-box">
+                    <h3 data-i18n="checklist.skills">3. Skills Training</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="checklist.sk1">Sales & Customer Service</li>
+                        <li data-i18n="checklist.sk2">Service Packages</li>
+                        <li data-i18n="checklist.sk3">System Usage</li>
+                        <li data-i18n="checklist.sk4">Software Training</li>
+                        <li data-i18n="checklist.sk5">First Aid Training</li>
+                        <li data-i18n="checklist.sk6">Situation Handling</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Franchise Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <!-- Page 6: Training & Certification -->
+    <div id="page6" class="page">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="training.title">Training & Certification</h1>
+                <p data-i18n="training.subtitle">Staff Development & Compliance Requirements</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="training.structureTitle">Training Structure</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="training.type">Training Type</th>
+                        <th data-i18n="training.trainer">Trained By</th>
+                        <th data-i18n="training.trainee">Who Gets Trained</th>
+                        <th class="text-right" data-i18n="training.fee">Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="training.initialMgr">Initial - Manager</td>
+                        <td>PPM</td>
+                        <td data-i18n="training.storeMgr">Store Manager</td>
+                        <td class="text-right" data-i18n="training.included">Included</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.initialCare">Initial - Caretakers</td>
+                        <td>PPM</td>
+                        <td data-i18n="training.firstBatch">First batch of caretakers</td>
+                        <td class="text-right" data-i18n="training.included">Included</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.replaceCare">Replacement - Caretakers</td>
+                        <td data-i18n="training.storeMgr">Store Manager</td>
+                        <td data-i18n="training.newCare">New caretakers</td>
+                        <td class="text-right" data-i18n="training.noFee">No fee</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td data-i18n="training.replaceMgr">Replacement - Manager</td>
+                        <td>PPM</td>
+                        <td data-i18n="training.newMgr">New/promoted managers</td>
+                        <td class="text-right"><strong>6M VND*</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.8rem; color: #666; margin-top: -15px;" data-i18n="training.travelNote">* Travel and accommodation costs not included</p>
+        </section>
+
+        <section>
+            <h2 data-i18n="training.certTitle">Mandatory Certifications</h2>
+            <div class="two-col">
+                <div class="category-box">
+                    <h3 data-i18n="training.childSafety">Child Safety Certificate</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="training.cs1">Issued by PPM (Vietnam Health Dept compliant)</li>
+                        <li data-i18n="training.cs2">Quarterly training sessions hosted by PPM</li>
+                        <li data-i18n="training.cs3">Valid for 12 months</li>
+                        <li data-i18n="training.cs4">Fee: 2.4M VND per person</li>
+                    </ul>
+                </div>
+                <div class="category-box">
+                    <h3 data-i18n="training.firstAid">First-Aid Certificate</h3>
+                    <ul class="checklist-compact checklist-single">
+                        <li data-i18n="training.fa1">Issued by PPM (Vietnam Health Dept compliant)</li>
+                        <li data-i18n="training.fa2">Quarterly training sessions hosted by PPM</li>
+                        <li data-i18n="training.fa3">Valid for 12 months</li>
+                        <li data-i18n="training.fa4">Fee: 2.4M VND per person</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="training.complianceTitle">Compliance Requirements</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="training.requirement">Requirement</th>
+                        <th data-i18n="training.details">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="training.minCert">Minimum Certified Staff</td>
+                        <td data-i18n="training.minCertDesc">Each store must have: 1 certified manager + at least 1 certified caretaker at all times</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.grace">Grace Period (New Hires)</td>
+                        <td data-i18n="training.graceDesc">3 months after becoming official employee to complete First-Aid certification</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.renewal">Certificate Renewal</td>
+                        <td data-i18n="training.renewalDesc">Every 12 months - staff must recertify before expiration</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.schedule">Training Schedule</td>
+                        <td data-i18n="training.scheduleDesc">PPM hosts certification sessions quarterly (4 times per year)</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.mgrExam">Manager Certification</td>
+                        <td data-i18n="training.mgrExamDesc">All new managers (including internal promotions) must complete PPM training + pass exam</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="training.costTitle">Estimated Annual Training Costs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="training.item">Item</th>
+                        <th data-i18n="training.calculation">Calculation</th>
+                        <th class="text-right" data-i18n="training.cost">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="training.annualRenewal">Annual Safety + First-Aid Renewal</td>
+                        <td data-i18n="training.renewalCalc">6 staff × 2.4M × 2 certificates</td>
+                        <td class="text-right">~28.8M VND</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.newHireCert">New Hire Certifications</td>
+                        <td data-i18n="training.newHireCalc">~2 new hires/year × 2.4M × 2 certs</td>
+                        <td class="text-right">~9.6M VND</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="training.mgrReplacement">Manager Replacement (if any)</td>
+                        <td data-i18n="training.mgrCalc">0-1 per year</td>
+                        <td class="text-right">0-6M VND</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong data-i18n="training.totalAnnual">Total Annual Training Budget</strong></td>
+                        <td></td>
+                        <td class="text-right"><strong>~38-44M VND</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="note-box" style="margin-top: 15px;">
+                <strong data-i18n="training.noteTitle">Note:</strong> <span data-i18n="training.noteDesc">These costs should be factored into the store's annual operating budget. Maintaining valid certifications is mandatory for continued franchise operation.</span>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Franchise Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                nav: {
+                    deal: 'Deal Structure',
+                    year1: 'Year 1 Projections',
+                    year2: 'Year 2 & Returns',
+                    docs: 'Documentation',
+                    checklist: 'Franchise Checklist',
+                    training: 'Training & Certs',
+                    jv: 'JV Model'
+                },
+                training: {
+                    title: 'Training & Certification', subtitle: 'Staff Development & Compliance Requirements',
+                    structureTitle: 'Training Structure',
+                    type: 'Training Type', trainer: 'Trained By', trainee: 'Who Gets Trained', fee: 'Fee',
+                    initialMgr: 'Initial - Manager', storeMgr: 'Store Manager', included: 'Included',
+                    initialCare: 'Initial - Caretakers', firstBatch: 'First batch of caretakers',
+                    replaceCare: 'Replacement - Caretakers', newCare: 'New caretakers', noFee: 'No fee',
+                    replaceMgr: 'Replacement - Manager', newMgr: 'New/promoted managers',
+                    travelNote: '* Travel and accommodation costs not included',
+                    certTitle: 'Mandatory Certifications',
+                    childSafety: 'Child Safety Certificate',
+                    cs1: 'Issued by PPM (Vietnam Health Dept compliant)', cs2: 'Quarterly training sessions hosted by PPM',
+                    cs3: 'Valid for 12 months', cs4: 'Fee: 2.4M VND per person',
+                    firstAid: 'First-Aid Certificate',
+                    fa1: 'Issued by PPM (Vietnam Health Dept compliant)', fa2: 'Quarterly training sessions hosted by PPM',
+                    fa3: 'Valid for 12 months', fa4: 'Fee: 2.4M VND per person',
+                    complianceTitle: 'Compliance Requirements',
+                    requirement: 'Requirement', details: 'Details',
+                    minCert: 'Minimum Certified Staff', minCertDesc: 'Each store must have: 1 certified manager + at least 1 certified caretaker at all times',
+                    grace: 'Grace Period (New Hires)', graceDesc: '3 months after becoming official employee to complete First-Aid certification',
+                    renewal: 'Certificate Renewal', renewalDesc: 'Every 12 months - staff must recertify before expiration',
+                    schedule: 'Training Schedule', scheduleDesc: 'PPM hosts certification sessions quarterly (4 times per year)',
+                    mgrExam: 'Manager Certification', mgrExamDesc: 'All new managers (including internal promotions) must complete PPM training + pass exam',
+                    costTitle: 'Estimated Annual Training Costs',
+                    item: 'Item', calculation: 'Calculation', cost: 'Cost',
+                    annualRenewal: 'Annual Safety + First-Aid Renewal', renewalCalc: '6 staff × 2.4M × 2 certificates',
+                    newHireCert: 'New Hire Certifications', newHireCalc: '~2 new hires/year × 2.4M × 2 certs',
+                    mgrReplacement: 'Manager Replacement (if any)', mgrCalc: '0-1 per year',
+                    totalAnnual: 'Total Annual Training Budget',
+                    noteTitle: 'Note:', noteDesc: 'These costs should be factored into the store\'s annual operating budget. Maintaining valid certifications is mandatory for continued franchise operation.'
+                },
+                docs: {
+                    title: 'Documentation & Process', subtitle: 'Required Paperwork & Next Steps', required: 'Required Documentation',
+                    fromPPM: 'From PamperMe', ppm1: 'Franchise Disclosure Document (FDD)', ppm2: 'Franchise Agreement', ppm3: 'Territory Agreement',
+                    ppm4: 'Operations Manual', ppm5: 'Brand Guidelines', ppm6: 'Training Curriculum', ppm7: 'Store Design Specifications', ppm8: 'Equipment & Supplier List',
+                    fromFranchisee: 'From Franchisee', fr1: 'Business Registration Certificate', fr2: 'Personal/Company Financial Statements',
+                    fr3: 'Proof of Funds / Bank Statements', fr4: 'Location Lease Agreement', fr5: 'Insurance Certificates',
+                    fr6: 'Tax Registration', fr7: 'Local Business Permits', fr8: 'Health & Safety Certifications'
+                },
+                terms: {
+                    title: 'Franchise Agreement Key Terms', term: 'Term', details: 'Details',
+                    duration: 'Agreement Duration', durationVal: '5 years (renewable)',
+                    renewal: 'Renewal Fee', renewalVal: '25% of then-current franchise fee',
+                    territory: 'Territory Protection', territoryVal: 'Exclusive radius TBD based on location',
+                    training: 'Training Requirement', trainingVal: 'Minimum 6 weeks, mandatory completion',
+                    quality: 'Quality Standards', qualityVal: 'Quarterly inspections by PPM',
+                    reporting: 'Reporting', reportingVal: 'Monthly financial reports to PPM',
+                    insurance: 'Insurance', insuranceVal: 'Liability insurance required',
+                    termination: 'Termination', terminationVal: '90-day notice, subject to cure period'
+                },
+                next: {
+                    title: 'Next Steps',
+                    step1Title: 'Step 1: Initial Meeting', step1Desc: 'Discuss opportunity, answer questions, assess fit',
+                    step2Title: 'Step 2: Application & Due Diligence', step2Desc: 'Submit franchise application, financial verification',
+                    step3Title: 'Step 3: Discovery Day', step3Desc: 'Visit existing PamperMe location, meet the team',
+                    step4Title: 'Step 4: Agreement & Payment', step4Desc: 'Sign franchise agreement, pay franchise fee',
+                    step5Title: 'Step 5: Launch Process Begins', step5Desc: 'Location approval, buildout, training, grand opening'
+                },
+                contact: { title: 'Contact Us', phone: 'Phone' },
+                checklist: {
+                    title: 'Franchise Package Checklist', subtitle: 'Complete List of Deliverables',
+                    docsTitle: 'A. Documents Provided by PamperMe',
+                    legal: 'I. Legal Documents', licenses: 'Licenses', contracts: 'Contracts',
+                    lic1: 'Business License template', lic2: 'Fire Safety Certificate guide',
+                    con1: 'PamperMe Franchise Contract', con2: 'Employee Labor Contract template', con3: 'Customer Service Contract', con4: 'Supplier Purchase Contract',
+                    design: 'II. Design Documents',
+                    des1: 'Floor layout diagram', des2: '3D design rendering', des3: 'Pool layout (hydraulic)', des4: 'Baby health check area',
+                    des5: 'Mother area layout', des6: 'Reception area layout', des7: 'Cashier area layout', des8: 'WC & Warehouse layout',
+                    des9: 'Facade & Signboard', des10: 'Electrical & Water lines', des11: 'Fire safety system', des12: 'Camera & Sound system',
+                    ops: 'III. Operational Documents', orgMgmt: 'Organization & Management',
+                    org1: 'Organization chart', org2: 'Management regulations', org3: 'Personnel & salary scale', org4: 'Job descriptions', org5: 'Working regulations',
+                    salesCare: 'Sales & Customer Care',
+                    sal1: 'Services & price list', sal2: 'Sales & consulting scripts', sal3: 'Situation handling scenarios', sal4: 'Service usage regulations',
+                    procedures: 'IV. Procedures & Forms',
+                    pro1: 'Customer service procedures', pro2: 'Department working procedures', pro3: 'Reward & discipline procedures',
+                    pro4: 'Ordering & storage procedures', pro5: 'Epidemic handling procedures', pro6: 'Technical operations manual',
+                    pro7: 'Facility cleaning procedures', pro8: 'Revenue/expenditure forms', pro9: 'Warehouse management forms', pro10: 'Employee suggestion forms',
+                    brand: 'V. Brand Identity',
+                    br1: 'Brand, Logo & Slogan guidelines', br2: 'Business card template', br3: 'Letterhead template', br4: 'Envelope template',
+                    equipTitle: 'B. Equipment List', area: 'Area', equipment: 'Equipment',
+                    reception: 'Reception', recEquip: 'Reception Desk, POS Machine, Bill Printer, Speakers, Essential Oil Machine, Thermometer, Wet Towel Steamer, Baby Scale',
+                    smallPool: 'Small Pools', smallEquip: 'Water Heater, Water Purifier, Small Pool (0.8x1), Medium Pool (1.3x1), Large Pool (2x2)',
+                    infinityPool: 'Infinity Pool', infEquip: 'Pool (2.5x5), 24/7 Water Filtration System, Circulating Heating System, Hydraulic Jet System',
+                    massage: 'Massage Area', massEquip: 'Single & Row Massage Tables, Baby Crib Toys, Towel Sterilizer',
+                    motherBaby: 'Mother & Baby', mbEquip: 'Sofa, Milk Mixing Table, Milk Warmer',
+                    brain: 'Brain Exercise', brainEquip: 'Play Mat, Sensory Toy Set',
+                    toolsTitle: 'C. Tools & Consumables (CCDC)',
+                    floats: 'Floats', fl1: 'Neck Float', fl2: 'Lying Float', fl3: 'Belly Float', fl4: 'Arm Float', fl5: 'Logo Float',
+                    towelsBaby: 'Towels & Baby Items', tb1: 'Large Baby Towel', tb2: 'Small Baby Towel', tb3: 'Swim Diapers', tb4: 'Swim Shorts',
+                    supplies: 'Supplies', su1: 'Massage Cream', su2: 'Gum Soothing Cream', su3: 'Essential Oils', su4: 'Disinfectant Spray',
+                    trainingTitle: 'D. Training Program',
+                    facilityOps: '1. Facility Operations', fo1: 'Guest Welcome/See-off', fo2: 'Shift Handover', fo3: 'Facility Cleaning', fo4: 'Technical Operations', fo5: 'Inventory Control', fo6: 'Payment & Accounting',
+                    babyCare: '2. Baby Care Process', bc1: 'Baby Pick-up/Return', bc2: 'Health Check Process', bc3: 'Physical Gym Process', bc4: 'Mental Gym Process', bc5: 'Massage Process', bc6: 'Situation Handling',
+                    skills: '3. Skills Training', sk1: 'Sales & Customer Service', sk2: 'Service Packages', sk3: 'System Usage', sk4: 'Software Training', sk5: 'First Aid Training', sk6: 'Situation Handling'
+                }
+            },
+            vi: {
+                nav: {
+                    deal: 'Cơ Cấu Đầu Tư',
+                    year1: 'Dự Phóng Năm 1',
+                    year2: 'Năm 2 & Hoàn Vốn',
+                    docs: 'Hồ Sơ',
+                    checklist: 'Danh Mục Nhượng Quyền',
+                    training: 'Đào Tạo & Chứng Chỉ',
+                    jv: 'Mô Hình JV'
+                },
+                training: {
+                    title: 'Đào Tạo & Chứng Chỉ', subtitle: 'Phát Triển Nhân Viên & Yêu Cầu Tuân Thủ',
+                    structureTitle: 'Cơ Cấu Đào Tạo',
+                    type: 'Loại Đào Tạo', trainer: 'Người Đào Tạo', trainee: 'Người Được Đào Tạo', fee: 'Phí',
+                    initialMgr: 'Ban đầu - Quản lý', storeMgr: 'Quản lý Cửa hàng', included: 'Đã bao gồm',
+                    initialCare: 'Ban đầu - Nhân viên', firstBatch: 'Đợt nhân viên đầu tiên',
+                    replaceCare: 'Thay thế - Nhân viên', newCare: 'Nhân viên mới', noFee: 'Miễn phí',
+                    replaceMgr: 'Thay thế - Quản lý', newMgr: 'Quản lý mới/được thăng chức',
+                    travelNote: '* Chưa bao gồm chi phí đi lại và ăn ở',
+                    certTitle: 'Chứng Chỉ Bắt Buộc',
+                    childSafety: 'Chứng Chỉ An Toàn Trẻ Em',
+                    cs1: 'Cấp bởi PPM (tuân thủ Bộ Y tế Việt Nam)', cs2: 'Đào tạo hàng quý do PPM tổ chức',
+                    cs3: 'Có hiệu lực 12 tháng', cs4: 'Phí: 2,4 triệu VND/người',
+                    firstAid: 'Chứng Chỉ Sơ Cấp Cứu',
+                    fa1: 'Cấp bởi PPM (tuân thủ Bộ Y tế Việt Nam)', fa2: 'Đào tạo hàng quý do PPM tổ chức',
+                    fa3: 'Có hiệu lực 12 tháng', fa4: 'Phí: 2,4 triệu VND/người',
+                    complianceTitle: 'Yêu Cầu Tuân Thủ',
+                    requirement: 'Yêu Cầu', details: 'Chi Tiết',
+                    minCert: 'Nhân viên tối thiểu có chứng chỉ', minCertDesc: 'Mỗi cửa hàng phải có: 1 quản lý có chứng chỉ + ít nhất 1 nhân viên có chứng chỉ mọi lúc',
+                    grace: 'Thời gian gia hạn (Nhân viên mới)', graceDesc: '3 tháng sau khi trở thành nhân viên chính thức để hoàn thành chứng chỉ Sơ cấp cứu',
+                    renewal: 'Gia hạn Chứng chỉ', renewalDesc: 'Mỗi 12 tháng - nhân viên phải tái chứng nhận trước khi hết hạn',
+                    schedule: 'Lịch Đào tạo', scheduleDesc: 'PPM tổ chức các buổi chứng nhận hàng quý (4 lần/năm)',
+                    mgrExam: 'Chứng nhận Quản lý', mgrExamDesc: 'Tất cả quản lý mới (kể cả thăng chức nội bộ) phải hoàn thành đào tạo PPM + đạt bài kiểm tra',
+                    costTitle: 'Chi Phí Đào Tạo Hàng Năm Ước Tính',
+                    item: 'Hạng Mục', calculation: 'Tính Toán', cost: 'Chi Phí',
+                    annualRenewal: 'Gia hạn An toàn + Sơ cấp cứu hàng năm', renewalCalc: '6 nhân viên × 2,4tr × 2 chứng chỉ',
+                    newHireCert: 'Chứng chỉ Nhân viên mới', newHireCalc: '~2 nhân viên mới/năm × 2,4tr × 2 CC',
+                    mgrReplacement: 'Thay thế Quản lý (nếu có)', mgrCalc: '0-1 mỗi năm',
+                    totalAnnual: 'Tổng Ngân Sách Đào Tạo Hàng Năm',
+                    noteTitle: 'Lưu ý:', noteDesc: 'Các chi phí này cần được tính vào ngân sách vận hành hàng năm của cửa hàng. Duy trì chứng chỉ hợp lệ là bắt buộc để tiếp tục hoạt động nhượng quyền.'
+                },
+                docs: {
+                    title: 'Hồ Sơ & Quy Trình', subtitle: 'Giấy Tờ Cần Thiết & Các Bước Tiếp Theo', required: 'Hồ Sơ Cần Thiết',
+                    fromPPM: 'Từ PamperMe', ppm1: 'Tài liệu Công bố Nhượng quyền (FDD)', ppm2: 'Hợp đồng Nhượng quyền', ppm3: 'Thỏa thuận Lãnh thổ',
+                    ppm4: 'Sổ tay Vận hành', ppm5: 'Hướng dẫn Thương hiệu', ppm6: 'Chương trình Đào tạo', ppm7: 'Thiết kế Cửa hàng Chi tiết', ppm8: 'Danh sách Thiết bị & Nhà cung cấp',
+                    fromFranchisee: 'Từ Đối Tác', fr1: 'Giấy đăng ký Kinh doanh', fr2: 'Báo cáo Tài chính Cá nhân/Công ty',
+                    fr3: 'Chứng minh Năng lực Tài chính', fr4: 'Hợp đồng Thuê Mặt bằng', fr5: 'Giấy chứng nhận Bảo hiểm',
+                    fr6: 'Đăng ký Thuế', fr7: 'Giấy phép Kinh doanh Địa phương', fr8: 'Chứng nhận Y tế & An toàn'
+                },
+                terms: {
+                    title: 'Điều Khoản Hợp Đồng Chính', term: 'Điều Khoản', details: 'Chi Tiết',
+                    duration: 'Thời hạn Hợp đồng', durationVal: '5 năm (có thể gia hạn)',
+                    renewal: 'Phí Gia hạn', renewalVal: '25% phí nhượng quyền hiện hành',
+                    territory: 'Bảo vệ Lãnh thổ', territoryVal: 'Bán kính độc quyền tùy vị trí',
+                    training: 'Yêu cầu Đào tạo', trainingVal: 'Tối thiểu 6 tuần, bắt buộc hoàn thành',
+                    quality: 'Tiêu chuẩn Chất lượng', qualityVal: 'Kiểm tra định kỳ hàng quý bởi PPM',
+                    reporting: 'Báo cáo', reportingVal: 'Báo cáo tài chính hàng tháng cho PPM',
+                    insurance: 'Bảo hiểm', insuranceVal: 'Yêu cầu bảo hiểm trách nhiệm',
+                    termination: 'Chấm dứt', terminationVal: 'Thông báo 90 ngày, có thời gian khắc phục'
+                },
+                next: {
+                    title: 'Các Bước Tiếp Theo',
+                    step1Title: 'Bước 1: Gặp Mặt Ban Đầu', step1Desc: 'Thảo luận cơ hội, giải đáp thắc mắc, đánh giá phù hợp',
+                    step2Title: 'Bước 2: Nộp Hồ Sơ & Thẩm Định', step2Desc: 'Nộp đơn nhượng quyền, xác minh tài chính',
+                    step3Title: 'Bước 3: Ngày Khám Phá', step3Desc: 'Thăm cửa hàng PamperMe hiện có, gặp đội ngũ',
+                    step4Title: 'Bước 4: Ký Kết & Thanh Toán', step4Desc: 'Ký hợp đồng nhượng quyền, thanh toán phí',
+                    step5Title: 'Bước 5: Bắt Đầu Quy Trình', step5Desc: 'Phê duyệt mặt bằng, thi công, đào tạo, khai trương'
+                },
+                contact: { title: 'Liên Hệ', phone: 'Điện Thoại' },
+                checklist: {
+                    title: 'Danh Mục Gói Nhượng Quyền', subtitle: 'Danh Sách Đầy Đủ Các Hạng Mục',
+                    docsTitle: 'A. Tài Liệu PamperMe Cung Cấp',
+                    legal: 'I. Hồ Sơ Pháp Lý', licenses: 'Giấy Phép', contracts: 'Hợp Đồng',
+                    lic1: 'Mẫu Giấy phép Kinh doanh', lic2: 'Hướng dẫn Chứng nhận PCCC',
+                    con1: 'Hợp đồng Nhượng quyền PamperMe', con2: 'Mẫu Hợp đồng Lao động', con3: 'Hợp đồng Dịch vụ Khách hàng', con4: 'Hợp đồng Mua hàng Nhà cung cấp',
+                    design: 'II. Hồ Sơ Thiết Kế',
+                    des1: 'Sơ đồ mặt bằng', des2: 'Bản vẽ 3D', des3: 'Sơ đồ bể bơi (thủy lực)', des4: 'Khu vực khám sức khỏe bé',
+                    des5: 'Sơ đồ khu vực mẹ', des6: 'Sơ đồ khu tiếp tân', des7: 'Sơ đồ khu thu ngân', des8: 'Sơ đồ WC & Kho',
+                    des9: 'Mặt tiền & Biển hiệu', des10: 'Hệ thống điện & nước', des11: 'Hệ thống PCCC', des12: 'Hệ thống Camera & Âm thanh',
+                    ops: 'III. Tài Liệu Vận Hành', orgMgmt: 'Tổ Chức & Quản Lý',
+                    org1: 'Sơ đồ tổ chức', org2: 'Quy chế quản lý', org3: 'Thang lương nhân sự', org4: 'Mô tả công việc', org5: 'Nội quy làm việc',
+                    salesCare: 'Bán Hàng & Chăm Sóc Khách Hàng',
+                    sal1: 'Bảng giá dịch vụ', sal2: 'Kịch bản tư vấn bán hàng', sal3: 'Kịch bản xử lý tình huống', sal4: 'Quy định sử dụng dịch vụ',
+                    procedures: 'IV. Quy Trình & Biểu Mẫu',
+                    pro1: 'Quy trình phục vụ khách hàng', pro2: 'Quy trình làm việc theo bộ phận', pro3: 'Quy trình khen thưởng - kỷ luật',
+                    pro4: 'Quy trình đặt hàng & lưu kho', pro5: 'Quy trình xử lý dịch bệnh', pro6: 'Sổ tay vận hành kỹ thuật',
+                    pro7: 'Quy trình vệ sinh cơ sở', pro8: 'Biểu mẫu thu chi', pro9: 'Biểu mẫu quản lý kho', pro10: 'Biểu mẫu đề xuất nhân viên',
+                    brand: 'V. Nhận Diện Thương Hiệu',
+                    br1: 'Hướng dẫn Thương hiệu, Logo & Slogan', br2: 'Mẫu danh thiếp', br3: 'Mẫu tiêu đề thư', br4: 'Mẫu phong bì',
+                    equipTitle: 'B. Danh Mục Thiết Bị', area: 'Khu Vực', equipment: 'Thiết Bị',
+                    reception: 'Tiếp tân', recEquip: 'Quầy tiếp tân, Máy POS, Máy in hóa đơn, Loa, Máy xông tinh dầu, Nhiệt kế, Máy hấp khăn, Cân em bé',
+                    smallPool: 'Bể nhỏ', smallEquip: 'Máy nước nóng, Máy lọc nước, Bể nhỏ (0.8x1), Bể vừa (1.3x1), Bể lớn (2x2)',
+                    infinityPool: 'Bể tràn', infEquip: 'Bể (2.5x5), Hệ thống lọc nước 24/7, Hệ thống sưởi tuần hoàn, Hệ thống phun thủy lực',
+                    massage: 'Khu massage', massEquip: 'Bàn massage đơn & dãy, Đồ chơi nôi em bé, Máy tiệt trùng khăn',
+                    motherBaby: 'Khu mẹ & bé', mbEquip: 'Sofa, Bàn pha sữa, Máy hâm sữa',
+                    brain: 'Khu vận động trí não', brainEquip: 'Thảm chơi, Bộ đồ chơi giác quan',
+                    toolsTitle: 'C. Dụng Cụ & Vật Tư Tiêu Hao (CCDC)',
+                    floats: 'Phao', fl1: 'Phao cổ', fl2: 'Phao nằm', fl3: 'Phao bụng', fl4: 'Phao tay', fl5: 'Phao logo',
+                    towelsBaby: 'Khăn & Đồ Bé', tb1: 'Khăn lớn cho bé', tb2: 'Khăn nhỏ cho bé', tb3: 'Tã bơi', tb4: 'Quần bơi',
+                    supplies: 'Vật Tư', su1: 'Kem massage', su2: 'Kem dịu nướu', su3: 'Tinh dầu', su4: 'Xịt khử trùng',
+                    trainingTitle: 'D. Chương Trình Đào Tạo',
+                    facilityOps: '1. Vận Hành Cơ Sở', fo1: 'Đón/tiễn khách', fo2: 'Giao nhận ca', fo3: 'Vệ sinh cơ sở', fo4: 'Vận hành kỹ thuật', fo5: 'Kiểm soát kho', fo6: 'Thanh toán & kế toán',
+                    babyCare: '2. Quy Trình Chăm Sóc Bé', bc1: 'Nhận/trả bé', bc2: 'Quy trình khám sức khỏe', bc3: 'Quy trình gym thể chất', bc4: 'Quy trình gym trí tuệ', bc5: 'Quy trình massage', bc6: 'Xử lý tình huống',
+                    skills: '3. Đào Tạo Kỹ Năng', sk1: 'Bán hàng & CSKH', sk2: 'Gói dịch vụ', sk3: 'Sử dụng hệ thống', sk4: 'Đào tạo phần mềm', sk5: 'Sơ cấp cứu', sk6: 'Xử lý tình huống'
+                }
+            }
+        };
+
+        // Language switching
+        let currentLang = 'en';
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let value = translations[lang];
+                for (const k of keys) { if (value && value[k]) value = value[k]; else { value = null; break; } }
+                if (value) el.innerHTML = value;
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            });
+            localStorage.setItem('pamperme-proposal-lang', lang);
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))));
+        const savedLang = localStorage.getItem('pamperme-proposal-lang');
+        if (savedLang) setLanguage(savedLang);
+
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        const pages = document.querySelectorAll('.page');
+
+        function updateActiveNav() {
+            let current = '';
+            pages.forEach(page => {
+                const rect = page.getBoundingClientRect();
+                if (rect.top <= 150) current = page.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Smooth scroll for internal links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

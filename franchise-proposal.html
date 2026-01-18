@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PamperMe Franchise Proposal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C41E68;
+            --primary-dark: #9B1854;
+            --primary-light: #E91E8C;
+            --secondary: #2D2D2D;
+            --accent: #4CAF50;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm;
+            margin: 0 auto;
+            background: var(--white);
+            position: relative;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: var(--light-gray);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .nav-link.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            margin-left: 15px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lang-btn:first-child {
+            border-radius: 20px 0 0 20px;
+        }
+
+        .lang-btn:last-child {
+            border-radius: 0 20px 20px 0;
+            border-left: none;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(196, 30, 104, 0.1);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .header-text p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Section titles */
+        h2 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        h4.section-title {
+            color: var(--primary);
+            font-size: 1rem;
+            margin: 15px 0 10px 0;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        tr:hover {
+            background: rgba(196, 30, 104, 0.05);
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Highlight rows */
+        .highlight {
+            background: rgba(196, 30, 104, 0.1) !important;
+            font-weight: 600;
+        }
+
+        .highlight td {
+            color: var(--primary);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card h4 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .card .value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .card .note {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 3px;
+        }
+
+        /* Chart container */
+        .chart-container {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .chart-container h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .chart-wrapper {
+            height: 220px;
+            position: relative;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-item.active::before {
+            background: var(--primary);
+        }
+
+        .timeline-item h4 {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .timeline-item p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Lists */
+        .checklist {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Compact checklist for franchise works */
+        .checklist-compact {
+            list-style: none;
+            margin-bottom: 10px;
+            columns: 2;
+            column-gap: 20px;
+        }
+
+        .checklist-compact li {
+            padding: 4px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.8rem;
+            break-inside: avoid;
+        }
+
+        .checklist-compact li::before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .checklist-single {
+            columns: 1;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Two columns */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Notes */
+        .note-box {
+            background: #FFF9E6;
+            border: 1px solid #FFE082;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .note-box strong {
+            color: var(--secondary);
+        }
+
+        /* Section spacing */
+        section {
+            margin-bottom: 25px;
+        }
+
+        /* Category box */
+        .category-box {
+            background: var(--light-gray);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .category-box h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        /* Small table */
+        .table-compact {
+            font-size: 0.8rem;
+        }
+
+        .table-compact th, .table-compact td {
+            padding: 6px 8px;
+        }
+
+        /* Print styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                padding: 15mm 20mm;
+                page-break-after: always;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+
+            .no-print, .navbar {
+                display: none !important;
+            }
+        }
+
+        /* Screen only - page shadow */
+        @media screen {
+            body {
+                background: #e0e0e0;
+                padding: 20px;
+                padding-top: 80px;
+            }
+
+            .page {
+                box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Responsive nav */
+        @media screen and (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                order: 2;
+            }
+            .lang-switcher {
+                margin-left: 0;
+                margin-bottom: 10px;
+                order: 1;
+            }
+            body {
+                padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar no-print">
+        <div class="nav-links">
+            <a href="#page1" class="nav-link active" data-i18n="nav.deal">Deal Structure</a>
+            <a href="#page2" class="nav-link" data-i18n="nav.year1">Year 1 Projections</a>
+            <a href="#page3" class="nav-link" data-i18n="nav.year2">Year 2 & Returns</a>
+            <a href="franchise-checklist.html#page4" class="nav-link" data-i18n="nav.docs">Documentation</a>
+            <a href="franchise-checklist.html#page5" class="nav-link" data-i18n="nav.checklist">Franchise Checklist</a>
+            <a href="franchise-checklist.html#page6" class="nav-link" data-i18n="nav.training">Training & Certs</a>
+            <a href="jv-proposal.html" class="nav-link" style="background: #2196F3; color: white;" data-i18n="nav.jv">JV Model</a>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="vi">VI</button>
+        </div>
+    </nav>
+
+    <!-- Page 1: Deal Structure -->
+    <div id="page1" class="page page-break">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="header.title">Franchise Proposal</h1>
+                <p data-i18n="header.subtitle">Standalone Franchise Model</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="invest.title">Investment Overview</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4 data-i18n="invest.franchiseFee">Franchise Fee</h4>
+                    <div class="value">500M VND</div>
+                    <div class="note" data-i18n="invest.franchiseFeeNote">One-time payment</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="invest.buildCost">Build Cost</h4>
+                    <div class="value">1.2B - 1.5B VND</div>
+                    <div class="note" data-i18n="invest.buildCostNote">Depends on store size</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="invest.totalInvest">Total Investment</h4>
+                    <div class="value">1.7B - 2B VND</div>
+                    <div class="note" data-i18n="invest.totalInvestNote">Excluding working capital</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="invest.payback">Payback Period</h4>
+                    <div class="value" data-i18n="invest.paybackValue">24 - 28 Months</div>
+                    <div class="note" data-i18n="invest.paybackNote">Based on projections</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="fees.title">Ongoing Fees</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="fees.type">Fee Type</th>
+                        <th data-i18n="fees.rate">Rate</th>
+                        <th data-i18n="fees.atMaturity">At Maturity (3B/year)</th>
+                        <th data-i18n="fees.desc">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="fees.royalty">Royalty Fee</td>
+                        <td class="text-center">8%</td>
+                        <td class="text-right">240M VND/year</td>
+                        <td data-i18n="fees.royaltyDesc">Brand & ongoing support</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="fees.marketing">Marketing Fee</td>
+                        <td class="text-center">2%</td>
+                        <td class="text-right">60M VND/year</td>
+                        <td data-i18n="fees.marketingDesc">National marketing fund</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong data-i18n="fees.total">Total Fees</strong></td>
+                        <td class="text-center"><strong>10%</strong></td>
+                        <td class="text-right"><strong>300M VND/year</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="included.title">What's Included</h2>
+            <div class="two-col">
+                <div>
+                    <h3 data-i18n="included.ppmProvides">PamperMe Provides</h3>
+                    <ul class="checklist">
+                        <li data-i18n="included.ppm1">Store layout & design specifications</li>
+                        <li data-i18n="included.ppm2">Buildout supervision & quality control</li>
+                        <li data-i18n="included.ppm3">6+ weeks comprehensive training</li>
+                        <li data-i18n="included.ppm4">Operations manual & SOPs</li>
+                        <li data-i18n="included.ppm5">POS & management software</li>
+                        <li data-i18n="included.ppm6">Marketing launch package</li>
+                        <li data-i18n="included.ppm7">Ongoing operational support</li>
+                        <li data-i18n="included.ppm8">Brand assets & signage guidelines</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-i18n="included.franchiseeResp">Franchisee Responsible For</h3>
+                    <ul class="checklist">
+                        <li data-i18n="included.fr1">Secure location & lease</li>
+                        <li data-i18n="included.fr2">Execute buildout per PPM specs</li>
+                        <li data-i18n="included.fr3">Hire & manage staff</li>
+                        <li data-i18n="included.fr4">Day-to-day operations</li>
+                        <li data-i18n="included.fr5">Legal & accounting fees</li>
+                        <li data-i18n="included.fr6">Local permits & licenses</li>
+                        <li data-i18n="included.fr7">Working capital</li>
+                        <li data-i18n="included.fr8">Equipment maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="journey.title">Journey to Opening</h2>
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <h4 data-i18n="journey.phase1Title">Month 1-2: Agreement & Location</h4>
+                    <p data-i18n="journey.phase1Desc">Sign franchise agreement, secure location, finalize lease</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="journey.phase2Title">Month 2-4: Design & Buildout</h4>
+                    <p data-i18n="journey.phase2Desc">PPM provides layouts, franchisee executes construction with PPM supervision</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="journey.phase3Title">Month 4-5: Training & Setup</h4>
+                    <p data-i18n="journey.phase3Desc">6+ weeks staff training, equipment installation, soft launch preparation</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 data-i18n="journey.phase4Title">Month 5-6: Grand Opening</h4>
+                    <p data-i18n="journey.phase4Desc">Marketing launch, grand opening event, begin operations</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Franchise Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <!-- Page 2: Financial Projections Year 1 -->
+    <div id="page2" class="page page-break">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="financial.title">Financial Projections</h1>
+                <p data-i18n="financial.subtitle">24-Month Revenue & Profit Forecast</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="revenue.title">Revenue Trajectory</h2>
+            <div class="chart-container">
+                <h3 data-i18n="revenue.chartTitle">Monthly Revenue & Cumulative Profit (24 Months)</h3>
+                <div class="chart-wrapper">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+            <div class="note-box">
+                <strong data-i18n="revenue.milestones">Key Milestones:</strong> <span data-i18n="revenue.milestonesDesc">Stores typically reach maturity (250M VND/month) within 12-16 months. After maturity, expect 3-5% annual growth. Break-even typically achieved by month 8-10.</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-i18n="year1.title">Monthly Projections - Year 1</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="table.month">Month</th>
+                        <th class="text-right" data-i18n="table.revenue">Revenue</th>
+                        <th class="text-right" data-i18n="table.grossProfit">Gross Profit (50%)</th>
+                        <th class="text-right" data-i18n="table.ppmFees">PPM Fees (10%)</th>
+                        <th class="text-right" data-i18n="table.admin">Admin (10%)</th>
+                        <th class="text-right" data-i18n="table.netProfit">Net Profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-i18n="table.month1">Month 1</td><td class="text-right">75M</td><td class="text-right">38M</td><td class="text-right">8M</td><td class="text-right">8M</td><td class="text-right">22M</td></tr>
+                    <tr><td data-i18n="table.month2">Month 2</td><td class="text-right">100M</td><td class="text-right">50M</td><td class="text-right">10M</td><td class="text-right">10M</td><td class="text-right">30M</td></tr>
+                    <tr><td data-i18n="table.month3">Month 3</td><td class="text-right">125M</td><td class="text-right">63M</td><td class="text-right">13M</td><td class="text-right">13M</td><td class="text-right">37M</td></tr>
+                    <tr><td data-i18n="table.month4">Month 4</td><td class="text-right">150M</td><td class="text-right">75M</td><td class="text-right">15M</td><td class="text-right">15M</td><td class="text-right">45M</td></tr>
+                    <tr><td data-i18n="table.month5">Month 5</td><td class="text-right">162M</td><td class="text-right">81M</td><td class="text-right">16M</td><td class="text-right">16M</td><td class="text-right">49M</td></tr>
+                    <tr><td data-i18n="table.month6">Month 6</td><td class="text-right">175M</td><td class="text-right">88M</td><td class="text-right">18M</td><td class="text-right">18M</td><td class="text-right">52M</td></tr>
+                    <tr><td data-i18n="table.month7">Month 7</td><td class="text-right">188M</td><td class="text-right">94M</td><td class="text-right">19M</td><td class="text-right">19M</td><td class="text-right">56M</td></tr>
+                    <tr><td data-i18n="table.month8">Month 8</td><td class="text-right">200M</td><td class="text-right">100M</td><td class="text-right">20M</td><td class="text-right">20M</td><td class="text-right">60M</td></tr>
+                    <tr><td data-i18n="table.month9">Month 9</td><td class="text-right">213M</td><td class="text-right">107M</td><td class="text-right">21M</td><td class="text-right">21M</td><td class="text-right">65M</td></tr>
+                    <tr><td data-i18n="table.month10">Month 10</td><td class="text-right">225M</td><td class="text-right">113M</td><td class="text-right">23M</td><td class="text-right">23M</td><td class="text-right">67M</td></tr>
+                    <tr><td data-i18n="table.month11">Month 11</td><td class="text-right">238M</td><td class="text-right">119M</td><td class="text-right">24M</td><td class="text-right">24M</td><td class="text-right">71M</td></tr>
+                    <tr><td data-i18n="table.month12">Month 12</td><td class="text-right">250M</td><td class="text-right">125M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">75M</td></tr>
+                    <tr class="highlight"><td><strong data-i18n="table.year1Total">Year 1 Total</strong></td><td class="text-right"><strong>2,101M</strong></td><td class="text-right"><strong>1,053M</strong></td><td class="text-right"><strong>212M</strong></td><td class="text-right"><strong>212M</strong></td><td class="text-right"><strong>629M</strong></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="footer">
+            PamperMe Franchise Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <!-- Page 3: Year 2 Projections & Summary -->
+    <div id="page3" class="page">
+        <div class="header">
+            <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
+            <div class="header-text">
+                <h1 data-i18n="financial.title">Financial Projections</h1>
+                <p data-i18n="financial.subtitle2">Year 2 & Investment Returns</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 data-i18n="year2.title">Monthly Projections - Year 2 (At Maturity)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="table.month">Month</th>
+                        <th class="text-right" data-i18n="table.revenue">Revenue</th>
+                        <th class="text-right" data-i18n="table.grossProfit">Gross Profit (50%)</th>
+                        <th class="text-right" data-i18n="table.ppmFees">PPM Fees (10%)</th>
+                        <th class="text-right" data-i18n="table.admin">Admin (10%)</th>
+                        <th class="text-right" data-i18n="table.netProfit">Net Profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-i18n="table.month13">Month 13</td><td class="text-right">250M</td><td class="text-right">125M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">75M</td></tr>
+                    <tr><td data-i18n="table.month14">Month 14</td><td class="text-right">250M</td><td class="text-right">125M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">75M</td></tr>
+                    <tr><td data-i18n="table.month15">Month 15</td><td class="text-right">250M</td><td class="text-right">125M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">75M</td></tr>
+                    <tr><td data-i18n="table.month16">Month 16</td><td class="text-right">252M</td><td class="text-right">126M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">76M</td></tr>
+                    <tr><td data-i18n="table.month17">Month 17</td><td class="text-right">252M</td><td class="text-right">126M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">76M</td></tr>
+                    <tr><td data-i18n="table.month18">Month 18</td><td class="text-right">254M</td><td class="text-right">127M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">77M</td></tr>
+                    <tr><td data-i18n="table.month19">Month 19</td><td class="text-right">254M</td><td class="text-right">127M</td><td class="text-right">25M</td><td class="text-right">25M</td><td class="text-right">77M</td></tr>
+                    <tr><td data-i18n="table.month20">Month 20</td><td class="text-right">256M</td><td class="text-right">128M</td><td class="text-right">26M</td><td class="text-right">26M</td><td class="text-right">76M</td></tr>
+                    <tr><td data-i18n="table.month21">Month 21</td><td class="text-right">256M</td><td class="text-right">128M</td><td class="text-right">26M</td><td class="text-right">26M</td><td class="text-right">76M</td></tr>
+                    <tr><td data-i18n="table.month22">Month 22</td><td class="text-right">258M</td><td class="text-right">129M</td><td class="text-right">26M</td><td class="text-right">26M</td><td class="text-right">77M</td></tr>
+                    <tr><td data-i18n="table.month23">Month 23</td><td class="text-right">258M</td><td class="text-right">129M</td><td class="text-right">26M</td><td class="text-right">26M</td><td class="text-right">77M</td></tr>
+                    <tr><td data-i18n="table.month24">Month 24</td><td class="text-right">260M</td><td class="text-right">130M</td><td class="text-right">26M</td><td class="text-right">26M</td><td class="text-right">78M</td></tr>
+                    <tr class="highlight"><td><strong data-i18n="table.year2Total">Year 2 Total</strong></td><td class="text-right"><strong>3,050M</strong></td><td class="text-right"><strong>1,525M</strong></td><td class="text-right"><strong>305M</strong></td><td class="text-right"><strong>305M</strong></td><td class="text-right"><strong>915M</strong></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 data-i18n="summary.title">Investment Return Summary</h2>
+            <div class="chart-container">
+                <h3 data-i18n="summary.chartTitle">Cumulative Cash Flow & Payback</h3>
+                <div class="chart-wrapper">
+                    <canvas id="cashflowChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4 data-i18n="summary.year1Profit">Year 1 Net Profit</h4>
+                    <div class="value">629M VND</div>
+                    <div class="note" data-i18n="summary.year1Note">After all fees & admin</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="summary.year2Profit">Year 2 Net Profit</h4>
+                    <div class="value">915M VND</div>
+                    <div class="note" data-i18n="summary.year2Note">At maturity + 4% growth</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="summary.totalProfit">2-Year Total Profit</h4>
+                    <div class="value">1,544M VND</div>
+                    <div class="note" data-i18n="summary.totalNote">Cumulative net profit</div>
+                </div>
+                <div class="card">
+                    <h4 data-i18n="summary.breakeven">Break-even Point</h4>
+                    <div class="value" data-i18n="summary.breakevenValue">Month 24-28</div>
+                    <div class="note" data-i18n="summary.breakevenNote">Full investment recovery</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="note-box">
+                <strong data-i18n="assumptions.title">Assumptions:</strong><br>
+                <span data-i18n="assumptions.item1">• Total investment: 1.7B - 2B VND (500M franchise fee + 1.2B - 1.5B build cost)</span><br>
+                <span data-i18n="assumptions.item2">• Gross margin: 50%</span><br>
+                <span data-i18n="assumptions.item3">• Admin costs: 10% of revenue (legal, accounting, general admin)</span><br>
+                <span data-i18n="assumptions.item4">• Working capital requirement: 300-500M VND recommended</span><br>
+                <span data-i18n="assumptions.item5">• Growth rate after maturity: 4% annually (mid-range of 3-5%)</span>
+            </div>
+        </section>
+
+        <div class="footer">
+            PamperMe Franchise Proposal | Confidential | www.pamperme.com.vn | franchise@pamperme.com.vn
+        </div>
+    </div>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                nav: {
+                    deal: 'Deal Structure',
+                    year1: 'Year 1 Projections',
+                    year2: 'Year 2 & Returns',
+                    docs: 'Documentation',
+                    checklist: 'Franchise Checklist',
+                    training: 'Training & Certs',
+                    jv: 'JV Model'
+                },
+                header: { title: 'Franchise Proposal', subtitle: 'Standalone Franchise Model' },
+                invest: {
+                    title: 'Investment Overview',
+                    franchiseFee: 'Franchise Fee', franchiseFeeNote: 'One-time payment',
+                    buildCost: 'Build Cost', buildCostNote: 'Depends on store size',
+                    totalInvest: 'Total Investment', totalInvestNote: 'Excluding working capital',
+                    payback: 'Payback Period', paybackValue: '24 - 28 Months', paybackNote: 'Based on projections'
+                },
+                fees: {
+                    title: 'Ongoing Fees', type: 'Fee Type', rate: 'Rate', atMaturity: 'At Maturity (3B/year)', desc: 'Description',
+                    royalty: 'Royalty Fee', royaltyDesc: 'Brand & ongoing support',
+                    marketing: 'Marketing Fee', marketingDesc: 'National marketing fund', total: 'Total Fees'
+                },
+                included: {
+                    title: "What's Included", ppmProvides: 'PamperMe Provides',
+                    ppm1: 'Store layout & design specifications', ppm2: 'Buildout supervision & quality control',
+                    ppm3: '6+ weeks comprehensive training', ppm4: 'Operations manual & SOPs',
+                    ppm5: 'POS & management software', ppm6: 'Marketing launch package',
+                    ppm7: 'Ongoing operational support', ppm8: 'Brand assets & signage guidelines',
+                    franchiseeResp: 'Franchisee Responsible For',
+                    fr1: 'Secure location & lease', fr2: 'Execute buildout per PPM specs',
+                    fr3: 'Hire & manage staff', fr4: 'Day-to-day operations',
+                    fr5: 'Legal & accounting fees', fr6: 'Local permits & licenses',
+                    fr7: 'Working capital', fr8: 'Equipment maintenance'
+                },
+                journey: {
+                    title: 'Journey to Opening',
+                    phase1Title: 'Month 1-2: Agreement & Location', phase1Desc: 'Sign franchise agreement, secure location, finalize lease',
+                    phase2Title: 'Month 2-4: Design & Buildout', phase2Desc: 'PPM provides layouts, franchisee executes construction with PPM supervision',
+                    phase3Title: 'Month 4-5: Training & Setup', phase3Desc: '6+ weeks staff training, equipment installation, soft launch preparation',
+                    phase4Title: 'Month 5-6: Grand Opening', phase4Desc: 'Marketing launch, grand opening event, begin operations'
+                },
+                financial: { title: 'Financial Projections', subtitle: '24-Month Revenue & Profit Forecast', subtitle2: 'Year 2 & Investment Returns' },
+                revenue: {
+                    title: 'Revenue Trajectory', chartTitle: 'Monthly Revenue & Cumulative Profit (24 Months)',
+                    milestones: 'Key Milestones:', milestonesDesc: 'Stores typically reach maturity (250M VND/month) within 12-16 months. After maturity, expect 3-5% annual growth. Break-even typically achieved by month 8-10.'
+                },
+                year1: { title: 'Monthly Projections - Year 1' },
+                year2: { title: 'Monthly Projections - Year 2 (At Maturity)' },
+                table: {
+                    month: 'Month', revenue: 'Revenue', grossProfit: 'Gross Profit (50%)', ppmFees: 'PPM Fees (10%)', admin: 'Admin (10%)', netProfit: 'Net Profit',
+                    month1: 'Month 1', month2: 'Month 2', month3: 'Month 3', month4: 'Month 4', month5: 'Month 5', month6: 'Month 6',
+                    month7: 'Month 7', month8: 'Month 8', month9: 'Month 9', month10: 'Month 10', month11: 'Month 11', month12: 'Month 12',
+                    month13: 'Month 13', month14: 'Month 14', month15: 'Month 15', month16: 'Month 16', month17: 'Month 17', month18: 'Month 18',
+                    month19: 'Month 19', month20: 'Month 20', month21: 'Month 21', month22: 'Month 22', month23: 'Month 23', month24: 'Month 24',
+                    year1Total: 'Year 1 Total', year2Total: 'Year 2 Total'
+                },
+                summary: {
+                    title: 'Investment Return Summary', chartTitle: 'Cumulative Cash Flow & Payback',
+                    year1Profit: 'Year 1 Net Profit', year1Note: 'After all fees & admin',
+                    year2Profit: 'Year 2 Net Profit', year2Note: 'At maturity + 4% growth',
+                    totalProfit: '2-Year Total Profit', totalNote: 'Cumulative net profit',
+                    breakeven: 'Break-even Point', breakevenValue: 'Month 24-28', breakevenNote: 'Full investment recovery'
+                },
+                assumptions: {
+                    title: 'Assumptions:',
+                    item1: '• Total investment: 1.7B - 2B VND (500M franchise fee + 1.2B - 1.5B build cost)',
+                    item2: '• Gross margin: 50%', item3: '• Admin costs: 10% of revenue (legal, accounting, general admin)',
+                    item4: '• Working capital requirement: 300-500M VND recommended', item5: '• Growth rate after maturity: 4% annually (mid-range of 3-5%)'
+                },
+                docs: {
+                    title: 'Documentation & Process', subtitle: 'Required Paperwork & Next Steps', required: 'Required Documentation',
+                    fromPPM: 'From PamperMe', ppm1: 'Franchise Disclosure Document (FDD)', ppm2: 'Franchise Agreement', ppm3: 'Territory Agreement',
+                    ppm4: 'Operations Manual', ppm5: 'Brand Guidelines', ppm6: 'Training Curriculum', ppm7: 'Store Design Specifications', ppm8: 'Equipment & Supplier List',
+                    fromFranchisee: 'From Franchisee', fr1: 'Business Registration Certificate', fr2: 'Personal/Company Financial Statements',
+                    fr3: 'Proof of Funds / Bank Statements', fr4: 'Location Lease Agreement', fr5: 'Insurance Certificates',
+                    fr6: 'Tax Registration', fr7: 'Local Business Permits', fr8: 'Health & Safety Certifications'
+                },
+                terms: {
+                    title: 'Franchise Agreement Key Terms', term: 'Term', details: 'Details',
+                    duration: 'Agreement Duration', durationVal: '5 years (renewable)',
+                    renewal: 'Renewal Fee', renewalVal: '25% of then-current franchise fee',
+                    territory: 'Territory Protection', territoryVal: 'Exclusive radius TBD based on location',
+                    training: 'Training Requirement', trainingVal: 'Minimum 6 weeks, mandatory completion',
+                    quality: 'Quality Standards', qualityVal: 'Quarterly inspections by PPM',
+                    reporting: 'Reporting', reportingVal: 'Monthly financial reports to PPM',
+                    insurance: 'Insurance', insuranceVal: 'Liability insurance required',
+                    termination: 'Termination', terminationVal: '90-day notice, subject to cure period'
+                },
+                next: {
+                    title: 'Next Steps',
+                    step1Title: 'Step 1: Initial Meeting', step1Desc: 'Discuss opportunity, answer questions, assess fit',
+                    step2Title: 'Step 2: Application & Due Diligence', step2Desc: 'Submit franchise application, financial verification',
+                    step3Title: 'Step 3: Discovery Day', step3Desc: 'Visit existing PamperMe location, meet the team',
+                    step4Title: 'Step 4: Agreement & Payment', step4Desc: 'Sign franchise agreement, pay franchise fee',
+                    step5Title: 'Step 5: Launch Process Begins', step5Desc: 'Location approval, buildout, training, grand opening'
+                },
+                contact: { title: 'Contact Us', phone: 'Phone' },
+                checklist: {
+                    title: 'Franchise Package Checklist', subtitle: 'Complete List of Deliverables',
+                    docsTitle: 'A. Documents Provided by PamperMe',
+                    legal: 'I. Legal Documents', licenses: 'Licenses', contracts: 'Contracts',
+                    lic1: 'Business License template', lic2: 'Fire Safety Certificate guide',
+                    con1: 'PamperMe Franchise Contract', con2: 'Employee Labor Contract template', con3: 'Customer Service Contract', con4: 'Supplier Purchase Contract',
+                    design: 'II. Design Documents',
+                    des1: 'Floor layout diagram', des2: '3D design rendering', des3: 'Pool layout (hydraulic)', des4: 'Baby health check area',
+                    des5: 'Mother area layout', des6: 'Reception area layout', des7: 'Cashier area layout', des8: 'WC & Warehouse layout',
+                    des9: 'Facade & Signboard', des10: 'Electrical & Water lines', des11: 'Fire safety system', des12: 'Camera & Sound system',
+                    ops: 'III. Operational Documents', orgMgmt: 'Organization & Management',
+                    org1: 'Organization chart', org2: 'Management regulations', org3: 'Personnel & salary scale', org4: 'Job descriptions', org5: 'Working regulations',
+                    salesCare: 'Sales & Customer Care',
+                    sal1: 'Services & price list', sal2: 'Sales & consulting scripts', sal3: 'Situation handling scenarios', sal4: 'Service usage regulations',
+                    procedures: 'IV. Procedures & Forms',
+                    pro1: 'Customer service procedures', pro2: 'Department working procedures', pro3: 'Reward & discipline procedures',
+                    pro4: 'Ordering & storage procedures', pro5: 'Epidemic handling procedures', pro6: 'Technical operations manual',
+                    pro7: 'Facility cleaning procedures', pro8: 'Revenue/expenditure forms', pro9: 'Warehouse management forms', pro10: 'Employee suggestion forms',
+                    brand: 'V. Brand Identity',
+                    br1: 'Brand, Logo & Slogan guidelines', br2: 'Business card template', br3: 'Letterhead template', br4: 'Envelope template',
+                    equipTitle: 'B. Equipment List', area: 'Area', equipment: 'Equipment',
+                    reception: 'Reception', recEquip: 'Reception Desk, POS Machine, Bill Printer, Speakers, Essential Oil Machine, Thermometer, Wet Towel Steamer, Baby Scale',
+                    smallPool: 'Small Pools', smallEquip: 'Water Heater, Water Purifier, Small Pool (0.8x1), Medium Pool (1.3x1), Large Pool (2x2)',
+                    infinityPool: 'Infinity Pool', infEquip: 'Pool (2.5x5), 24/7 Water Filtration System, Circulating Heating System, Hydraulic Jet System',
+                    massage: 'Massage Area', massEquip: 'Single & Row Massage Tables, Baby Crib Toys, Towel Sterilizer',
+                    motherBaby: 'Mother & Baby', mbEquip: 'Sofa, Milk Mixing Table, Milk Warmer',
+                    brain: 'Brain Exercise', brainEquip: 'Play Mat, Sensory Toy Set',
+                    toolsTitle: 'C. Tools & Consumables (CCDC)',
+                    floats: 'Floats', fl1: 'Neck Float', fl2: 'Lying Float', fl3: 'Belly Float', fl4: 'Arm Float', fl5: 'Logo Float',
+                    towelsBaby: 'Towels & Baby Items', tb1: 'Large Baby Towel', tb2: 'Small Baby Towel', tb3: 'Swim Diapers', tb4: 'Swim Shorts',
+                    supplies: 'Supplies', su1: 'Massage Cream', su2: 'Gum Soothing Cream', su3: 'Essential Oils', su4: 'Disinfectant Spray',
+                    trainingTitle: 'D. Training Program',
+                    facilityOps: '1. Facility Operations', fo1: 'Guest Welcome/See-off', fo2: 'Shift Handover', fo3: 'Facility Cleaning', fo4: 'Technical Operations', fo5: 'Inventory Control', fo6: 'Payment & Accounting',
+                    babyCare: '2. Baby Care Process', bc1: 'Baby Pick-up/Return', bc2: 'Health Check Process', bc3: 'Physical Gym Process', bc4: 'Mental Gym Process', bc5: 'Massage Process', bc6: 'Situation Handling',
+                    skills: '3. Skills Training', sk1: 'Sales & Customer Service', sk2: 'Service Packages', sk3: 'System Usage', sk4: 'Software Training', sk5: 'First Aid Training', sk6: 'Situation Handling'
+                }
+            },
+            vi: {
+                nav: {
+                    deal: 'Cơ Cấu Đầu Tư',
+                    year1: 'Dự Phóng Năm 1',
+                    year2: 'Năm 2 & Hoàn Vốn',
+                    docs: 'Hồ Sơ',
+                    checklist: 'Danh Mục Nhượng Quyền',
+                    training: 'Đào Tạo & Chứng Chỉ',
+                    jv: 'Mô Hình JV'
+                },
+                header: { title: 'Đề Xuất Nhượng Quyền', subtitle: 'Mô Hình Nhượng Quyền Độc Lập' },
+                invest: {
+                    title: 'Tổng Quan Đầu Tư',
+                    franchiseFee: 'Phí Nhượng Quyền', franchiseFeeNote: 'Thanh toán một lần',
+                    buildCost: 'Chi Phí Xây Dựng', buildCostNote: 'Tùy thuộc diện tích cửa hàng',
+                    totalInvest: 'Tổng Đầu Tư', totalInvestNote: 'Chưa bao gồm vốn lưu động',
+                    payback: 'Thời Gian Hoàn Vốn', paybackValue: '24 - 28 Tháng', paybackNote: 'Dựa trên dự phóng'
+                },
+                fees: {
+                    title: 'Phí Định Kỳ', type: 'Loại Phí', rate: 'Tỷ Lệ', atMaturity: 'Khi Ổn Định (3 tỷ/năm)', desc: 'Mô Tả',
+                    royalty: 'Phí Bản Quyền', royaltyDesc: 'Thương hiệu & hỗ trợ liên tục',
+                    marketing: 'Phí Marketing', marketingDesc: 'Quỹ marketing toàn quốc', total: 'Tổng Phí'
+                },
+                included: {
+                    title: 'Bao Gồm Những Gì', ppmProvides: 'PamperMe Cung Cấp',
+                    ppm1: 'Bản vẽ & thiết kế cửa hàng', ppm2: 'Giám sát thi công & kiểm soát chất lượng',
+                    ppm3: 'Đào tạo toàn diện 6+ tuần', ppm4: 'Sổ tay vận hành & quy trình chuẩn',
+                    ppm5: 'Phần mềm POS & quản lý', ppm6: 'Gói marketing ra mắt',
+                    ppm7: 'Hỗ trợ vận hành liên tục', ppm8: 'Tài sản thương hiệu & hướng dẫn biển hiệu',
+                    franchiseeResp: 'Đối Tác Chịu Trách Nhiệm',
+                    fr1: 'Tìm mặt bằng & ký hợp đồng thuê', fr2: 'Thi công theo thiết kế PPM',
+                    fr3: 'Tuyển dụng & quản lý nhân viên', fr4: 'Vận hành hàng ngày',
+                    fr5: 'Phí pháp lý & kế toán', fr6: 'Giấy phép địa phương',
+                    fr7: 'Vốn lưu động', fr8: 'Bảo trì thiết bị'
+                },
+                journey: {
+                    title: 'Hành Trình Khai Trương',
+                    phase1Title: 'Tháng 1-2: Ký Kết & Mặt Bằng', phase1Desc: 'Ký hợp đồng nhượng quyền, tìm mặt bằng, hoàn tất hợp đồng thuê',
+                    phase2Title: 'Tháng 2-4: Thiết Kế & Thi Công', phase2Desc: 'PPM cung cấp bản vẽ, đối tác thi công với sự giám sát của PPM',
+                    phase3Title: 'Tháng 4-5: Đào Tạo & Chuẩn Bị', phase3Desc: '6+ tuần đào tạo nhân viên, lắp đặt thiết bị, chuẩn bị soft opening',
+                    phase4Title: 'Tháng 5-6: Khai Trương', phase4Desc: 'Ra mắt marketing, sự kiện khai trương, bắt đầu vận hành'
+                },
+                financial: { title: 'Dự Phóng Tài Chính', subtitle: 'Dự Báo Doanh Thu & Lợi Nhuận 24 Tháng', subtitle2: 'Năm 2 & Hiệu Quả Đầu Tư' },
+                revenue: {
+                    title: 'Quỹ Đạo Doanh Thu', chartTitle: 'Doanh Thu & Lợi Nhuận Tích Lũy Hàng Tháng (24 Tháng)',
+                    milestones: 'Các Mốc Quan Trọng:', milestonesDesc: 'Cửa hàng thường đạt ổn định (250 triệu VND/tháng) trong 12-16 tháng. Sau đó, tăng trưởng 3-5%/năm. Hòa vốn vận hành thường đạt vào tháng 8-10.'
+                },
+                year1: { title: 'Dự Phóng Hàng Tháng - Năm 1' },
+                year2: { title: 'Dự Phóng Hàng Tháng - Năm 2 (Khi Ổn Định)' },
+                table: {
+                    month: 'Tháng', revenue: 'Doanh Thu', grossProfit: 'Lãi Gộp (50%)', ppmFees: 'Phí PPM (10%)', admin: 'Quản Lý (10%)', netProfit: 'Lợi Nhuận Ròng',
+                    month1: 'Tháng 1', month2: 'Tháng 2', month3: 'Tháng 3', month4: 'Tháng 4', month5: 'Tháng 5', month6: 'Tháng 6',
+                    month7: 'Tháng 7', month8: 'Tháng 8', month9: 'Tháng 9', month10: 'Tháng 10', month11: 'Tháng 11', month12: 'Tháng 12',
+                    month13: 'Tháng 13', month14: 'Tháng 14', month15: 'Tháng 15', month16: 'Tháng 16', month17: 'Tháng 17', month18: 'Tháng 18',
+                    month19: 'Tháng 19', month20: 'Tháng 20', month21: 'Tháng 21', month22: 'Tháng 22', month23: 'Tháng 23', month24: 'Tháng 24',
+                    year1Total: 'Tổng Năm 1', year2Total: 'Tổng Năm 2'
+                },
+                summary: {
+                    title: 'Tóm Tắt Hiệu Quả Đầu Tư', chartTitle: 'Dòng Tiền Tích Lũy & Hoàn Vốn',
+                    year1Profit: 'Lợi Nhuận Năm 1', year1Note: 'Sau tất cả phí & quản lý',
+                    year2Profit: 'Lợi Nhuận Năm 2', year2Note: 'Khi ổn định + tăng trưởng 4%',
+                    totalProfit: 'Tổng Lợi Nhuận 2 Năm', totalNote: 'Lợi nhuận ròng tích lũy',
+                    breakeven: 'Điểm Hoàn Vốn', breakevenValue: 'Tháng 24-28', breakevenNote: 'Thu hồi toàn bộ vốn đầu tư'
+                },
+                assumptions: {
+                    title: 'Giả Định:',
+                    item1: '• Tổng đầu tư: 1,7 - 2 tỷ VND (500 triệu phí nhượng quyền + 1,2 - 1,5 tỷ xây dựng)',
+                    item2: '• Biên lãi gộp: 50%', item3: '• Chi phí quản lý: 10% doanh thu (pháp lý, kế toán, hành chính)',
+                    item4: '• Vốn lưu động khuyến nghị: 300-500 triệu VND', item5: '• Tỷ lệ tăng trưởng sau ổn định: 4%/năm (trung bình 3-5%)'
+                },
+                docs: {
+                    title: 'Hồ Sơ & Quy Trình', subtitle: 'Giấy Tờ Cần Thiết & Các Bước Tiếp Theo', required: 'Hồ Sơ Cần Thiết',
+                    fromPPM: 'Từ PamperMe', ppm1: 'Tài liệu Công bố Nhượng quyền (FDD)', ppm2: 'Hợp đồng Nhượng quyền', ppm3: 'Thỏa thuận Lãnh thổ',
+                    ppm4: 'Sổ tay Vận hành', ppm5: 'Hướng dẫn Thương hiệu', ppm6: 'Chương trình Đào tạo', ppm7: 'Thiết kế Cửa hàng Chi tiết', ppm8: 'Danh sách Thiết bị & Nhà cung cấp',
+                    fromFranchisee: 'Từ Đối Tác', fr1: 'Giấy đăng ký Kinh doanh', fr2: 'Báo cáo Tài chính Cá nhân/Công ty',
+                    fr3: 'Chứng minh Năng lực Tài chính', fr4: 'Hợp đồng Thuê Mặt bằng', fr5: 'Giấy chứng nhận Bảo hiểm',
+                    fr6: 'Đăng ký Thuế', fr7: 'Giấy phép Kinh doanh Địa phương', fr8: 'Chứng nhận Y tế & An toàn'
+                },
+                terms: {
+                    title: 'Điều Khoản Hợp Đồng Chính', term: 'Điều Khoản', details: 'Chi Tiết',
+                    duration: 'Thời hạn Hợp đồng', durationVal: '5 năm (có thể gia hạn)',
+                    renewal: 'Phí Gia hạn', renewalVal: '25% phí nhượng quyền hiện hành',
+                    territory: 'Bảo vệ Lãnh thổ', territoryVal: 'Bán kính độc quyền tùy vị trí',
+                    training: 'Yêu cầu Đào tạo', trainingVal: 'Tối thiểu 6 tuần, bắt buộc hoàn thành',
+                    quality: 'Tiêu chuẩn Chất lượng', qualityVal: 'Kiểm tra định kỳ hàng quý bởi PPM',
+                    reporting: 'Báo cáo', reportingVal: 'Báo cáo tài chính hàng tháng cho PPM',
+                    insurance: 'Bảo hiểm', insuranceVal: 'Yêu cầu bảo hiểm trách nhiệm',
+                    termination: 'Chấm dứt', terminationVal: 'Thông báo 90 ngày, có thời gian khắc phục'
+                },
+                next: {
+                    title: 'Các Bước Tiếp Theo',
+                    step1Title: 'Bước 1: Gặp Mặt Ban Đầu', step1Desc: 'Thảo luận cơ hội, giải đáp thắc mắc, đánh giá phù hợp',
+                    step2Title: 'Bước 2: Nộp Hồ Sơ & Thẩm Định', step2Desc: 'Nộp đơn nhượng quyền, xác minh tài chính',
+                    step3Title: 'Bước 3: Ngày Khám Phá', step3Desc: 'Thăm cửa hàng PamperMe hiện có, gặp đội ngũ',
+                    step4Title: 'Bước 4: Ký Kết & Thanh Toán', step4Desc: 'Ký hợp đồng nhượng quyền, thanh toán phí',
+                    step5Title: 'Bước 5: Bắt Đầu Quy Trình', step5Desc: 'Phê duyệt mặt bằng, thi công, đào tạo, khai trương'
+                },
+                contact: { title: 'Liên Hệ', phone: 'Điện Thoại' },
+                checklist: {
+                    title: 'Danh Mục Gói Nhượng Quyền', subtitle: 'Danh Sách Đầy Đủ Các Hạng Mục',
+                    docsTitle: 'A. Tài Liệu PamperMe Cung Cấp',
+                    legal: 'I. Hồ Sơ Pháp Lý', licenses: 'Giấy Phép', contracts: 'Hợp Đồng',
+                    lic1: 'Mẫu Giấy phép Kinh doanh', lic2: 'Hướng dẫn Chứng nhận PCCC',
+                    con1: 'Hợp đồng Nhượng quyền PamperMe', con2: 'Mẫu Hợp đồng Lao động', con3: 'Hợp đồng Dịch vụ Khách hàng', con4: 'Hợp đồng Mua hàng Nhà cung cấp',
+                    design: 'II. Hồ Sơ Thiết Kế',
+                    des1: 'Sơ đồ mặt bằng', des2: 'Bản vẽ 3D', des3: 'Sơ đồ bể bơi (thủy lực)', des4: 'Khu vực khám sức khỏe bé',
+                    des5: 'Sơ đồ khu vực mẹ', des6: 'Sơ đồ khu tiếp tân', des7: 'Sơ đồ khu thu ngân', des8: 'Sơ đồ WC & Kho',
+                    des9: 'Mặt tiền & Biển hiệu', des10: 'Hệ thống điện & nước', des11: 'Hệ thống PCCC', des12: 'Hệ thống Camera & Âm thanh',
+                    ops: 'III. Tài Liệu Vận Hành', orgMgmt: 'Tổ Chức & Quản Lý',
+                    org1: 'Sơ đồ tổ chức', org2: 'Quy chế quản lý', org3: 'Thang lương nhân sự', org4: 'Mô tả công việc', org5: 'Nội quy làm việc',
+                    salesCare: 'Bán Hàng & Chăm Sóc Khách Hàng',
+                    sal1: 'Bảng giá dịch vụ', sal2: 'Kịch bản tư vấn bán hàng', sal3: 'Kịch bản xử lý tình huống', sal4: 'Quy định sử dụng dịch vụ',
+                    procedures: 'IV. Quy Trình & Biểu Mẫu',
+                    pro1: 'Quy trình phục vụ khách hàng', pro2: 'Quy trình làm việc theo bộ phận', pro3: 'Quy trình khen thưởng - kỷ luật',
+                    pro4: 'Quy trình đặt hàng & lưu kho', pro5: 'Quy trình xử lý dịch bệnh', pro6: 'Sổ tay vận hành kỹ thuật',
+                    pro7: 'Quy trình vệ sinh cơ sở', pro8: 'Biểu mẫu thu chi', pro9: 'Biểu mẫu quản lý kho', pro10: 'Biểu mẫu đề xuất nhân viên',
+                    brand: 'V. Nhận Diện Thương Hiệu',
+                    br1: 'Hướng dẫn Thương hiệu, Logo & Slogan', br2: 'Mẫu danh thiếp', br3: 'Mẫu tiêu đề thư', br4: 'Mẫu phong bì',
+                    equipTitle: 'B. Danh Mục Thiết Bị', area: 'Khu Vực', equipment: 'Thiết Bị',
+                    reception: 'Tiếp tân', recEquip: 'Quầy tiếp tân, Máy POS, Máy in hóa đơn, Loa, Máy xông tinh dầu, Nhiệt kế, Máy hấp khăn, Cân em bé',
+                    smallPool: 'Bể nhỏ', smallEquip: 'Máy nước nóng, Máy lọc nước, Bể nhỏ (0.8x1), Bể vừa (1.3x1), Bể lớn (2x2)',
+                    infinityPool: 'Bể tràn', infEquip: 'Bể (2.5x5), Hệ thống lọc nước 24/7, Hệ thống sưởi tuần hoàn, Hệ thống phun thủy lực',
+                    massage: 'Khu massage', massEquip: 'Bàn massage đơn & dãy, Đồ chơi nôi em bé, Máy tiệt trùng khăn',
+                    motherBaby: 'Khu mẹ & bé', mbEquip: 'Sofa, Bàn pha sữa, Máy hâm sữa',
+                    brain: 'Khu vận động trí não', brainEquip: 'Thảm chơi, Bộ đồ chơi giác quan',
+                    toolsTitle: 'C. Dụng Cụ & Vật Tư Tiêu Hao (CCDC)',
+                    floats: 'Phao', fl1: 'Phao cổ', fl2: 'Phao nằm', fl3: 'Phao bụng', fl4: 'Phao tay', fl5: 'Phao logo',
+                    towelsBaby: 'Khăn & Đồ Bé', tb1: 'Khăn lớn cho bé', tb2: 'Khăn nhỏ cho bé', tb3: 'Tã bơi', tb4: 'Quần bơi',
+                    supplies: 'Vật Tư', su1: 'Kem massage', su2: 'Kem dịu nướu', su3: 'Tinh dầu', su4: 'Xịt khử trùng',
+                    trainingTitle: 'D. Chương Trình Đào Tạo',
+                    facilityOps: '1. Vận Hành Cơ Sở', fo1: 'Đón/tiễn khách', fo2: 'Giao nhận ca', fo3: 'Vệ sinh cơ sở', fo4: 'Vận hành kỹ thuật', fo5: 'Kiểm soát kho', fo6: 'Thanh toán & kế toán',
+                    babyCare: '2. Quy Trình Chăm Sóc Bé', bc1: 'Nhận/trả bé', bc2: 'Quy trình khám sức khỏe', bc3: 'Quy trình gym thể chất', bc4: 'Quy trình gym trí tuệ', bc5: 'Quy trình massage', bc6: 'Xử lý tình huống',
+                    skills: '3. Đào Tạo Kỹ Năng', sk1: 'Bán hàng & CSKH', sk2: 'Gói dịch vụ', sk3: 'Sử dụng hệ thống', sk4: 'Đào tạo phần mềm', sk5: 'Sơ cấp cứu', sk6: 'Xử lý tình huống'
+                }
+            }
+        };
+
+        // Language switching
+        let currentLang = 'en';
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let value = translations[lang];
+                for (const k of keys) { if (value && value[k]) value = value[k]; else { value = null; break; } }
+                if (value) el.innerHTML = value;
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            });
+            localStorage.setItem('pamperme-proposal-lang', lang);
+        }
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang'))));
+        const savedLang = localStorage.getItem('pamperme-proposal-lang');
+        if (savedLang) setLanguage(savedLang);
+
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        function updateActiveNav() {
+            let current = '';
+            pages.forEach(page => {
+                const rect = page.getBoundingClientRect();
+                if (rect.top <= 150) current = page.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Smooth scroll
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Charts
+        const colors = { primary: '#C41E68', primaryLight: 'rgba(196, 30, 104, 0.2)', accent: '#4CAF50', gray: '#9E9E9E', yellow: '#FFC107' };
+        const months = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12', 'M13', 'M14', 'M15', 'M16', 'M17', 'M18', 'M19', 'M20', 'M21', 'M22', 'M23', 'M24'];
+        const revenue = [75, 100, 125, 150, 162, 175, 188, 200, 213, 225, 238, 250, 250, 250, 250, 252, 252, 254, 254, 256, 256, 258, 258, 260];
+        const netProfit = [22, 30, 37, 45, 49, 52, 56, 60, 65, 67, 71, 75, 75, 75, 75, 76, 76, 77, 77, 76, 76, 77, 77, 78];
+        let cumulative = [], sum = 0;
+        netProfit.forEach(p => { sum += p; cumulative.push(sum); });
+
+        new Chart(document.getElementById('revenueChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: 'Monthly Revenue (M VND)', data: revenue, backgroundColor: colors.primary, borderRadius: 4, order: 2 },
+                    { label: 'Net Profit (M VND)', data: netProfit, backgroundColor: colors.accent, borderRadius: 4, order: 3 },
+                    { label: 'Cumulative Profit (M VND)', data: cumulative, type: 'line', borderColor: colors.yellow, backgroundColor: 'transparent', borderWidth: 2, tension: 0.4, pointRadius: 0, order: 1 }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Million VND', font: { size: 10 } }, ticks: { font: { size: 9 } } }, x: { ticks: { font: { size: 9 } } } } }
+        });
+
+        const cashflowData = cumulative.map(c => c - 1850);
+        new Chart(document.getElementById('cashflowChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: 'Cumulative Cash Position (M VND)', data: cashflowData, borderColor: colors.primary, backgroundColor: colors.primaryLight, fill: true, tension: 0.4, pointRadius: 2 },
+                    { label: 'Break-even Line', data: Array(24).fill(0), borderColor: colors.gray, borderDash: [5, 5], borderWidth: 2, pointRadius: 0, fill: false }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } }, scales: { y: { title: { display: true, text: 'Million VND', font: { size: 10 } }, ticks: { font: { size: 9 } } }, x: { ticks: { font: { size: 9 } } } } }
+        });
+    </script>
+</body>
+</html>
