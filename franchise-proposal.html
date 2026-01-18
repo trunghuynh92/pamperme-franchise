@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PamperMe Franchise Proposal</title>
+    <script>
+        // Auth check - redirect to login if not authenticated
+        if (!sessionStorage.getItem('ppm-auth')) {
+            window.location.href = 'login.html';
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,6 +105,22 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-radius: 20px;
             margin-left: 15px;
+        }
+
+        .logout-btn {
+            background: #666;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #444;
         }
 
         .lang-btn {
@@ -535,6 +557,7 @@
             <button class="lang-btn active" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="vi">VI</button>
         </div>
+        <button class="logout-btn" onclick="sessionStorage.clear(); window.location.href='login.html';" data-i18n="nav.logout">Logout</button>
     </nav>
 
     <!-- Page 1: Deal Structure -->
@@ -825,7 +848,8 @@
                     docs: 'Documentation',
                     checklist: 'Franchise Checklist',
                     training: 'Training & Certs',
-                    jv: 'JV Model'
+                    jv: 'JV Model',
+                    logout: 'Logout'
                 },
                 header: { title: 'Franchise Proposal', subtitle: 'Standalone Franchise Model' },
                 invest: {
@@ -960,7 +984,8 @@
                     docs: 'Hồ Sơ',
                     checklist: 'Danh Mục Nhượng Quyền',
                     training: 'Đào Tạo & Chứng Chỉ',
-                    jv: 'Mô Hình JV'
+                    jv: 'Mô Hình JV',
+                    logout: 'Đăng Xuất'
                 },
                 header: { title: 'Đề Xuất Nhượng Quyền', subtitle: 'Mô Hình Nhượng Quyền Độc Lập' },
                 invest: {

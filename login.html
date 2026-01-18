@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Login - PamperMe Franchise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #fce4ec 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 180px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #b4436c;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #b4436c;
+            box-shadow: 0 0 0 3px rgba(180, 67, 108, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #b4436c 0%, #8b3a5c 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(180, 67, 108, 0.3);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .back-link {
+            margin-top: 25px;
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #b4436c;
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #b4436c;
+            background: transparent;
+            color: #b4436c;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: #b4436c;
+            color: white;
+        }
+
+        .secure-note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .secure-note svg {
+            width: 14px;
+            height: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('vi')">VI</button>
+    </div>
+
+    <div class="login-container">
+        <img src="images/pamperme-logo.png" alt="PamperMe Logo" class="logo">
+
+        <h1 data-i18n="title">Investor Portal</h1>
+        <p class="subtitle" data-i18n="subtitle">Access exclusive franchise proposals</p>
+
+        <div class="error-message" id="errorMsg" data-i18n="error">
+            Invalid username or password
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label data-i18n="username">Username</label>
+                <input type="text" id="username" required autocomplete="username">
+            </div>
+
+            <div class="form-group">
+                <label data-i18n="password">Password</label>
+                <input type="password" id="password" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="login-btn" data-i18n="loginBtn">Sign In</button>
+        </form>
+
+        <a href="index.html" class="back-link">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            <span data-i18n="backLink">Back to main site</span>
+        </a>
+
+        <div class="secure-note">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            <span data-i18n="secureNote">Secure investor access</span>
+        </div>
+    </div>
+
+    <script>
+        // Credentials - You can add more investors here
+        // Format: { username: 'hashed_password' }
+        // Passwords are hashed using simple hash for basic obfuscation
+        const credentials = {
+            'investor': hashPassword('pamperme2025'),
+            'demo': hashPassword('demo123')
+        };
+
+        function hashPassword(password) {
+            // Simple hash - not cryptographically secure but obscures plain text
+            let hash = 0;
+            for (let i = 0; i < password.length; i++) {
+                const char = password.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return hash.toString();
+        }
+
+        // Translations
+        const translations = {
+            en: {
+                title: 'Investor Portal',
+                subtitle: 'Access exclusive franchise proposals',
+                username: 'Username',
+                password: 'Password',
+                loginBtn: 'Sign In',
+                error: 'Invalid username or password',
+                backLink: 'Back to main site',
+                secureNote: 'Secure investor access'
+            },
+            vi: {
+                title: 'Cổng Nhà Đầu Tư',
+                subtitle: 'Truy cập đề xuất nhượng quyền độc quyền',
+                username: 'Tên đăng nhập',
+                password: 'Mật khẩu',
+                loginBtn: 'Đăng Nhập',
+                error: 'Tên đăng nhập hoặc mật khẩu không đúng',
+                backLink: 'Quay lại trang chủ',
+                secureNote: 'Truy cập bảo mật cho nhà đầu tư'
+            }
+        };
+
+        let currentLang = localStorage.getItem('ppm-lang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('ppm-lang', lang);
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+            });
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Initialize language
+        setLanguage(currentLang);
+
+        // Check if already logged in
+        if (sessionStorage.getItem('ppm-auth')) {
+            window.location.href = 'franchise-proposal.html';
+        }
+
+        // Handle login form
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.toLowerCase().trim();
+            const password = document.getElementById('password').value;
+            const hashedInput = hashPassword(password);
+
+            if (credentials[username] && credentials[username] === hashedInput) {
+                // Create session token
+                const token = btoa(username + ':' + Date.now());
+                sessionStorage.setItem('ppm-auth', token);
+                sessionStorage.setItem('ppm-user', username);
+
+                // Redirect to proposals
+                window.location.href = 'franchise-proposal.html';
+            } else {
+                // Show error
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.style.display = 'block';
+
+                // Shake animation
+                errorMsg.style.animation = 'none';
+                errorMsg.offsetHeight; // Trigger reflow
+                errorMsg.style.animation = 'shake 0.5s ease-in-out';
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+    </style>
+</body>
+</html>
