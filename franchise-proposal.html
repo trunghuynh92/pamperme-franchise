@@ -1129,12 +1129,12 @@
         }
         window.addEventListener('scroll', updateActiveNav);
 
-        // Smooth scroll
-        navLinks.forEach(link => {
+        // Smooth scroll (only for internal links)
+        document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.querySelector(link.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
