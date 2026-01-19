@@ -757,8 +757,8 @@
             <div class="card-grid">
                 <div class="card">
                     <h4 data-i18n="equity.ppmContrib">PPM Contribution</h4>
-                    <div class="value">500M VND</div>
-                    <div class="note" data-i18n="equity.ppmNote">Franchise fee waived, converted to equity</div>
+                    <div class="value">1.5B VND</div>
+                    <div class="note" data-i18n="equity.ppmNote">Franchise fee waived × 3 stores, converted to equity</div>
                 </div>
                 <div class="card blue">
                     <h4 data-i18n="equity.investorContrib">Investor Contribution</h4>
@@ -796,7 +796,6 @@
                     <tr>
                         <th data-i18n="fees.type">Fee Type</th>
                         <th data-i18n="fees.rate">Rate</th>
-                        <th data-i18n="fees.at3Stores">At Maturity (3 Stores)</th>
                         <th data-i18n="fees.desc">Description</th>
                     </tr>
                 </thead>
@@ -804,51 +803,20 @@
                     <tr>
                         <td data-i18n="fees.royalty">Royalty Fee</td>
                         <td class="text-center">8%</td>
-                        <td class="text-right">720M VND/year</td>
                         <td data-i18n="fees.royaltyDesc">Brand & ongoing support</td>
                     </tr>
                     <tr>
                         <td data-i18n="fees.marketing">Marketing Fee</td>
                         <td class="text-center">2%</td>
-                        <td class="text-right">180M VND/year</td>
                         <td data-i18n="fees.marketingDesc">National marketing fund</td>
                     </tr>
                     <tr class="highlight">
                         <td><strong data-i18n="fees.total">Total Fees</strong></td>
                         <td class="text-center"><strong>10%</strong></td>
-                        <td class="text-right"><strong>900M VND/year</strong></td>
                         <td></td>
                     </tr>
                 </tbody>
             </table>
-        </section>
-
-        <section>
-            <h2 data-i18n="governance.title">Governance & Control</h2>
-            <div class="two-col">
-                <div>
-                    <h3 data-i18n="governance.ppmRights">PPM Rights (33%)</h3>
-                    <ul class="checklist">
-                        <li data-i18n="governance.ppm1">Veto on new store locations</li>
-                        <li data-i18n="governance.ppm2">Full control of SOPs & operations standards</li>
-                        <li data-i18n="governance.ppm3">Quarterly quality inspections</li>
-                        <li data-i18n="governance.ppm4">Brand & marketing approval</li>
-                        <li data-i18n="governance.ppm5">Training curriculum control</li>
-                        <li data-i18n="governance.ppm6">Supplier standards enforcement</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 data-i18n="governance.investorRights">Investor Rights (67%)</h3>
-                    <ul class="checklist">
-                        <li data-i18n="governance.inv1">Day-to-day operational decisions</li>
-                        <li data-i18n="governance.inv2">Hiring & staffing control</li>
-                        <li data-i18n="governance.inv3">Local marketing execution</li>
-                        <li data-i18n="governance.inv4">Financial management & reporting</li>
-                        <li data-i18n="governance.inv5">Profit distribution (after reinvestment period)</li>
-                        <li data-i18n="governance.inv6">Expansion beyond 3 stores (with PPM approval)</li>
-                    </ul>
-                </div>
-            </div>
         </section>
 
         <div class="footer">
@@ -1132,7 +1100,7 @@
                 header: { title: 'Joint Venture Proposal', subtitle: 'Strategic Partnership Model - 3 Stores in 2 Years' },
                 equity: {
                     title: 'Equity Structure',
-                    ppmContrib: 'PPM Contribution', ppmNote: 'Franchise fee waived, converted to equity',
+                    ppmContrib: 'PPM Contribution', ppmNote: 'Franchise fee waived × 3 stores, converted to equity',
                     investorContrib: 'Investor Contribution', investorNote: '1.2B+500M WC, 700M+300M WC, 500M+300M WC'
                 },
                 invest: {
@@ -1143,20 +1111,9 @@
                     commitment: 'Commitment:', commitmentDesc: 'Investor commits to opening 3 stores within 24 months. All profits reinvested until Store 3 is operational.'
                 },
                 fees: {
-                    title: 'Ongoing Fees', type: 'Fee Type', rate: 'Rate', at3Stores: 'At Maturity (3 Stores)', desc: 'Description',
+                    title: 'Ongoing Fees', type: 'Fee Type', rate: 'Rate', desc: 'Description',
                     royalty: 'Royalty Fee', royaltyDesc: 'Brand & ongoing support',
                     marketing: 'Marketing Fee', marketingDesc: 'National marketing fund', total: 'Total Fees'
-                },
-                governance: {
-                    title: 'Governance & Control',
-                    ppmRights: 'PPM Rights (33%)',
-                    ppm1: 'Veto on new store locations', ppm2: 'Full control of SOPs & operations standards',
-                    ppm3: 'Quarterly quality inspections', ppm4: 'Brand & marketing approval',
-                    ppm5: 'Training curriculum control', ppm6: 'Supplier standards enforcement',
-                    investorRights: 'Investor Rights (67%)',
-                    inv1: 'Day-to-day operational decisions', inv2: 'Hiring & staffing control',
-                    inv3: 'Local marketing execution', inv4: 'Financial management & reporting',
-                    inv5: 'Profit distribution (after reinvestment period)', inv6: 'Expansion beyond 3 stores (with PPM approval)'
                 },
                 financial: { title: 'Financial Projections', subtitle: '3-Store Rollout Over 24 Months' },
                 rollout: { title: 'Store Rollout & Revenue', chartTitle: 'Combined Revenue & Profit (4 Years)' },
@@ -1214,7 +1171,7 @@
                 header: { title: 'Đề Xuất Liên Doanh', subtitle: 'Mô Hình Đối Tác Chiến Lược - 3 Cửa Hàng Trong 2 Năm' },
                 equity: {
                     title: 'Cơ Cấu Vốn Góp',
-                    ppmContrib: 'Góp Vốn của PPM', ppmNote: 'Phí nhượng quyền được miễn, chuyển thành cổ phần',
+                    ppmContrib: 'Góp Vốn của PPM', ppmNote: 'Phí nhượng quyền được miễn × 3 cửa hàng, chuyển thành cổ phần',
                     investorContrib: 'Góp Vốn của Nhà Đầu Tư', investorNote: '1.2tỷ+500tr VLĐ, 700tr+300tr VLĐ, 500tr+300tr VLĐ'
                 },
                 invest: {
@@ -1225,20 +1182,9 @@
                     commitment: 'Cam Kết:', commitmentDesc: 'Nhà đầu tư cam kết mở 3 cửa hàng trong 24 tháng. Toàn bộ lợi nhuận được tái đầu tư cho đến khi Cửa hàng 3 hoạt động.'
                 },
                 fees: {
-                    title: 'Phí Định Kỳ', type: 'Loại Phí', rate: 'Tỷ Lệ', at3Stores: 'Khi Ổn Định (3 Cửa Hàng)', desc: 'Mô Tả',
+                    title: 'Phí Định Kỳ', type: 'Loại Phí', rate: 'Tỷ Lệ', desc: 'Mô Tả',
                     royalty: 'Phí Bản Quyền', royaltyDesc: 'Thương hiệu & hỗ trợ liên tục',
                     marketing: 'Phí Marketing', marketingDesc: 'Quỹ marketing toàn quốc', total: 'Tổng Phí'
-                },
-                governance: {
-                    title: 'Quản Trị & Kiểm Soát',
-                    ppmRights: 'Quyền của PPM (33%)',
-                    ppm1: 'Quyền phủ quyết vị trí cửa hàng mới', ppm2: 'Toàn quyền kiểm soát SOP & tiêu chuẩn vận hành',
-                    ppm3: 'Kiểm tra chất lượng hàng quý', ppm4: 'Phê duyệt thương hiệu & marketing',
-                    ppm5: 'Kiểm soát chương trình đào tạo', ppm6: 'Thực thi tiêu chuẩn nhà cung cấp',
-                    investorRights: 'Quyền của Nhà Đầu Tư (67%)',
-                    inv1: 'Quyết định vận hành hàng ngày', inv2: 'Kiểm soát tuyển dụng & nhân sự',
-                    inv3: 'Thực hiện marketing địa phương', inv4: 'Quản lý tài chính & báo cáo',
-                    inv5: 'Phân phối lợi nhuận (sau giai đoạn tái đầu tư)', inv6: 'Mở rộng quá 3 cửa hàng (với sự đồng ý của PPM)'
                 },
                 financial: { title: 'Dự Phóng Tài Chính', subtitle: 'Triển Khai 3 Cửa Hàng Trong 24 Tháng' },
                 rollout: { title: 'Triển Khai & Doanh Thu', chartTitle: 'Doanh Thu & Lợi Nhuận Tổng Hợp (4 Năm)' },
