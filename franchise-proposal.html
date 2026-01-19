@@ -709,14 +709,14 @@
                     <div class="note" data-i18n="invest.franchiseFeeNote">One-time payment</div>
                 </div>
                 <div class="card">
-                    <h4 data-i18n="invest.buildCost">Build Cost</h4>
-                    <div class="value">800M - 1.2B VND</div>
-                    <div class="note" data-i18n="invest.buildCostNote">Depends on store size</div>
+                    <h4 data-i18n="invest.buildCost">Build Cost + Working Capital</h4>
+                    <div class="value">1.1B - 1.7B VND</div>
+                    <div class="note" data-i18n="invest.buildCostNote">800M-1.2B build + 300-500M WC</div>
                 </div>
                 <div class="card">
                     <h4 data-i18n="invest.totalInvest">Total Investment</h4>
-                    <div class="value">1.3B - 1.7B VND</div>
-                    <div class="note" data-i18n="invest.totalInvestNote">Excluding working capital</div>
+                    <div class="value">1.6B - 2.2B VND</div>
+                    <div class="note" data-i18n="invest.totalInvestNote">Including working capital</div>
                 </div>
                 <div class="card">
                     <h4 data-i18n="invest.payback">Payback Period</h4>
@@ -954,10 +954,10 @@
         <section>
             <div class="note-box">
                 <strong data-i18n="assumptions.title">Assumptions:</strong><br>
-                <span data-i18n="assumptions.item1">• Total investment: 1.3B - 1.7B VND (500M franchise fee + 800M - 1.2B build cost)</span><br>
+                <span data-i18n="assumptions.item1">• Total investment: 1.6B - 2.2B VND (500M fee + 800M-1.2B build + 300-500M WC)</span><br>
                 <span data-i18n="assumptions.item2">• Gross margin: 50%</span><br>
                 <span data-i18n="assumptions.item3">• Admin costs: 10% of revenue (legal, accounting, general admin)</span><br>
-                <span data-i18n="assumptions.item4">• Working capital requirement: 300-500M VND recommended</span><br>
+                <span data-i18n="assumptions.item4">• Working capital included: 300-500M VND depending on store size</span><br>
                 <span data-i18n="assumptions.item5">• Growth rate after maturity: 4% annually (mid-range of 3-5%)</span>
             </div>
         </section>
@@ -987,8 +987,8 @@
                 invest: {
                     title: 'Investment Overview',
                     franchiseFee: 'Franchise Fee', franchiseFeeNote: 'One-time payment',
-                    buildCost: 'Build Cost', buildCostNote: 'Depends on store size',
-                    totalInvest: 'Total Investment', totalInvestNote: 'Excluding working capital',
+                    buildCost: 'Build Cost + Working Capital', buildCostNote: '800M-1.2B build + 300-500M WC',
+                    totalInvest: 'Total Investment', totalInvestNote: 'Including working capital',
                     payback: 'Payback Period', paybackValue: '18 - 22 Months', paybackNote: 'Based on projections'
                 },
                 fees: {
@@ -1039,9 +1039,9 @@
                 },
                 assumptions: {
                     title: 'Assumptions:',
-                    item1: '• Total investment: 1.3B - 1.7B VND (500M franchise fee + 800M - 1.2B build cost)',
+                    item1: '• Total investment: 1.6B - 2.2B VND (500M fee + 800M-1.2B build + 300-500M WC)',
                     item2: '• Gross margin: 50%', item3: '• Admin costs: 10% of revenue (legal, accounting, general admin)',
-                    item4: '• Working capital requirement: 300-500M VND recommended', item5: '• Growth rate after maturity: 4% annually (mid-range of 3-5%)'
+                    item4: '• Working capital included: 300-500M VND depending on store size', item5: '• Growth rate after maturity: 4% annually (mid-range of 3-5%)'
                 },
                 docs: {
                     title: 'Documentation & Process', subtitle: 'Required Paperwork & Next Steps', required: 'Required Documentation',
@@ -1125,8 +1125,8 @@
                 invest: {
                     title: 'Tổng Quan Đầu Tư',
                     franchiseFee: 'Phí Nhượng Quyền', franchiseFeeNote: 'Thanh toán một lần',
-                    buildCost: 'Chi Phí Xây Dựng', buildCostNote: 'Tùy thuộc diện tích cửa hàng',
-                    totalInvest: 'Tổng Đầu Tư', totalInvestNote: 'Chưa bao gồm vốn lưu động',
+                    buildCost: 'Chi Phí Xây Dựng + Vốn Lưu Động', buildCostNote: '800tr-1.2tỷ xây dựng + 300-500tr VLĐ',
+                    totalInvest: 'Tổng Đầu Tư', totalInvestNote: 'Đã bao gồm vốn lưu động',
                     payback: 'Thời Gian Hoàn Vốn', paybackValue: '18 - 22 Tháng', paybackNote: 'Dựa trên dự phóng'
                 },
                 fees: {
@@ -1177,9 +1177,9 @@
                 },
                 assumptions: {
                     title: 'Giả Định:',
-                    item1: '• Tổng đầu tư: 1,3 - 1,7 tỷ VND (500 triệu phí nhượng quyền + 800 triệu - 1,2 tỷ xây dựng)',
+                    item1: '• Tổng đầu tư: 1,6 - 2,2 tỷ VND (500tr phí + 800tr-1,2tỷ xây dựng + 300-500tr VLĐ)',
                     item2: '• Biên lãi gộp: 50%', item3: '• Chi phí quản lý: 10% doanh thu (pháp lý, kế toán, hành chính)',
-                    item4: '• Vốn lưu động khuyến nghị: 300-500 triệu VND', item5: '• Tỷ lệ tăng trưởng sau ổn định: 4%/năm (trung bình 3-5%)'
+                    item4: '• Vốn lưu động đã bao gồm: 300-500 triệu VND tùy diện tích', item5: '• Tỷ lệ tăng trưởng sau ổn định: 4%/năm (trung bình 3-5%)'
                 },
                 docs: {
                     title: 'Hồ Sơ & Quy Trình', subtitle: 'Giấy Tờ Cần Thiết & Các Bước Tiếp Theo', required: 'Hồ Sơ Cần Thiết',
