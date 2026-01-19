@@ -53,20 +53,24 @@
             page-break-after: always;
         }
 
-        /* Navigation Bar */
-        .navbar {
+        /* Navigation Bar - Two Level */
+        .nav-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
+            z-index: 1000;
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
+        }
+
+        .navbar {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 10px 20px;
             gap: 10px;
+            border-bottom: 1px solid #eee;
         }
 
         .nav-links {
@@ -74,6 +78,7 @@
             gap: 5px;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
         }
 
         .nav-link {
@@ -96,6 +101,112 @@
         .nav-link.active {
             background: var(--primary);
             color: var(--white);
+        }
+
+        /* Model Dropdown */
+        .model-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .model-btn {
+            padding: 8px 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s;
+        }
+
+        .model-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .model-btn svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s;
+        }
+
+        .model-dropdown:hover .model-btn svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .model-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--light-gray);
+        }
+
+        .dropdown-menu a.current {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Sub Navigation */
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            padding: 8px 20px;
+            gap: 5px;
+            background: var(--light-gray);
+        }
+
+        .sub-nav-link {
+            padding: 6px 14px;
+            background: white;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .sub-nav-link:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .sub-nav-link.active {
+            background: var(--primary);
+            color: white;
         }
 
         /* Language Switcher */
@@ -502,7 +613,7 @@
                 page-break-after: auto;
             }
 
-            .no-print, .navbar {
+            .no-print, .nav-container {
                 display: none !important;
             }
         }
@@ -512,7 +623,7 @@
             body {
                 background: #e0e0e0;
                 padding: 20px;
-                padding-top: 80px;
+                padding-top: 100px;
             }
 
             .page {
@@ -526,39 +637,58 @@
             .navbar {
                 flex-direction: column;
                 padding: 10px;
+                gap: 8px;
             }
             .nav-links {
                 order: 2;
             }
             .lang-switcher {
                 margin-left: 0;
-                margin-bottom: 10px;
                 order: 1;
             }
+            .logout-btn {
+                margin-left: 5px;
+            }
+            .sub-nav {
+                flex-wrap: wrap;
+            }
             body {
-                padding-top: 120px;
+                padding-top: 150px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar no-print">
-        <div class="nav-links">
-            <a href="#page1" class="nav-link active" data-i18n="nav.deal">Deal Structure</a>
-            <a href="#page2" class="nav-link" data-i18n="nav.year1">Year 1 Projections</a>
-            <a href="#page3" class="nav-link" data-i18n="nav.year2">Year 2 & Returns</a>
-            <a href="franchise-checklist.html#page4" class="nav-link" data-i18n="nav.docs">Documentation</a>
-            <a href="franchise-checklist.html#page5" class="nav-link" data-i18n="nav.checklist">Franchise Checklist</a>
-            <a href="franchise-checklist.html#page6" class="nav-link" data-i18n="nav.training">Training & Certs</a>
-            <a href="jv-proposal.html" class="nav-link" style="background: #2196F3; color: white;" data-i18n="nav.jv">JV Model</a>
+    <div class="nav-container no-print">
+        <nav class="navbar">
+            <div class="nav-links">
+                <div class="model-dropdown">
+                    <button class="model-btn" data-i18n="nav.standalone">
+                        Standalone Model
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="franchise-proposal.html" class="current" data-i18n="nav.standaloneModel">Standalone Franchise</a>
+                        <a href="jv-proposal.html" data-i18n="nav.jvModel">Joint Venture (JV)</a>
+                    </div>
+                </div>
+                <a href="franchise-checklist.html#page4" class="nav-link" data-i18n="nav.docs">Documentation</a>
+                <a href="franchise-checklist.html#page5" class="nav-link" data-i18n="nav.checklist">Checklist</a>
+                <a href="franchise-checklist.html#page6" class="nav-link" data-i18n="nav.training">Training & Certs</a>
+            </div>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="vi">VI</button>
+            </div>
+            <button class="logout-btn" onclick="sessionStorage.clear(); window.location.href='login.html';" data-i18n="nav.logout">Logout</button>
+        </nav>
+        <div class="sub-nav">
+            <a href="#page1" class="sub-nav-link active" data-i18n="nav.deal">Deal Structure</a>
+            <a href="#page2" class="sub-nav-link" data-i18n="nav.year1">Year 1 Projections</a>
+            <a href="#page3" class="sub-nav-link" data-i18n="nav.year2">Year 2 & Returns</a>
         </div>
-        <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="vi">VI</button>
-        </div>
-        <button class="logout-btn" onclick="sessionStorage.clear(); window.location.href='login.html';" data-i18n="nav.logout">Logout</button>
-    </nav>
+    </div>
 
     <!-- Page 1: Deal Structure -->
     <div id="page1" class="page page-break">
@@ -842,13 +972,15 @@
         const translations = {
             en: {
                 nav: {
+                    standalone: 'Standalone Model',
+                    standaloneModel: 'Standalone Franchise',
+                    jvModel: 'Joint Venture (JV)',
                     deal: 'Deal Structure',
                     year1: 'Year 1 Projections',
                     year2: 'Year 2 & Returns',
                     docs: 'Documentation',
-                    checklist: 'Franchise Checklist',
+                    checklist: 'Checklist',
                     training: 'Training & Certs',
-                    jv: 'JV Model',
                     logout: 'Logout'
                 },
                 header: { title: 'Franchise Proposal', subtitle: 'Standalone Franchise Model' },
@@ -978,13 +1110,15 @@
             },
             vi: {
                 nav: {
+                    standalone: 'Mô Hình Độc Lập',
+                    standaloneModel: 'Nhượng Quyền Độc Lập',
+                    jvModel: 'Liên Doanh (JV)',
                     deal: 'Cơ Cấu Đầu Tư',
                     year1: 'Dự Phóng Năm 1',
                     year2: 'Năm 2 & Hoàn Vốn',
                     docs: 'Hồ Sơ',
-                    checklist: 'Danh Mục Nhượng Quyền',
+                    checklist: 'Danh Mục',
                     training: 'Đào Tạo & Chứng Chỉ',
-                    jv: 'Mô Hình JV',
                     logout: 'Đăng Xuất'
                 },
                 header: { title: 'Đề Xuất Nhượng Quyền', subtitle: 'Mô Hình Nhượng Quyền Độc Lập' },
@@ -1136,8 +1270,8 @@
         const savedLang = localStorage.getItem('pamperme-proposal-lang');
         if (savedLang) setLanguage(savedLang);
 
-        // Navigation active state
-        const navLinks = document.querySelectorAll('.nav-link');
+        // Navigation active state (sub-nav links)
+        const subNavLinks = document.querySelectorAll('.sub-nav-link');
         const pages = document.querySelectorAll('.page');
 
         function updateActiveNav() {
@@ -1146,15 +1280,15 @@
                 const rect = page.getBoundingClientRect();
                 if (rect.top <= 150) current = page.getAttribute('id');
             });
-            navLinks.forEach(link => {
+            subNavLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
         }
         window.addEventListener('scroll', updateActiveNav);
 
-        // Smooth scroll (only for internal links)
-        document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+        // Smooth scroll (only for sub-nav internal links)
+        document.querySelectorAll('.sub-nav-link[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.querySelector(link.getAttribute('href'));
