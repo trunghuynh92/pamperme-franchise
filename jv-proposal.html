@@ -790,6 +790,37 @@
         </section>
 
         <section>
+            <h2 data-i18n="default.title">Default & Non-Performance</h2>
+            <p style="margin-bottom: 15px; color: #666;" data-i18n="default.intro">If Investor fails to provide committed capital by scheduled deadline:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th data-i18n="default.scenario">Scenario</th>
+                        <th data-i18n="default.consequence">Consequence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-i18n="default.delay30">Delay up to 30 days</td>
+                        <td data-i18n="default.delay30Desc">Grace period with 2% penalty on delayed amount</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="default.delay60">Delay 31-60 days</td>
+                        <td data-i18n="default.delay60Desc">5% penalty + equity dilution proportional to delay</td>
+                    </tr>
+                    <tr>
+                        <td data-i18n="default.delay90">Delay over 60 days</td>
+                        <td data-i18n="default.delay90Desc">PPM may terminate JV or reduce Investor equity to actual contribution ratio</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td data-i18n="default.termination">Termination by PPM</td>
+                        <td data-i18n="default.terminationDesc">Investor receives 80% of contributed capital value; PPM retains full ownership</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
             <h2 data-i18n="fees.title">Ongoing Fees</h2>
             <table>
                 <thead>
@@ -1070,6 +1101,15 @@
                     store3Title: 'Month 24: Store 3 Opens', store3Desc: '500M build cost + 300M working capital',
                     commitment: 'Commitment:', commitmentDesc: 'Investor commits to opening 3 stores within 24 months. All profits reinvested until Store 3 is operational.'
                 },
+                default: {
+                    title: 'Default & Non-Performance',
+                    intro: 'If Investor fails to provide committed capital by scheduled deadline:',
+                    scenario: 'Scenario', consequence: 'Consequence',
+                    delay30: 'Delay up to 30 days', delay30Desc: 'Grace period with 2% penalty on delayed amount',
+                    delay60: 'Delay 31-60 days', delay60Desc: '5% penalty + equity dilution proportional to delay',
+                    delay90: 'Delay over 60 days', delay90Desc: 'PPM may terminate JV or reduce Investor equity to actual contribution ratio',
+                    termination: 'Termination by PPM', terminationDesc: 'Investor receives 80% of contributed capital value; PPM retains full ownership'
+                },
                 fees: {
                     title: 'Ongoing Fees', type: 'Fee Type', rate: 'Rate', desc: 'Description',
                     royalty: 'Royalty Fee', royaltyDesc: 'Brand & ongoing support',
@@ -1133,6 +1173,15 @@
                     store2Title: 'Tháng 12: Mở Cửa Hàng 2', store2Desc: '700 triệu xây dựng + 300 triệu vốn lưu động',
                     store3Title: 'Tháng 24: Mở Cửa Hàng 3', store3Desc: '500 triệu xây dựng + 300 triệu vốn lưu động',
                     commitment: 'Cam Kết:', commitmentDesc: 'Nhà đầu tư cam kết mở 3 cửa hàng trong 24 tháng. Toàn bộ lợi nhuận được tái đầu tư cho đến khi Cửa hàng 3 hoạt động.'
+                },
+                default: {
+                    title: 'Vi Phạm & Không Thực Hiện',
+                    intro: 'Nếu Nhà đầu tư không góp vốn đúng hạn theo lịch trình:',
+                    scenario: 'Tình Huống', consequence: 'Hậu Quả',
+                    delay30: 'Trễ hạn đến 30 ngày', delay30Desc: 'Gia hạn với phí phạt 2% trên số tiền trễ',
+                    delay60: 'Trễ hạn 31-60 ngày', delay60Desc: 'Phí phạt 5% + pha loãng cổ phần tương ứng',
+                    delay90: 'Trễ hạn trên 60 ngày', delay90Desc: 'PPM có thể chấm dứt JV hoặc giảm cổ phần Nhà đầu tư theo tỷ lệ góp vốn thực tế',
+                    termination: 'Chấm dứt bởi PPM', terminationDesc: 'Nhà đầu tư nhận 80% giá trị vốn đã góp; PPM giữ toàn quyền sở hữu'
                 },
                 fees: {
                     title: 'Phí Định Kỳ', type: 'Loại Phí', rate: 'Tỷ Lệ', desc: 'Mô Tả',
