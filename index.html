@@ -124,6 +124,79 @@
             background: rgba(196, 30, 104, 0.1);
         }
 
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                padding: 15px 0;
+                order: 3;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 15px;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .nav-links li:last-child a {
+                margin: 15px auto;
+                width: fit-content;
+            }
+
+            .lang-switcher {
+                margin-left: auto;
+                margin-right: 15px;
+            }
+        }
+
         /* Logo Image */
         .logo-img {
             height: 80px;
@@ -828,10 +901,6 @@
                 min-width: auto;
             }
 
-            .nav-links {
-                display: none;
-            }
-
             .support-timeline::before {
                 left: 20px;
             }
@@ -857,6 +926,11 @@
         <a href="#" class="logo">
             <img src="images/logo.png" alt="PamperMe Logo" class="logo-img">
         </a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
             <li><a href="#about" data-i18n="nav.about">About</a></li>
             <li><a href="#services" data-i18n="nav.services">Services</a></li>
@@ -1199,6 +1273,20 @@
 
     <!-- Chart.js Scripts -->
     <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.hamburger').classList.remove('active');
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
         // Color palette
         const colors = {
             primary: '#C41E68',
